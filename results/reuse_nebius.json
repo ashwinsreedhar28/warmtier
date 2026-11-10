@@ -1,0 +1,111 @@
+{
+  "dataset": {
+    "runs": 80036,
+    "instances": 3591,
+    "repos": 1276,
+    "resolved": 13389,
+    "median_calls": 17.0,
+    "mean_calls": 26.43
+  },
+  "prefill": {
+    "unique_chars": 4823611518,
+    "prefill_chars_no_cache": 96016502956,
+    "amplification": 19.91,
+    "amplification_median_run": 9.73
+  },
+  "by_kind": [
+    {
+      "kind": "observation",
+      "pct_unique_chars": 65.1,
+      "pct_prefill": 56.6
+    },
+    {
+      "kind": "assistant",
+      "pct_unique_chars": 19.7,
+      "pct_prefill": 23.0
+    },
+    {
+      "kind": "system",
+      "pct_unique_chars": 8.1,
+      "pct_prefill": 10.7
+    },
+    {
+      "kind": "task",
+      "pct_unique_chars": 7.2,
+      "pct_prefill": 9.6
+    }
+  ],
+  "file_views": {
+    "views": 987831,
+    "pct_of_observation_chars": 81.0,
+    "pct_prefill": 41.9,
+    "pct_views_made_stale_file_level": 55.5,
+    "pct_views_made_stale_window_level": 47.6,
+    "median_valid_life_calls": 2.0,
+    "p90_valid_life_calls": 5.0,
+    "median_calls_remaining_after_view": 13.0
+  },
+  "stale_share_of_prefill": {
+    "file_level_pct": 18.29,
+    "window_level_pct": 15.09,
+    "pct_runs_with_successful_edit": 93.8
+  },
+  "view_classes": [
+    {
+      "class": "repo file, edited in run",
+      "views": 422015,
+      "pct_prefill": 20.7,
+      "stale_pct_file_level": 62.6,
+      "stale_pct_window_level": 47.8
+    },
+    {
+      "class": "repo file, read only",
+      "views": 218700,
+      "pct_prefill": 13.4,
+      "stale_pct_file_level": 0.0,
+      "stale_pct_window_level": 0.0
+    },
+    {
+      "class": "scratch file (agent created it)",
+      "views": 347116,
+      "pct_prefill": 7.8,
+      "stale_pct_file_level": 67.8,
+      "stale_pct_window_level": 66.2
+    }
+  ],
+  "cross_run_identical_text": [
+    {
+      "scope": "same_instance",
+      "kind": "observation",
+      "pct_of_all_unique_chars": 13.11
+    },
+    {
+      "scope": "cross_repo",
+      "kind": "system",
+      "pct_of_all_unique_chars": 8.09
+    },
+    {
+      "scope": "same_instance",
+      "kind": "task",
+      "pct_of_all_unique_chars": 6.76
+    },
+    {
+      "scope": "cross_instance_same_repo",
+      "kind": "observation",
+      "pct_of_all_unique_chars": 1.71
+    }
+  ],
+  "cross_instance_file_identity": {
+    "pct_repo_view_chars_on_files_seen_by_2plus_instances": 64.6,
+    "pct_3plus_instances": 49.5
+  },
+  "cross_instance_file_identity_repos_with_5plus_instances": {
+    "repos": 138,
+    "pct_2plus_instances": 88.7,
+    "pct_3plus_instances": 79.2
+  },
+  "cross_instance_identical_view_text": {
+    "pct_view_chars_duplicated_across_runs": 26.0,
+    "pct_view_chars_duplicated_across_instances": 0.6
+  }
+}

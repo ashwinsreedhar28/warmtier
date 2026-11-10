@@ -1,0 +1,158 @@
+[
+  {
+    "repo": "django",
+    "window_years": 3.0,
+    "pathspec": "*.py",
+    "files": 2967,
+    "files_changed_in_window": 1172,
+    "change_events": 5974,
+    "share_of_changes_in_top10pct_files": 0.6701,
+    "survival": {
+      "1h": {
+        "uniform": 0.9999,
+        "hot": 0.9994
+      },
+      "1d": {
+        "uniform": 0.9982,
+        "hot": 0.9872
+      },
+      "7d": {
+        "uniform": 0.9882,
+        "hot": 0.9198
+      },
+      "30d": {
+        "uniform": 0.9551,
+        "hot": 0.7348
+      },
+      "90d": {
+        "uniform": 0.8885,
+        "hot": 0.4732
+      },
+      "365d": {
+        "uniform": 0.6909,
+        "hot": 0.1187
+      }
+    },
+    "half_life_days": {
+      "uniform": 650.7,
+      "hot": 81.4
+    }
+  },
+  {
+    "repo": "sympy",
+    "window_years": 3.0,
+    "pathspec": "*.py",
+    "files": 1647,
+    "files_changed_in_window": 1517,
+    "change_events": 5496,
+    "share_of_changes_in_top10pct_files": 0.4332,
+    "survival": {
+      "1h": {
+        "uniform": 0.9999,
+        "hot": 0.9996
+      },
+      "1d": {
+        "uniform": 0.9969,
+        "hot": 0.9914
+      },
+      "7d": {
+        "uniform": 0.9793,
+        "hot": 0.9455
+      },
+      "30d": {
+        "uniform": 0.9199,
+        "hot": 0.8118
+      },
+      "90d": {
+        "uniform": 0.7891,
+        "hot": 0.5819
+      },
+      "365d": {
+        "uniform": 0.3768,
+        "hot": 0.1653
+      }
+    },
+    "half_life_days": {
+      "uniform": 254.3,
+      "hot": 119.8
+    }
+  },
+  {
+    "repo": "scikit-learn",
+    "window_years": 3.0,
+    "pathspec": "*.py",
+    "files": 1109,
+    "files_changed_in_window": 947,
+    "change_events": 8251,
+    "share_of_changes_in_top10pct_files": 0.4822,
+    "survival": {
+      "1h": {
+        "uniform": 0.9997,
+        "hot": 0.999
+      },
+      "1d": {
+        "uniform": 0.9924,
+        "hot": 0.9767
+      },
+      "7d": {
+        "uniform": 0.952,
+        "hot": 0.8617
+      },
+      "30d": {
+        "uniform": 0.8347,
+        "hot": 0.5921
+      },
+      "90d": {
+        "uniform": 0.638,
+        "hot": 0.3034
+      },
+      "365d": {
+        "uniform": 0.2764,
+        "hot": 0.0591
+      }
+    },
+    "half_life_days": {
+      "uniform": 155.9,
+      "hot": 42.7
+    }
+  },
+  {
+    "repo": "pytest",
+    "window_years": 3.0,
+    "pathspec": "*.py",
+    "files": 283,
+    "files_changed_in_window": 267,
+    "change_events": 2666,
+    "share_of_changes_in_top10pct_files": 0.4149,
+    "survival": {
+      "1h": {
+        "uniform": 0.9996,
+        "hot": 0.999
+      },
+      "1d": {
+        "uniform": 0.9909,
+        "hot": 0.976
+      },
+      "7d": {
+        "uniform": 0.9449,
+        "hot": 0.8634
+      },
+      "30d": {
+        "uniform": 0.8152,
+        "hot": 0.601
+      },
+      "90d": {
+        "uniform": 0.61,
+        "hot": 0.3043
+      },
+      "365d": {
+        "uniform": 0.3276,
+        "hot": 0.084
+      }
+    },
+    "half_life_days": {
+      "uniform": 149.6,
+      "hot": 43.8
+    }
+  }
+]

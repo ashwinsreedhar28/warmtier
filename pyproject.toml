@@ -1,0 +1,12 @@
+[project]
+name = "warmtier"
+version = "0.0.1"
+description = "Measure reuse and valid life of agent context, then price where it should live."
+requires-python = ">=3.10"
+dependencies = ["pyarrow>=15", "duckdb>=1.0"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+include = ["warmtier*"]
