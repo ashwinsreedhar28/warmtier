@@ -28,13 +28,9 @@ def compute(silver: str) -> dict:
     C = f"read_parquet('{silver}/chunks/*.parquet')"
     V = f"read_parquet('{silver}/views/*.parquet')"
     duckdb.sql(f"""create or replace temp table vv as
-        with firstv as (select run, file, min(call) c0 from {V} group by 1,2),
-        cr as (select distinct c.run, f.file from firstv f join {C} c
-               on c.run=f.run and c.call=f.c0 and c.kind='observation' and c.cmd='create'),
-        ed as (select distinct run, file from {V} where stale_file_call is not null)
-        select v.*, (cr.file is not null) scratch, (ed.file is not null) edited, r.n_calls
-        from {V} v left join cr using (run,file) left join ed using (run,file)
-        join {R} r using (run)""")
+        with ed as (select distinct run, file from {V} where stale_file_call is not null)
+        select v.*, (ed.file is not null) edited, r.n_calls
+        from {V} v left join ed using (run,file) join {R} r using (run)""")
     out = {}
     out["dataset"] = one(f"""select count(*) runs, count(distinct instance) instances, count(distinct repo) repos,
         sum(resolved::int) resolved, median(n_calls) median_calls, round(avg(n_calls),2) mean_calls from {R}""")
@@ -46,7 +42,7 @@ def compute(silver: str) -> dict:
     out["by_kind"] = many(f"""select kind, round(100.0*sum(chars)/(select sum(chars) from {C}),1) pct_unique_chars,
         round(100.0*sum(chars*carried)/(select sum(chars*carried) from {C}),1) pct_prefill
         from {C} group by 1 order by 3 desc""")
-    out["file_views"] = one(f"""select count(*) views,
+    out["file_views"] = one(f"""select count(*) as "views",
         round(100.0*sum(chars)/(select sum(chars) from {C} where kind='observation'),1) pct_of_observation_chars,
         round(100.0*sum(chars*carried)/(select sum(chars*carried) from {C}),1) pct_prefill,
         round(100.0*avg((stale_file_call is not null)::int),1) pct_views_made_stale_file_level,
@@ -59,8 +55,8 @@ def compute(silver: str) -> dict:
         round(100.0*sum(stale_window_char_calls)/sum(prefill_chars_no_cache),2) window_level_pct,
         round(100.0*avg((n_edits>0)::int),1) pct_runs_with_successful_edit from {R}""")
     out["view_classes"] = many(f"""select case when scratch then 'scratch file (agent created it)'
-          when edited then 'repo file, edited in run' else 'repo file, read only' end class,
-        count(*) views,
+          when edited then 'repo file, edited in run' else 'repo file, read only' end as "class",
+        count(*) as "views",
         round(100.0*sum(chars*carried)/(select sum(prefill_chars_no_cache) from {R}),1) pct_prefill,
         round(100.0*coalesce(sum(chars*(n_calls-stale_file_call)) filter (stale_file_call is not null),0)/sum(chars*carried),1) stale_pct_file_level,
         round(100.0*coalesce(sum(chars*(n_calls-stale_window_call)) filter (stale_window_call is not null),0)/sum(chars*carried),1) stale_pct_window_level
@@ -68,7 +64,7 @@ def compute(silver: str) -> dict:
     out["cross_run_identical_text"] = many(f"""
         with g as (select sha, any_value(kind) kind, any_value(chars) chars, count(distinct run) runs,
                    count(distinct instance) insts, count(distinct repo) repos from {C} where chars>=200 group by sha)
-        select case when repos>1 then 'cross_repo' when insts>1 then 'cross_instance_same_repo' else 'same_instance' end scope,
+        select case when repos>1 then 'cross_repo' when insts>1 then 'cross_instance_same_repo' else 'same_instance' end as "scope",
                kind, round(100.0*sum(chars*(runs-1))/(select sum(chars) from {C}),2) pct_of_all_unique_chars
         from g where runs>1 group by 1,2 having sum(chars*(runs-1))*1000 > (select sum(chars) from {C}) order by 3 desc""")
     out["cross_instance_file_identity"] = one("""

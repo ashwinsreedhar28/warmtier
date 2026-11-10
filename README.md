@@ -14,6 +14,8 @@ selection yet.
 - `warmtier/drift.py`: valid life of file content from git history.
 - `warmtier/sweagent.py`: bronze to silver for SWE-agent trajectories
   (per-message chunks, per-file views with staleness, per-run totals).
+- `warmtier/claudecode.py`: the same silver tables for Claude Code style
+  traces (nvidia/Open-SWE-Traces).
 - `warmtier/gold.py`: gold metrics from the silver tables (DuckDB).
 - `warmtier/cost.py`: cost model v0 (break-even runs per build).
 - `warmtier/traj.py`: small in-memory version for other dataset shapes.
@@ -69,7 +71,7 @@ volume: each message counted once per LLM call that carries it.
    |---|---|---|
    | repo file, edited in the run | 20.7% | 47.8% to 62.6% |
    | repo file, read only | 13.4% | 0% |
-   | scratch file the agent created | 7.8% | 66.2% to 67.8% |
+   | scratch file the agent created | 7.8% | 66.1% to 67.8% |
 
 5. Across tasks, reuse is by file identity, not by bytes. 0.6% of file-view
    characters are byte-identical across different instances, yet 64.6% of
@@ -130,11 +132,56 @@ Reading:
 This rests on one harness in which agents read few files. A harness that
 reads more would move every number.
 
+## Fourth: a second harness (Nov 10, 2026)
+
+133,376 runs of a Claude Code style harness (Read, Edit, Bash) driven by
+Qwen3.8 models, from the claudecode split of nvidia/Open-SWE-Traces (39,611
+instances, 3,715 repos, 47.8% resolved).
+
+    python -m warmtier.claudecode 'data/open-swe-traces/data/claudecode/**/*.parquet' --out data/silver/claudecode
+    python -m warmtier.gold data/silver/claudecode --out results/reuse_claudecode.json
+    python -m warmtier.cost data/silver/claudecode --out results/cost_v0_claudecode.json
+
+| | SWE-agent, Llama 3.1 | Claude Code style, Qwen3.8 |
+|---|---|---|
+| runs | 80,036 | 133,376 |
+| LLM calls per run (median) | 17 | 32 |
+| prefill / unique content | 19.9x | 38.2x |
+| file views, share of prefill | 41.9% | 48.1% |
+| views later invalidated by an edit (window to file level) | 47.6% to 55.5% | 29.7% to 37.0% |
+| valid life of those views (median calls) | 2 | 7 |
+| stale file content, share of prefill | 15.1% to 18.3% | 12.7% to 14.5% |
+| read-only repo files, share of prefill | 13.4% | 25.3% |
+| runs with any read-only repo view | 33.8% | 88.7% |
+| view text byte-identical across instances | 0.6% | 5.4% |
+| repo-file view text on files another instance also viewed | 64.6% | 83.8% |
+| cartridge break-even vs prefix cache (runs/day on one repo) | 1,073 to 4,293 | 412 to 1,647 |
+| same, counting avoided file-open calls | 799 to 1,809 | 309 to 708 |
+| extra failure rate the tier can afford (vs prefix cache) | 5.0% to 9.9% | 6.3% to 13.2% |
+
+What holds across both harnesses:
+- File views are 42% to 48% of prefill, and 13% to 18% of all prefill is
+  file content the agent has already edited.
+- Cross-task reuse is by file identity (65% to 84%), not by bytes (0.6% to
+  5.4%).
+- At the published cartridge build cost, promotion needs hundreds to
+  thousands of runs a day on one repo to pay on prefill against a prefix
+  cache.
+
+What changes: the Claude Code style harness reads about 2.6 times as much
+read-only repo content per run, which lowers the break-even by about the
+same factor.
+
+Extra limits for this dataset: file views read through Bash are counted only
+for single-file `cat`, `head`, `tail` and `sed -n` commands, and Bash edits
+only for `sed -i` and redirects, so views and edits are both undercounted.
+`reasoning_content` is not counted as carried context. The traces are
+teacher-model data generated for training, not production traffic.
+
 ## Next
 
-1. A second harness with rendered prompts and heavier file reading
-   (nvidia/Open-SWE-Traces, one split).
-2. Weight git drift by the files agents actually read.
+1. Weight git drift by the files agents actually read.
+2. Price LoRA and cheap adapter generation with sourced build costs.
 3. Phase 1: calibrate the assumed throughputs on vLLM and measure quality.
 
 ## Related work this builds on

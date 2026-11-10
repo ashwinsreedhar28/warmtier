@@ -62,6 +62,7 @@ def process_run(row: dict, run_id: int):
     repo = repo_of(iid)
     n_calls = sum(1 for m in traj if m["role"] == "ai")
     chunks, views, edits = [], [], []          # edits: (call_idx, file, start, end)
+    created = set()                            # files the agent created in this run
     call = 0                                   # assistant messages seen so far
     last_cmd = ""
     first_user = True
@@ -93,14 +94,17 @@ def process_run(row: dict, run_id: int):
                 nums = NUMBERED.findall(text)
                 lo, hi = (int(nums[0]), int(nums[-1])) if nums else (0, 0)
                 ok_edit = cmd_word == "edit" and "File updated" in text
+                if cmd_word == "create":
+                    created.add(h.group(1))
                 if ok_edit or cmd_word == "create":
                     r = EDIT_RANGE.match(last_cmd)
                     s, e = (int(r.group(1)), int(r.group(2))) if r else (1, 1)
                     edits.append((call, h.group(1), s, e))
-                views.append([run_id, iid, repo, h.group(1), call, len(text), _sha(text), lo, hi, carried, None, None])
+                views.append([run_id, iid, repo, h.group(1), call, len(text), _sha(text), lo, hi, carried, None, None,
+                              h.group(1) in created])
     # staleness: first later edit to the same file / intersecting the same lines
     for v in views:
-        _, _, _, f, c, _, _, lo, hi, _, _, _ = v
+        f, c, lo, hi = v[3], v[4], v[7], v[8]
         for (ec, ef, s, e) in edits:
             if ec > c and ef == f:
                 if v[10] is None:
@@ -121,7 +125,7 @@ def process_run(row: dict, run_id: int):
 
 CHUNK_COLS = ["run", "instance", "repo", "idx", "call", "kind", "cmd", "chars", "sha", "carried"]
 VIEW_COLS = ["run", "instance", "repo", "file", "call", "chars", "sha", "line_lo", "line_hi", "carried",
-             "stale_file_call", "stale_window_call"]
+             "stale_file_call", "stale_window_call", "scratch"]
 RUN_COLS = ["run", "instance", "repo", "model", "resolved", "exit", "n_calls", "system_chars", "task_chars",
             "assistant_chars", "observation_chars", "prefill_chars_no_cache", "n_views", "n_files_viewed",
             "n_edits", "view_chars", "view_char_calls", "stale_file_char_calls", "stale_window_char_calls"]

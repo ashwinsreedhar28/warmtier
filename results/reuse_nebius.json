@@ -53,7 +53,7 @@
   "view_classes": [
     {
       "class": "repo file, edited in run",
-      "views": 422015,
+      "views": 421706,
       "pct_prefill": 20.7,
       "stale_pct_file_level": 62.6,
       "stale_pct_window_level": 47.8
@@ -67,10 +67,10 @@
     },
     {
       "class": "scratch file (agent created it)",
-      "views": 347116,
+      "views": 347425,
       "pct_prefill": 7.8,
       "stale_pct_file_level": 67.8,
-      "stale_pct_window_level": 66.2
+      "stale_pct_window_level": 66.1
     }
   ],
   "cross_run_identical_text": [

@@ -52,16 +52,12 @@ REBUILD_DAYS = 30.0
 
 def measured(silver: str) -> dict:
     R = f"read_parquet('{silver}/runs/*.parquet')"
-    C = f"read_parquet('{silver}/chunks/*.parquet')"
     V = f"read_parquet('{silver}/views/*.parquet')"
     rel = duckdb.sql(f"""
-        with firstv as (select run, file, min(call) c0 from {V} group by 1,2),
-        cr as (select distinct c.run, f.file from firstv f join {C} c
-               on c.run=f.run and c.call=f.c0 and c.kind='observation' and c.cmd='create'),
-        ed as (select distinct run, file from {V} where stale_file_call is not null),
-        ro as (select v.run, sum(v.chars) chars, sum(v.chars*v.carried) char_calls, count(*) views
-               from {V} v left join cr using (run,file) left join ed using (run,file)
-               where cr.file is null and ed.file is null group by 1)
+        with ed as (select distinct run, file from {V} where stale_file_call is not null),
+        ro as (select v.run, sum(v.chars) chars, sum(v.chars*v.carried) char_calls, count(*) as "views"
+               from {V} v left join ed using (run,file)
+               where not v.scratch and ed.file is null group by 1)
         select count(*) runs,
                avg(coalesce(ro.chars,0)) ro_chars, avg(coalesce(ro.char_calls,0)) ro_char_calls,
                avg(coalesce(ro.views,0)) ro_views,
