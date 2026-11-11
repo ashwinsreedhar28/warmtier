@@ -1,0 +1,66 @@
+{
+  "window": {
+    "runs": 133376,
+    "append_prefill_chars": 11759440228,
+    "append_context_integral": 577948624640,
+    "policies": {
+      "append": {
+        "prefill_vs_append": 1.0,
+        "context_vs_append": 1.0,
+        "evictions_per_run": 0.0
+      },
+      "evict_now": {
+        "prefill_vs_append": 2.0035,
+        "context_vs_append": 0.8731,
+        "evictions_per_run": 2.35
+      },
+      "lazy_10": {
+        "prefill_vs_append": 1.4944,
+        "context_vs_append": 0.8914,
+        "evictions_per_run": 0.95
+      },
+      "lazy_25": {
+        "prefill_vs_append": 1.1636,
+        "context_vs_append": 0.929,
+        "evictions_per_run": 0.39
+      },
+      "splice": {
+        "prefill_vs_append": 1.0,
+        "context_vs_append": 0.8731,
+        "evictions_per_run": 2.35
+      }
+    }
+  },
+  "file": {
+    "runs": 133376,
+    "append_prefill_chars": 11759440228,
+    "append_context_integral": 577948624640,
+    "policies": {
+      "append": {
+        "prefill_vs_append": 1.0,
+        "context_vs_append": 1.0,
+        "evictions_per_run": 0.0
+      },
+      "evict_now": {
+        "prefill_vs_append": 1.9714,
+        "context_vs_append": 0.8548,
+        "evictions_per_run": 2.36
+      },
+      "lazy_10": {
+        "prefill_vs_append": 1.5201,
+        "context_vs_append": 0.8722,
+        "evictions_per_run": 1.02
+      },
+      "lazy_25": {
+        "prefill_vs_append": 1.1901,
+        "context_vs_append": 0.9109,
+        "evictions_per_run": 0.46
+      },
+      "splice": {
+        "prefill_vs_append": 1.0,
+        "context_vs_append": 0.8548,
+        "evictions_per_run": 2.36
+      }
+    }
+  }
+}

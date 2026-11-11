@@ -61,6 +61,13 @@ def compute(silver: str) -> dict:
         round(100.0*coalesce(sum(chars*(n_calls-stale_file_call)) filter (stale_file_call is not null),0)/sum(chars*carried),1) stale_pct_file_level,
         round(100.0*coalesce(sum(chars*(n_calls-stale_window_call)) filter (stale_window_call is not null),0)/sum(chars*carried),1) stale_pct_window_level
         from vv group by 1 order by 3 desc""")
+    out["reasoning"] = one(f"""select
+        round(100.0*sum(reasoning_chars)/nullif(sum(reasoning_chars+assistant_chars),0),1) pct_of_decoded_chars,
+        round(avg(reasoning_chars)) reasoning_chars_per_run,
+        round(100.0*sum(reasoning_char_calls)/sum(prefill_chars_no_cache),2) keep_adds_pct_to_prefill_no_cache,
+        round(100.0*sum(reasoning_chars)/sum(system_chars+task_chars+assistant_chars+observation_chars),2) keep_adds_pct_to_unique_context,
+        round(100.0*sum(assistant_chars)/sum(system_chars+task_chars+assistant_chars+observation_chars),2) strip_reprefill_pct_of_unique_context
+        from {R}""")
     out["cross_run_identical_text"] = many(f"""
         with g as (select sha, any_value(kind) kind, any_value(chars) chars, count(distinct run) runs,
                    count(distinct instance) insts, count(distinct repo) repos from {C} where chars>=200 group by sha)

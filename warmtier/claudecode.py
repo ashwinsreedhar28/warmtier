@@ -16,7 +16,8 @@ Staleness:
           (Bash edits never count at window level)
 
 The prompt model is append-only: system prompt, tool schemas, then every
-message. reasoning_content is not counted as carried context.
+message. reasoning_content is not counted as carried context; the runs table
+records its size and what carrying it would add (reasoning_char_calls).
 """
 from __future__ import annotations
 
@@ -90,6 +91,7 @@ def process_run(row: dict, run_id: int):
     call = 0
     first_user = True
     pending: list[tuple[str, dict]] = []
+    reasoning = reasoning_cc = 0             # reasoning text, and what carrying it would add
 
     tools_text = json.dumps(row.get("tools") or [], sort_keys=True)
     tot["tools"] = len(tools_text)
@@ -113,6 +115,9 @@ def process_run(row: dict, run_id: int):
                 text += fn["name"] + (fn["arguments"] or "")
             cmd_word = pending[0][0] if pending else ""
             call += 1
+            r = len(m.get("reasoning_content") or "")
+            reasoning += r
+            reasoning_cc += r * (n_calls - call)
         elif role == "system":
             kind = "system"
         elif role == "user" and first_user:
@@ -168,7 +173,8 @@ def process_run(row: dict, run_id: int):
     model = ((row.get("metadata") or {}).get("teacher_model") or {}).get("name") or ""
     run = (run_id, iid, repo, model, row.get("resolved") == 1, "", n_calls,
            tot["system"] + tot["tools"], tot["task"], tot["assistant"], tot["observation"], prefill,
-           len(views), len({v[3] for v in views}), len(edits), view_chars, view_cc, stale_file, stale_win)
+           len(views), len({v[3] for v in views}), len(edits), view_chars, view_cc, stale_file, stale_win,
+           reasoning, reasoning_cc)
     return chunks, [tuple(v) for v in views], run
 
 

@@ -1,0 +1,6127 @@
+{
+ "model": "Qwen/Qwen3-4B",
+ "device": "cuda",
+ "n": 60,
+ "seed": 0,
+ "limits": {
+  "prefix": 3000,
+  "file": 2000,
+  "suffix": 200
+ },
+ "aggregate": {
+  "full": {
+   "kl_mean": 0.0,
+   "kl_median": 0.0,
+   "top1_mean": 1.0,
+   "nll_mean": 2.7157,
+   "retained": 1.0,
+   "gen_n": 56,
+   "name_ref": 0.3929,
+   "exact_ref": 0.0,
+   "name_full": 1.0,
+   "exact_full": 1.0
+  },
+  "iso": {
+   "kl_mean": 0.1487,
+   "kl_median": 0.1224,
+   "top1_mean": 0.9093,
+   "nll_mean": 2.8398,
+   "retained": 0.2268,
+   "gen_n": 56,
+   "name_ref": 0.4286,
+   "exact_ref": 0.0,
+   "name_full": 0.7679,
+   "exact_full": 0.2321
+  },
+  "repair_k64": {
+   "kl_mean": 0.1636,
+   "kl_median": 0.1119,
+   "top1_mean": 0.9252,
+   "nll_mean": 2.7406,
+   "retained": 0.8447,
+   "gen_n": 56,
+   "name_ref": 0.5,
+   "exact_ref": 0.0,
+   "name_full": 0.8571,
+   "exact_full": 0.3393
+  },
+  "repair_p15": {
+   "kl_mean": 0.1243,
+   "kl_median": 0.0957,
+   "top1_mean": 0.9291,
+   "nll_mean": 2.7542,
+   "retained": 0.7599,
+   "gen_n": 56,
+   "name_ref": 0.4464,
+   "exact_ref": 0.0,
+   "name_full": 0.875,
+   "exact_full": 0.3571
+  },
+  "repair_p30": {
+   "kl_mean": 0.1012,
+   "kl_median": 0.0732,
+   "top1_mean": 0.9435,
+   "nll_mean": 2.7321,
+   "retained": 0.8978,
+   "gen_n": 56,
+   "name_ref": 0.4464,
+   "exact_ref": 0.0,
+   "name_full": 0.8929,
+   "exact_full": 0.4464
+  },
+  "repair_dev15": {
+   "kl_mean": 0.1421,
+   "kl_median": 0.1071,
+   "top1_mean": 0.9331,
+   "nll_mean": 2.7245,
+   "retained": 0.9447,
+   "gen_n": 56,
+   "name_ref": 0.4464,
+   "exact_ref": 0.0,
+   "name_full": 0.9107,
+   "exact_full": 0.3929
+  },
+  "repair_dev30": {
+   "kl_mean": 0.1183,
+   "kl_median": 0.0849,
+   "top1_mean": 0.9446,
+   "nll_mean": 2.7176,
+   "retained": 0.9879,
+   "gen_n": 56,
+   "name_ref": 0.4464,
+   "exact_ref": 0.0,
+   "name_full": 0.9286,
+   "exact_full": 0.4464
+  },
+  "nofile": {
+   "kl_mean": 0.2316,
+   "kl_median": 0.119,
+   "top1_mean": 0.9022,
+   "nll_mean": 2.8762,
+   "retained": 0.0,
+   "gen_n": 56,
+   "name_ref": 0.4821,
+   "exact_ref": 0.0,
+   "name_full": 0.6964,
+   "exact_full": 0.25
+  }
+ },
+ "rows": [
+  {
+   "instance": "brazilian-utils__brutils-python-124",
+   "nP": 824,
+   "nF": 293,
+   "nS": 137,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.4549803733825684
+    },
+    "iso": {
+     "kl": 0.19253745675086975,
+     "top1": 0.941605806350708,
+     "nll": 2.6588079929351807
+    },
+    "repair_k64": {
+     "kl": 0.1745547503232956,
+     "top1": 0.970802903175354,
+     "nll": 2.4506382942199707
+    },
+    "repair_p15": {
+     "kl": 0.09842377156019211,
+     "top1": 0.970802903175354,
+     "nll": 2.6259846687316895
+    },
+    "repair_p30": {
+     "kl": 0.09534212946891785,
+     "top1": 0.9635036587715149,
+     "nll": 2.6225478649139404
+    },
+    "repair_dev15": {
+     "kl": 0.16049566864967346,
+     "top1": 0.970802903175354,
+     "nll": 2.4342458248138428
+    },
+    "repair_dev30": {
+     "kl": 0.13763310015201569,
+     "top1": 0.9781022071838379,
+     "nll": 2.4498813152313232
+    },
+    "nofile": {
+     "kl": 0.2110859900712967,
+     "top1": 0.9635036587715149,
+     "nll": 2.4594898223876953
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    }
+   },
+   "gen_text": {
+    "full": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"find /testbed -type f -name \\\\\\\"*.py\\\\\\\" | head -50 && echo \\\\\\\"---\\\\\\\" && ls /testbed\\\", \\\"description\\\": \\\"List Python files and repo root contents\\\"}\"}",
+    "iso": "Code\", \"arguments\": \"{\\\"code\\\": \\\"from random import randint\\\\n\\\\n\\\\ndef generate():\\\\n    return ''.join(str(randint(0,9)) for _ in range(8))\\\"}\"}\n{\"name\": \"Code\", \"arguments\": \"{\\\"code\\\": \\\"from ran",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"find /testbed -type f -name \\\\\\\"*.py\\\\\\\" | head -50 && echo \\\\\\\"---\\\\\\\" && ls /testbed\\\", \\\"description\\\": \\\"List Python files and repo root contents\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/brutils/cnpj.py\\\"}\"}"
+  },
+  {
+   "instance": "vaskoz__dailycodingproblem-go-549",
+   "nP": 3000,
+   "nF": 826,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.738093614578247
+    },
+    "iso": {
+     "kl": 0.04462410882115364,
+     "top1": 0.9599999785423279,
+     "nll": 2.8673312664031982
+    },
+    "repair_k64": {
+     "kl": 0.08113281428813934,
+     "top1": 0.9549999833106995,
+     "nll": 2.8640496730804443
+    },
+    "repair_p15": {
+     "kl": 0.07360465079545975,
+     "top1": 0.9350000023841858,
+     "nll": 2.8686089515686035
+    },
+    "repair_p30": {
+     "kl": 0.050461120903491974,
+     "top1": 0.9649999737739563,
+     "nll": 2.7136175632476807
+    },
+    "repair_dev15": {
+     "kl": 0.05207556486129761,
+     "top1": 0.949999988079071,
+     "nll": 2.7848193645477295
+    },
+    "repair_dev30": {
+     "kl": 0.057330090552568436,
+     "top1": 0.9599999785423279,
+     "nll": 2.7023913860321045
+    },
+    "nofile": {
+     "kl": 0.11996597051620483,
+     "top1": 0.9300000071525574,
+     "nll": 2.8723363876342773
+    }
+   }
+  },
+  {
+   "instance": "getsentry__responses-397",
+   "nP": 3000,
+   "nF": 1217,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.2781524658203125
+    },
+    "iso": {
+     "kl": 0.08136830478906631,
+     "top1": 0.8849999904632568,
+     "nll": 3.2227306365966797
+    },
+    "repair_k64": {
+     "kl": 0.3498433530330658,
+     "top1": 0.8449999690055847,
+     "nll": 3.2487688064575195
+    },
+    "repair_p15": {
+     "kl": 0.17680390179157257,
+     "top1": 0.8499999642372131,
+     "nll": 3.140655994415283
+    },
+    "repair_p30": {
+     "kl": 0.24034203588962555,
+     "top1": 0.8949999809265137,
+     "nll": 3.2621374130249023
+    },
+    "repair_dev15": {
+     "kl": 0.26458439230918884,
+     "top1": 0.8700000047683716,
+     "nll": 3.2831499576568604
+    },
+    "repair_dev30": {
+     "kl": 0.19848765432834625,
+     "top1": 0.8700000047683716,
+     "nll": 3.246025323867798
+    },
+    "nofile": {
+     "kl": 0.6663797497749329,
+     "top1": 0.8149999976158142,
+     "nll": 3.687610626220703
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/responses/test_responses.py\\\", \\\"offset\\\": 1356, \\\"limit\\\": 120}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/responses/test_responses.py\\\", \\\"offset\\\": 1410, \\\"limit\\\": 120}\"}",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -n \\\\\\\"matcher\\\\\\\" /testbed/responses/test_responses.py | head -60\\\", \\\"description\\\": \\\"Find matcher-related tests\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"cat /testbed/setup.cfg /testbed/tox.ini /testbed/Makefile 2>/dev/null; cat /testbed/responses/__init__.pyi | head -60\\\", \\\"description\\\": \\\"Show configs "
+  },
+  {
+   "instance": "s-knibbs__dataclasses-jsonschema-92",
+   "nP": 3000,
+   "nF": 1281,
+   "nS": 171,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.998607873916626
+    },
+    "iso": {
+     "kl": 0.13403166830539703,
+     "top1": 0.9298245906829834,
+     "nll": 3.1241226196289062
+    },
+    "repair_k64": {
+     "kl": 0.098474882543087,
+     "top1": 0.9707602262496948,
+     "nll": 2.8670785427093506
+    },
+    "repair_p15": {
+     "kl": 0.11520534008741379,
+     "top1": 0.9239766001701355,
+     "nll": 3.117443084716797
+    },
+    "repair_p30": {
+     "kl": 0.11585938185453415,
+     "top1": 0.9356725215911865,
+     "nll": 3.0736148357391357
+    },
+    "repair_dev15": {
+     "kl": 0.09741048514842987,
+     "top1": 0.9649122953414917,
+     "nll": 2.8918817043304443
+    },
+    "repair_dev30": {
+     "kl": 0.10000688582658768,
+     "top1": 0.9707602262496948,
+     "nll": 2.9115099906921387
+    },
+    "nofile": {
+     "kl": 0.09761206060647964,
+     "top1": 0.9298245906829834,
+     "nll": 3.054112195968628
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/tests/test_apispec_plugin.py\\\"}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/dataclasses_jsonschema/README.md\\\"}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/tests/test_apispec_plugin.py\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn -i \\\\\\\"discriminator\\\\\\\" /testbed --include=\\\\\\\"*.py\\\\\\\" --include=\\\\\\\"*.rst\\\\\\\" --include=\\\\\\\"*.md\\\\\\\" --include=\\\\\\\"*.cfg\\\\\\\" --include=\\\\\\\"*."
+  },
+  {
+   "instance": "pallets__werkzeug-2723",
+   "nP": 3000,
+   "nF": 807,
+   "nS": 112,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.5293967723846436
+    },
+    "iso": {
+     "kl": 0.1509166657924652,
+     "top1": 0.9017857313156128,
+     "nll": 2.7812719345092773
+    },
+    "repair_k64": {
+     "kl": 0.06623779237270355,
+     "top1": 0.9375000596046448,
+     "nll": 2.672215700149536
+    },
+    "repair_p15": {
+     "kl": 0.0640496015548706,
+     "top1": 0.9464285969734192,
+     "nll": 2.5626161098480225
+    },
+    "repair_p30": {
+     "kl": 0.087617889046669,
+     "top1": 0.9553571939468384,
+     "nll": 2.659839630126953
+    },
+    "repair_dev15": {
+     "kl": 0.058706529438495636,
+     "top1": 0.9642857313156128,
+     "nll": 2.591921806335449
+    },
+    "repair_dev30": {
+     "kl": 0.06334394961595535,
+     "top1": 0.9821429252624512,
+     "nll": 2.6258881092071533
+    },
+    "nofile": {
+     "kl": 0.05747535079717636,
+     "top1": 0.9196429252624512,
+     "nll": 2.6386332511901855
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/werkzeug/sansio/http.py\\\", \\\"offset\\\": 1, \\\"limit\\\": 50}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/werkzeug/datastructures/structures.py\\\", \\\"offset\\\": 550, \\\"limit\\\": 80}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/werkzeug/datastructures/structures.py\\\", \\\"offset\\\": 590, \\\"limit\\\": 80}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -n \\\\\\\"^class Headers\\\\\\\\|def __init__\\\\\\\\|def get\\\\\\\\|def add\\\\\\\\|self._list\\\\\\\\|def __getitem__\\\\\\\\|def to_list\\\\\\\" /testbed/src/werkzeug/datastru"
+  },
+  {
+   "instance": "vuejs__eslint-plugin-vue-2045",
+   "nP": 3000,
+   "nF": 1636,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.3866631984710693
+    },
+    "iso": {
+     "kl": 0.17402711510658264,
+     "top1": 0.8299999833106995,
+     "nll": 3.5957536697387695
+    },
+    "repair_k64": {
+     "kl": 0.19296438992023468,
+     "top1": 0.8899999856948853,
+     "nll": 3.414890766143799
+    },
+    "repair_p15": {
+     "kl": 0.19096285104751587,
+     "top1": 0.8999999761581421,
+     "nll": 3.508368730545044
+    },
+    "repair_p30": {
+     "kl": 0.07942049205303192,
+     "top1": 0.9199999570846558,
+     "nll": 3.3401904106140137
+    },
+    "repair_dev15": {
+     "kl": 0.14742781221866608,
+     "top1": 0.9149999618530273,
+     "nll": 3.3654348850250244
+    },
+    "repair_dev30": {
+     "kl": 0.11115967482328415,
+     "top1": 0.9300000071525574,
+     "nll": 3.394989013671875
+    },
+    "nofile": {
+     "kl": 0.23328763246536255,
+     "top1": 0.8999999761581421,
+     "nll": 3.5455589294433594
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/tests/lib/rules/v-on-event-hyphenation.js\\\"}\"}",
+    "iso": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -n \\\\\\\"_\\\\\\\" /testbed/tests/lib/rules/v-on-event-hyphenation.js | tail -40\\\", \\\"description\\\": \\\"Find underscore test cases in v-on-event-hyphenation tests\\\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/tests/lib/rules/v-on-event-hyphenation.js\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"includes('_')\\\\\\\" /testbed/lib --include=\\\\\\\"*.js\\\\\\\"\\\", \\\"description\\\": \\\"Find underscore checks in lib rules\\\"}\"}"
+  },
+  {
+   "instance": "geopandas__geopandas-3272",
+   "nP": 3000,
+   "nF": 362,
+   "nS": 175,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.452939033508301
+    },
+    "iso": {
+     "kl": 0.06648596376180649,
+     "top1": 0.9371428489685059,
+     "nll": 2.444197416305542
+    },
+    "repair_k64": {
+     "kl": 0.06894213706254959,
+     "top1": 0.9599999785423279,
+     "nll": 2.4903972148895264
+    },
+    "repair_p15": {
+     "kl": 0.03988053277134895,
+     "top1": 0.9657142758369446,
+     "nll": 2.4599814414978027
+    },
+    "repair_p30": {
+     "kl": 0.04821842536330223,
+     "top1": 0.9485714435577393,
+     "nll": 2.446465492248535
+    },
+    "repair_dev15": {
+     "kl": 0.08686838299036026,
+     "top1": 0.9542856812477112,
+     "nll": 2.4856343269348145
+    },
+    "repair_dev30": {
+     "kl": 0.08592518419027328,
+     "top1": 0.9599999785423279,
+     "nll": 2.490595579147339
+    },
+    "nofile": {
+     "kl": 0.09987761080265045,
+     "top1": 0.9428571462631226,
+     "nll": 2.594248056411743
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/geopandas/tests/test_geoseries.py\\\"}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/geopandas/tests/test_api.py\\\"}\"}",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -n \\\\\\\"def is_geometry_type\\\\\\\" -A 30 /testbed/geopandas/base.py\\\", \\\"description\\\": \\\"Show is_geometry_type implementation\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"sed -n 4988,5120p /testbed/geopandas/base.py\\\", \\\"description\\\": \\\"Show buffer method in base.py\\\"}\"}"
+  },
+  {
+   "instance": "cuyz__valinor-514",
+   "nP": 3000,
+   "nF": 865,
+   "nS": 122,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 0.9999999403953552,
+     "nll": 2.7000794410705566
+    },
+    "iso": {
+     "kl": 0.23300305008888245,
+     "top1": 0.9426229000091553,
+     "nll": 2.837019443511963
+    },
+    "repair_k64": {
+     "kl": 0.12178733199834824,
+     "top1": 0.9672130346298218,
+     "nll": 2.6998350620269775
+    },
+    "repair_p15": {
+     "kl": 0.1620652675628662,
+     "top1": 0.9590163230895996,
+     "nll": 2.7299787998199463
+    },
+    "repair_p30": {
+     "kl": 0.02084563858807087,
+     "top1": 0.9754098057746887,
+     "nll": 2.568465232849121
+    },
+    "repair_dev15": {
+     "kl": 0.11391320079565048,
+     "top1": 0.9754098057746887,
+     "nll": 2.696460008621216
+    },
+    "repair_dev30": {
+     "kl": 0.11622302234172821,
+     "top1": 0.9754098057746887,
+     "nll": 2.754868745803833
+    },
+    "nofile": {
+     "kl": 0.1798267662525177,
+     "top1": 0.9590163230895996,
+     "nll": 2.820488452911377
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/Mapper/Object/MethodArguments.php\\\"}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/Mapper/Object/MethodArguments.php\\\"}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/Mapper/Object/MethodArguments.php\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"cat /testbed/src/Mapper/Object/NativeConstructorObjectBuilder.php /testbed/src/Mapper/Object/Arguments.php\\\", \\\"description\\\": \\\"Read NativeConstructorOb"
+  },
+  {
+   "instance": "pinojs__hapi-pino-116",
+   "nP": 3000,
+   "nF": 504,
+   "nS": 176,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.243440628051758
+    },
+    "iso": {
+     "kl": 0.12045999616384506,
+     "top1": 0.8977273106575012,
+     "nll": 2.4091718196868896
+    },
+    "repair_k64": {
+     "kl": 0.10857100039720535,
+     "top1": 0.9375,
+     "nll": 2.318718671798706
+    },
+    "repair_p15": {
+     "kl": 0.07893417030572891,
+     "top1": 0.948863685131073,
+     "nll": 2.285918951034546
+    },
+    "repair_p30": {
+     "kl": 0.07225952297449112,
+     "top1": 0.948863685131073,
+     "nll": 2.269904851913452
+    },
+    "repair_dev15": {
+     "kl": 0.10721589624881744,
+     "top1": 0.9261363744735718,
+     "nll": 2.2960493564605713
+    },
+    "repair_dev30": {
+     "kl": 0.08531372994184494,
+     "top1": 0.9545454978942871,
+     "nll": 2.2722866535186768
+    },
+    "nofile": {
+     "kl": 0.054190415889024734,
+     "top1": 0.9431818723678589,
+     "nll": 2.3984508514404297
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"find /testbed -type f -not -path \\\\\\\"*/node_modules/*\\\\\\\" -not -path \\\\\\\"*/.git/*\\\\\\\" | head -50\\\", \\\"description\\\": \\\"List files in repository excluding node_modu",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/package.json\\\"}\"}\n{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/package.json\\\"}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/package.json\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -n \\\\\\\"ignoreFunc\\\\\\\" /testbed/test.js /testbed/index.js /testbed/README.md /testbed/example.js 2>/dev/null\\\", \\\"description\\\": \\\"Search for ignoreF"
+  },
+  {
+   "instance": "rascarlito__axios-cache-adapter-237",
+   "nP": 3000,
+   "nF": 1037,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 1.546099066734314
+    },
+    "iso": {
+     "kl": 0.12037769705057144,
+     "top1": 0.9199999570846558,
+     "nll": 1.6657233238220215
+    },
+    "repair_k64": {
+     "kl": 0.089680977165699,
+     "top1": 0.9799999594688416,
+     "nll": 1.5664982795715332
+    },
+    "repair_p15": {
+     "kl": 0.015523068606853485,
+     "top1": 0.9950000047683716,
+     "nll": 1.5424529314041138
+    },
+    "repair_p30": {
+     "kl": 0.07745251804590225,
+     "top1": 0.9899999499320984,
+     "nll": 1.5905526876449585
+    },
+    "repair_dev15": {
+     "kl": 0.07686219364404678,
+     "top1": 0.98499995470047,
+     "nll": 1.5849659442901611
+    },
+    "repair_dev30": {
+     "kl": 0.07801098376512527,
+     "top1": 0.98499995470047,
+     "nll": 1.595701813697815
+    },
+    "nofile": {
+     "kl": 0.019517723470926285,
+     "top1": 0.9749999642372131,
+     "nll": 1.579946756362915
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"find /testbed -type f -name \\\\\\\"*.js\\\\\\\" -not -path \\\\\\\"*/node_modules/*\\\\\\\" | head -50 && echo \\\\\\\"---\\\\\\\" && ls /testbed\\\", \\\"description\\\": \\\"List JavaScript fi",
+    "iso": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"find /testbed -type f -name \\\\\\\"*.js\\\\\\\" -not -path \\\\\\\"*/node_modules/*\\\\\\\" | head -50 && echo \\\\\\\"---\\\\\\\" && ls /testbed\\\", \\\"description\\\": \\\"List JavaScript fi",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/cache.js\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/test/spec/config.spec.js\\\"}\"}"
+  },
+  {
+   "instance": "martin-helmich__typo3-typoscript-lint-124",
+   "nP": 1356,
+   "nF": 240,
+   "nS": 135,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.3298637866973877
+    },
+    "iso": {
+     "kl": 0.2993236780166626,
+     "top1": 0.8962962627410889,
+     "nll": 2.6566295623779297
+    },
+    "repair_k64": {
+     "kl": 0.1696113497018814,
+     "top1": 0.9259259104728699,
+     "nll": 2.3073489665985107
+    },
+    "repair_p15": {
+     "kl": 0.29638370871543884,
+     "top1": 0.8962962627410889,
+     "nll": 2.4298248291015625
+    },
+    "repair_p30": {
+     "kl": 0.355983167886734,
+     "top1": 0.9111111164093018,
+     "nll": 2.3624424934387207
+    },
+    "repair_dev15": {
+     "kl": 0.2830790877342224,
+     "top1": 0.9185184836387634,
+     "nll": 2.37732195854187
+    },
+    "repair_dev30": {
+     "kl": 0.17905037105083466,
+     "top1": 0.9037036895751953,
+     "nll": 2.2830491065979004
+    },
+    "nofile": {
+     "kl": 0.44224613904953003,
+     "top1": 0.8962962627410889,
+     "nll": 2.6592912673950195
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/Linter/Sniff/Visitor/NestingConsistencyVisitor.php\\\"}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/Linter/Sniff/Visitor/NestingConsistencyVisitor.php\\\"}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/Linter/Sniff/NestingConsistencySniff.php\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"ls /testbed/src/Linter/Sniff/Visitor/ && ls /testbed/tests/Linter/Sniff/ 2>/dev/null; find /testbed/tests -iname \\\\\\\"*nesting*\\\\\\\" -o -iname \\\\\\\"*commonp"
+  },
+  {
+   "instance": "lesshint__lesshint-206",
+   "nP": 3000,
+   "nF": 920,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.060526132583618
+    },
+    "iso": {
+     "kl": 0.07090472429990768,
+     "top1": 0.9099999666213989,
+     "nll": 3.159660816192627
+    },
+    "repair_k64": {
+     "kl": 0.03359893709421158,
+     "top1": 0.9549999833106995,
+     "nll": 3.067760467529297
+    },
+    "repair_p15": {
+     "kl": 0.05953601747751236,
+     "top1": 0.9350000023841858,
+     "nll": 3.0171005725860596
+    },
+    "repair_p30": {
+     "kl": 0.02778801880776882,
+     "top1": 0.949999988079071,
+     "nll": 3.0164830684661865
+    },
+    "repair_dev15": {
+     "kl": 0.02901235781610012,
+     "top1": 0.9599999785423279,
+     "nll": 3.006007671356201
+    },
+    "repair_dev30": {
+     "kl": 0.07603767514228821,
+     "top1": 0.9549999833106995,
+     "nll": 3.016998291015625
+    },
+    "nofile": {
+     "kl": 0.08115075528621674,
+     "top1": 0.9199999570846558,
+     "nll": 3.1222448348999023
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"node -e \\\\\\\"\\\\nvar parser = require('postcss-values-parser');\\\\nvar ast = parser('mixin()').parse();\\\\nast.walk(function (child) {\\\\n    if (child.type === 'paren'",
+    "iso": "Test\", \"arguments\": \"{\\\"command\\\": \\\"node /testbed/test/space_between_parens.js\\\"}\"}",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"node /testbed/lib/linters/space_between_parens.js\\\", \\\"description\\\": \\\"Run the space_between_parens linter\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"./node_modules/.bin/mocha test/specs/linters/space_between_parens.js 2>&1 | tail -5\\\", \\\"description\\\": \\\"Run space_between_parens specs after fix\\\"}\"}"
+  },
+  {
+   "instance": "getmoto__moto-5870",
+   "nP": 3000,
+   "nF": 904,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.205674886703491
+    },
+    "iso": {
+     "kl": 0.11256920546293259,
+     "top1": 0.9099999666213989,
+     "nll": 2.4255309104919434
+    },
+    "repair_k64": {
+     "kl": 0.040863342583179474,
+     "top1": 0.9300000071525574,
+     "nll": 2.1960699558258057
+    },
+    "repair_p15": {
+     "kl": 0.04861895367503166,
+     "top1": 0.9449999928474426,
+     "nll": 2.292268753051758
+    },
+    "repair_p30": {
+     "kl": 0.04198165237903595,
+     "top1": 0.9549999833106995,
+     "nll": 2.3207550048828125
+    },
+    "repair_dev15": {
+     "kl": 0.032310742884874344,
+     "top1": 0.9449999928474426,
+     "nll": 2.1794545650482178
+    },
+    "repair_dev30": {
+     "kl": 0.025314530357718468,
+     "top1": 0.9549999833106995,
+     "nll": 2.2108190059661865
+    },
+    "nofile": {
+     "kl": 0.07618147879838943,
+     "top1": 0.9149999618530273,
+     "nll": 2.2154834270477295
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/moto/batch/responses.py\\\", \\\"limit\\\": 100}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/moto/batch/responses.py\\\", \\\"limit\\\": 100}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/moto/utilities/aws_headers.py\\\", \\\"limit\\\": 100}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"pip show moto boto3 botocore 2>/dev/null | grep -E \\\\\\\"Name|Version|Location\\\\\\\"\\\", \\\"description\\\": \\\"Show installed moto/boto3/botocore versions\\\"}\"}"
+  },
+  {
+   "instance": "onedr0p__exportarr-110",
+   "nP": 2892,
+   "nF": 573,
+   "nS": 72,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.151209592819214
+    },
+    "iso": {
+     "kl": 0.6114286780357361,
+     "top1": 0.9027777910232544,
+     "nll": 2.36015248298645
+    },
+    "repair_k64": {
+     "kl": 0.17278002202510834,
+     "top1": 0.9722222089767456,
+     "nll": 2.262415885925293
+    },
+    "repair_p15": {
+     "kl": 0.2684793472290039,
+     "top1": 0.9583333134651184,
+     "nll": 2.351245880126953
+    },
+    "repair_p30": {
+     "kl": 0.2518761456012726,
+     "top1": 0.9722222089767456,
+     "nll": 2.335801601409912
+    },
+    "repair_dev15": {
+     "kl": 0.13881225883960724,
+     "top1": 0.9861111044883728,
+     "nll": 2.1568920612335205
+    },
+    "repair_dev30": {
+     "kl": 0.16871659457683563,
+     "top1": 0.9861111044883728,
+     "nll": 2.2133357524871826
+    },
+    "nofile": {
+     "kl": 0.1968175768852234,
+     "top1": 0.9166666865348816,
+     "nll": 2.0556423664093018
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/internal/client/transport.go\\\"}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/internal/client/transport.go\\\"}\"}\n{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/internal/client/transport.go\\\"}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/internal/client/transport.go\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/internal/client/transport_test.go\\\"}\"}"
+  },
+  {
+   "instance": "argoproj__argo-4494",
+   "nP": 3000,
+   "nF": 564,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.7382092475891113
+    },
+    "iso": {
+     "kl": 0.16005095839500427,
+     "top1": 0.9350000023841858,
+     "nll": 2.839996814727783
+    },
+    "repair_k64": {
+     "kl": 0.07224839180707932,
+     "top1": 0.98499995470047,
+     "nll": 2.741046905517578
+    },
+    "repair_p15": {
+     "kl": 0.09002795070409775,
+     "top1": 0.9549999833106995,
+     "nll": 2.762179136276245
+    },
+    "repair_p30": {
+     "kl": 0.0710052028298378,
+     "top1": 0.98499995470047,
+     "nll": 2.7001259326934814
+    },
+    "repair_dev15": {
+     "kl": 0.08070729672908783,
+     "top1": 0.98499995470047,
+     "nll": 2.7209911346435547
+    },
+    "repair_dev30": {
+     "kl": 0.06731777638196945,
+     "top1": 0.9899999499320984,
+     "nll": 2.7208001613616943
+    },
+    "nofile": {
+     "kl": 0.018083859235048294,
+     "top1": 0.9799999594688416,
+     "nll": 2.751892566680908
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/server/auth/sso/sso.go\\\"}\"}\n{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/server/auth/sso/sso_test.go\\\"}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/server/auth/sso/oidc_sso.go\\\"}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/server/auth/sso/oidc_sso.go\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"SessionExpiry\\\\\\\\|GetSessionExpiry\\\\\\\\|sessionExpiry\\\\\\\" /testbed --include=\\\\\\\"*.go\\\\\\\" --include=\\\\\\\"*.md\\\\\\\" --include=\\\\\\\"*.yaml\\\\\\\" --i"
+  },
+  {
+   "instance": "pydicom__pynetdicom-998",
+   "nP": 3000,
+   "nF": 1293,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 1.3659144639968872
+    },
+    "iso": {
+     "kl": 0.12288929522037506,
+     "top1": 0.9599999785423279,
+     "nll": 1.400837779045105
+    },
+    "repair_k64": {
+     "kl": 0.46358823776245117,
+     "top1": 0.9199999570846558,
+     "nll": 1.7450929880142212
+    },
+    "repair_p15": {
+     "kl": 0.21640357375144958,
+     "top1": 0.9549999833106995,
+     "nll": 1.4905362129211426
+    },
+    "repair_p30": {
+     "kl": 0.16350582242012024,
+     "top1": 0.9749999642372131,
+     "nll": 1.4825234413146973
+    },
+    "repair_dev15": {
+     "kl": 0.47786054015159607,
+     "top1": 0.9149999618530273,
+     "nll": 1.7497721910476685
+    },
+    "repair_dev30": {
+     "kl": 0.33815330266952515,
+     "top1": 0.9249999523162842,
+     "nll": 1.6167449951171875
+    },
+    "nofile": {
+     "kl": 1.1962734460830688,
+     "top1": 0.7749999761581421,
+     "nll": 2.536897659301758
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pynetdicom/dul.py\\\", \\\"offset\\\": 515, \\\"limit\\\": 115}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pynetdicom/dul.py\\\", \\\"offset\\\": 544, \\\"limit\\\": 115}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pynetdicom/dul.py\\\", \\\"offset\\\": 430, \\\"limit\\\": 115}\"}"
+   },
+   "ref": "{\"name\": \"Edit\", \"arguments\": \"{\\\"replace_all\\\": false, \\\"file_path\\\": \\\"/testbed/pynetdicom/dul.py\\\", \\\"old_string\\\": \\\"            try:\\\\n                self.state_machine.do_action(event)\\\\n      "
+  },
+  {
+   "instance": "ungarj__mapchete-683",
+   "nP": 3000,
+   "nF": 917,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.728644847869873
+    },
+    "iso": {
+     "kl": 0.1007818952202797,
+     "top1": 0.9199999570846558,
+     "nll": 2.8167598247528076
+    },
+    "repair_k64": {
+     "kl": 0.07268466055393219,
+     "top1": 0.9249999523162842,
+     "nll": 2.695382595062256
+    },
+    "repair_p15": {
+     "kl": 0.05795380845665932,
+     "top1": 0.9549999833106995,
+     "nll": 2.8660671710968018
+    },
+    "repair_p30": {
+     "kl": 0.06668340414762497,
+     "top1": 0.9449999928474426,
+     "nll": 2.834488868713379
+    },
+    "repair_dev15": {
+     "kl": 0.10771547257900238,
+     "top1": 0.9300000071525574,
+     "nll": 2.6995463371276855
+    },
+    "repair_dev30": {
+     "kl": 0.07932191342115402,
+     "top1": 0.9449999928474426,
+     "nll": 2.6398818492889404
+    },
+    "nofile": {
+     "kl": 0.0872393399477005,
+     "top1": 0.9249999523162842,
+     "nll": 2.825892210006714
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"from_bounds\\\\\\\" /testbed/mapchete/grid.py | head; echo ===; grep -rn \\\\\\\"rowcol\\\\\\\" /testbed/mapchete/grid.py | head; echo ===; grep -rn \\\\\\\"extract\\\\",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/mapchete/grid.py\\\"}\"}",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"Grid(\\\\\\\" /testbed/mapchete /testbed/test --include=\\\\\\\"*.py\\\\\\\"\\\", \\\"description\\\": \\\"Check all Grid usages\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Edit\", \"arguments\": \"{\\\"replace_all\\\": false, \\\"file_path\\\": \\\"/testbed/mapchete/grid.py\\\", \\\"old_string\\\": \\\"        if height < 1 or width < 1:\\\\n            raise ValueError(\\\\n          "
+  },
+  {
+   "instance": "gitleaks__gitleaks-1622",
+   "nP": 3000,
+   "nF": 782,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.9519407749176025
+    },
+    "iso": {
+     "kl": 0.15950480103492737,
+     "top1": 0.8700000047683716,
+     "nll": 2.9498291015625
+    },
+    "repair_k64": {
+     "kl": 0.2890208661556244,
+     "top1": 0.8349999785423279,
+     "nll": 3.0051870346069336
+    },
+    "repair_p15": {
+     "kl": 0.22682207822799683,
+     "top1": 0.8349999785423279,
+     "nll": 3.0130107402801514
+    },
+    "repair_p30": {
+     "kl": 0.15997643768787384,
+     "top1": 0.8799999952316284,
+     "nll": 2.8942692279815674
+    },
+    "repair_dev15": {
+     "kl": 0.1998252421617508,
+     "top1": 0.8650000095367432,
+     "nll": 2.9519712924957275
+    },
+    "repair_dev30": {
+     "kl": 0.1431385725736618,
+     "top1": 0.8849999904632568,
+     "nll": 2.8747878074645996
+    },
+    "nofile": {
+     "kl": 0.49084845185279846,
+     "top1": 0.7899999618530273,
+     "nll": 3.36867356300354
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    }
+   },
+   "gen_text": {
+    "full": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"cd /tmp/wsp/gitleaks && GOPROXY=off GOFLAGS=-mod=mod go test ./detect/ 2>&1 | tail -25\\\", \\\"description\\\": \\\"Run detect tests again\\\", \\\"timeout\\\": 300000",
+    "iso": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"cd /tmp/wsp/gitleaks && GOPROXY=off GOFLAGS=-mod=mod go test ./detect/ 2>&1 | tail -25\\\", \\\"description\\\": \\\"Run detect tests again\\\", \\\"timeout\\\": 300000",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"cd /tmp/wsp/gitleaks && GOPROXY=off GOFLAGS=-mod=mod go test ./detect/ 2>&1 | tail -25\\\", \\\"description\\\": \\\"Run detect tests again\\\", \\\"timeout\\\": 300000"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"cd /tmp/wsp/stubs/go-gitdiff/gitdiff && python3 - <<'EOF'\\\\nwith open('gitdiff.go') as f:\\\\n    c = f.read()\\\\n\\\\nold = '''func parseHunkNewStart(line st"
+  },
+  {
+   "instance": "google__autocxx-182",
+   "nP": 3000,
+   "nF": 429,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.594370126724243
+    },
+    "iso": {
+     "kl": 0.11101014167070389,
+     "top1": 0.9149999618530273,
+     "nll": 3.61604905128479
+    },
+    "repair_k64": {
+     "kl": 0.12981674075126648,
+     "top1": 0.949999988079071,
+     "nll": 3.499462842941284
+    },
+    "repair_p15": {
+     "kl": 0.1047537699341774,
+     "top1": 0.9300000071525574,
+     "nll": 3.4978368282318115
+    },
+    "repair_p30": {
+     "kl": 0.09103353321552277,
+     "top1": 0.9449999928474426,
+     "nll": 3.459587335586548
+    },
+    "repair_dev15": {
+     "kl": 0.150499165058136,
+     "top1": 0.9350000023841858,
+     "nll": 3.525967597961426
+    },
+    "repair_dev30": {
+     "kl": 0.12883001565933228,
+     "top1": 0.9399999976158142,
+     "nll": 3.507016181945801
+    },
+    "nofile": {
+     "kl": 0.12592358887195587,
+     "top1": 0.9300000071525574,
+     "nll": 3.55879545211792
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    }
+   },
+   "gen_text": {
+    "full": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"git -C /testbed log -1\\\", \\\"description\\\": \\\"Show last commit message\\\"}\"}",
+    "iso": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"git -C /testbed log -1\\\", \\\"description\\\": \\\"Show last commit message\\\"}\"}",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"git -C /testbed log -1\\\", \\\"description\\\": \\\"Show last commit message\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"#!\\\\\\\\[deny\\\\\\\\|#!\\\\\\\\[forbid\\\\\\\\|#!\\\\\\\\[warn\\\\\\\" /testbed/engine /testbed/gen /testbed/parser /testbed/macro /testbed/src --include=\\\\\\\"*.r"
+  },
+  {
+   "instance": "guillaumegomez__sysinfo-878",
+   "nP": 3000,
+   "nF": 586,
+   "nS": 69,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.3676247596740723
+    },
+    "iso": {
+     "kl": 0.3675231635570526,
+     "top1": 0.8985507488250732,
+     "nll": 3.884594202041626
+    },
+    "repair_k64": {
+     "kl": 0.3255419135093689,
+     "top1": 0.9275362491607666,
+     "nll": 3.3599865436553955
+    },
+    "repair_p15": {
+     "kl": 0.2573006749153137,
+     "top1": 0.9130434989929199,
+     "nll": 3.3621985912323
+    },
+    "repair_p30": {
+     "kl": 0.05532275512814522,
+     "top1": 0.95652174949646,
+     "nll": 3.2192625999450684
+    },
+    "repair_dev15": {
+     "kl": 0.3148612976074219,
+     "top1": 0.9275362491607666,
+     "nll": 3.369978427886963
+    },
+    "repair_dev30": {
+     "kl": 0.3075798451900482,
+     "top1": 0.95652174949646,
+     "nll": 3.458209753036499
+    },
+    "nofile": {
+     "kl": 0.13239888846874237,
+     "top1": 0.8840579986572266,
+     "nll": 3.5490939617156982
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/apple/app_store/process.rs\\\"}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/apple/app_store/process.rs\\\"}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/apple/app_store/process.rs\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/tests/process.rs\\\"}\"}"
+  },
+  {
+   "instance": "fhir__sushi-165",
+   "nP": 3000,
+   "nF": 1416,
+   "nS": 80,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.816854238510132
+    },
+    "iso": {
+     "kl": 0.06075712665915489,
+     "top1": 0.949999988079071,
+     "nll": 2.9834775924682617
+    },
+    "repair_k64": {
+     "kl": 0.030398054048419,
+     "top1": 0.9750000238418579,
+     "nll": 2.6241872310638428
+    },
+    "repair_p15": {
+     "kl": 0.024574441835284233,
+     "top1": 0.9625000357627869,
+     "nll": 2.6576035022735596
+    },
+    "repair_p30": {
+     "kl": 0.019210023805499077,
+     "top1": 0.987500011920929,
+     "nll": 2.747405767440796
+    },
+    "repair_dev15": {
+     "kl": 0.024796972051262856,
+     "top1": 0.9750000238418579,
+     "nll": 2.6319847106933594
+    },
+    "repair_dev30": {
+     "kl": 0.016528014093637466,
+     "top1": 0.9750000238418579,
+     "nll": 2.7436046600341797
+    },
+    "nofile": {
+     "kl": 0.10255897045135498,
+     "top1": 0.9375,
+     "nll": 2.8090174198150635
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/test/export/StructureDefinitionExporter.test.ts\\\", \\\"limit\\\": 120}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/test/export/StructureDefinitionExporter.test.ts\\\", \\\"limit\\\": 120}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/test/export/StructureDefinitionExporter.test.ts\\\", \\\"limit\\\": 120}\"}"
+   },
+   "ref": "{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/test/export/StructureDefinitionExporter.test.ts\\\", \\\"offset\\\": 1380, \\\"limit\\\": 100}\"}"
+  },
+  {
+   "instance": "synthetixio__synthetix-v3-234",
+   "nP": 3000,
+   "nF": 432,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 0.9366629719734192
+    },
+    "iso": {
+     "kl": 0.08633402734994888,
+     "top1": 0.9599999785423279,
+     "nll": 1.044534683227539
+    },
+    "repair_k64": {
+     "kl": 0.09267114102840424,
+     "top1": 0.9649999737739563,
+     "nll": 0.9576901197433472
+    },
+    "repair_p15": {
+     "kl": 0.08313115686178207,
+     "top1": 0.9649999737739563,
+     "nll": 0.9718044996261597
+    },
+    "repair_p30": {
+     "kl": 0.11113575845956802,
+     "top1": 0.9699999690055847,
+     "nll": 0.9196785688400269
+    },
+    "repair_dev15": {
+     "kl": 0.08779553323984146,
+     "top1": 0.9699999690055847,
+     "nll": 0.9113062620162964
+    },
+    "repair_dev30": {
+     "kl": 0.0857444554567337,
+     "top1": 0.9649999737739563,
+     "nll": 0.9399774074554443
+    },
+    "nofile": {
+     "kl": 0.04712632670998573,
+     "top1": 0.9699999690055847,
+     "nll": 0.9337990283966064
+    }
+   }
+  },
+  {
+   "instance": "enselic__cargo-public-api-289",
+   "nP": 3000,
+   "nF": 589,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.5823686122894287
+    },
+    "iso": {
+     "kl": 0.09357266873121262,
+     "top1": 0.9300000071525574,
+     "nll": 3.6554014682769775
+    },
+    "repair_k64": {
+     "kl": 0.1094859167933464,
+     "top1": 0.9549999833106995,
+     "nll": 3.4567651748657227
+    },
+    "repair_p15": {
+     "kl": 0.05499661713838577,
+     "top1": 0.9449999928474426,
+     "nll": 3.5016698837280273
+    },
+    "repair_p30": {
+     "kl": 0.04091954231262207,
+     "top1": 0.9449999928474426,
+     "nll": 3.530648946762085
+    },
+    "repair_dev15": {
+     "kl": 0.1069033220410347,
+     "top1": 0.9449999928474426,
+     "nll": 3.494096517562866
+    },
+    "repair_dev30": {
+     "kl": 0.12116352468729019,
+     "top1": 0.9649999737739563,
+     "nll": 3.549628496170044
+    },
+    "nofile": {
+     "kl": 0.11812741309404373,
+     "top1": 0.949999988079071,
+     "nll": 3.556277275085449
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"builder_from_args\\\\\\\\|Builder::default\\\\\\\\|rustdoc_json::Builder\\\\\\\" /testbed --include=\\\\\\\"*.rs\\\\\\\" | grep -v tests/ | grep -v examples/\\\", \\\"descrip",
+    "iso": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"cargo +nightly run --package cargo-public-api --bin cargo-public-api -- --manifest-path /tmp/exp/dummy/Cargo.toml --package crate-downloader --all-features --no-de",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"echo \\\\\\\"=== 1. --all-features with -p dep ===\\\\\\\" && cargo build -p dep --all-features 2>&1 | head -5; echo \\\\\\\"=== 2. --features feat_a with -p dep ===\\\\"
+   },
+   "ref": "{\"name\": \"Edit\", \"arguments\": \"{\\\"replace_all\\\": false, \\\"file_path\\\": \\\"/testbed/cargo-public-api/src/published_crate.rs\\\", \\\"old_string\\\": \\\"    // Since we used `crate::builder_from_args(args)` abo"
+  },
+  {
+   "instance": "mercurius-js__mercurius-935",
+   "nP": 3000,
+   "nF": 663,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.0178017616271973
+    },
+    "iso": {
+     "kl": 0.06724488735198975,
+     "top1": 0.8999999761581421,
+     "nll": 3.065047025680542
+    },
+    "repair_k64": {
+     "kl": 0.055724069476127625,
+     "top1": 0.9350000023841858,
+     "nll": 3.0048840045928955
+    },
+    "repair_p15": {
+     "kl": 0.04626559093594551,
+     "top1": 0.9099999666213989,
+     "nll": 2.974653959274292
+    },
+    "repair_p30": {
+     "kl": 0.04920008033514023,
+     "top1": 0.9300000071525574,
+     "nll": 2.9305131435394287
+    },
+    "repair_dev15": {
+     "kl": 0.043874435126781464,
+     "top1": 0.9449999928474426,
+     "nll": 2.957953929901123
+    },
+    "repair_dev30": {
+     "kl": 0.04163263365626335,
+     "top1": 0.949999988079071,
+     "nll": 2.9789416790008545
+    },
+    "nofile": {
+     "kl": 0.09237182140350342,
+     "top1": 0.8899999856948853,
+     "nll": 3.039900541305542
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/docs/api/options.md\\\"}\"}",
+    "iso": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"errorFormatter\\\\\\\" /testbed/docs/api/*.md 2>/dev/null\\\", \\\"description\\\": \\\"Search for errorFormatter in docs\\\"}\"}",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"AST\\\\\\\" /testbed/docs/*.md 2>/dev/null | head\\\", \\\"description\\\": \\\"Search for AST mentions in docs\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -n \\\\\\\"rejects\\\\\\\\|Syntax Error\\\\\\\" /testbed/test/app-decorator.js | head -20\\\", \\\"description\\\": \\\"Find rejects assertions in app-decorator test\\\"}"
+  },
+  {
+   "instance": "samuelcolvin__pydantic-3551",
+   "nP": 3000,
+   "nF": 1005,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.490652084350586
+    },
+    "iso": {
+     "kl": 0.06873463094234467,
+     "top1": 0.8799999952316284,
+     "nll": 2.5969619750976562
+    },
+    "repair_k64": {
+     "kl": 0.062167052179574966,
+     "top1": 0.9350000023841858,
+     "nll": 2.4785497188568115
+    },
+    "repair_p15": {
+     "kl": 0.035473112016916275,
+     "top1": 0.949999988079071,
+     "nll": 2.4744279384613037
+    },
+    "repair_p30": {
+     "kl": 0.029324816539883614,
+     "top1": 0.9300000071525574,
+     "nll": 2.4937400817871094
+    },
+    "repair_dev15": {
+     "kl": 0.05858990550041199,
+     "top1": 0.9399999976158142,
+     "nll": 2.451447010040283
+    },
+    "repair_dev30": {
+     "kl": 0.04887353628873825,
+     "top1": 0.9449999928474426,
+     "nll": 2.470886707305908
+    },
+    "nofile": {
+     "kl": 0.054781798273324966,
+     "top1": 0.9350000023841858,
+     "nll": 2.4729983806610107
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pydantic/main.py\\\", \\\"offset\\\": 1000, \\\"limit\\\": 100}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pydantic/main.py\\\", \\\"offset\\\": 315, \\\"limit\\\": 100}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pydantic/main.py\\\", \\\"offset\\\": 766, \\\"limit\\\": 75}\"}"
+   },
+   "ref": "{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pydantic/main.py\\\", \\\"offset\\\": 760, \\\"limit\\\": 30}\"}"
+  },
+  {
+   "instance": "php__pie-69",
+   "nP": 3000,
+   "nF": 933,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 1.641079068183899
+    },
+    "iso": {
+     "kl": 0.11068326979875565,
+     "top1": 0.9099999666213989,
+     "nll": 1.6662789583206177
+    },
+    "repair_k64": {
+     "kl": 0.2748551368713379,
+     "top1": 0.8799999952316284,
+     "nll": 1.9777507781982422
+    },
+    "repair_p15": {
+     "kl": 0.16105462610721588,
+     "top1": 0.9300000071525574,
+     "nll": 1.6963869333267212
+    },
+    "repair_p30": {
+     "kl": 0.20619289577007294,
+     "top1": 0.9199999570846558,
+     "nll": 1.7047933340072632
+    },
+    "repair_dev15": {
+     "kl": 0.24636290967464447,
+     "top1": 0.8949999809265137,
+     "nll": 1.8821865320205688
+    },
+    "repair_dev30": {
+     "kl": 0.2482314258813858,
+     "top1": 0.8899999856948853,
+     "nll": 1.8365622758865356
+    },
+    "nofile": {
+     "kl": 0.42505842447280884,
+     "top1": 0.8700000047683716,
+     "nll": 2.129688262939453
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"vendor/bin/psalm --no-cache src/DependencyResolver/Package.php 2>&1 | grep \\\\\\\"ERROR\\\\\\\" | sed 's/\\\\\\\\x1b\\\\\\\\[[0-9;]*m//g'\\\", \\\"description\\\": \\\"Show psalm",
+    "iso": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"vendor/bin/psalm --no-cache src/DependencyResolver/Package.php 2>&1 | grep \\\\\\\"ERROR\\\\\\\" | sed 's/\\\\\\\\x1b\\\\\\\\[[0-9;]*m//g'\\\", \\\"description\\\": \\\"Check if ps",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"vendor/bin/psalm --no-cache src/DependencyResolver/Package.php 2>&1 | grep \\\\\\\"ERROR\\\\\\\" | sed 's/\\\\\\\\x1b\\\\\\\\[[0-9;]*m//g'\\\", \\\"description\\\": \\\"Check if ps"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"vendor/bin/psalm --no-cache src/DependencyResolver/Package.php src/Downloading/GithubPackageReleaseAssets.php 2>&1 | sed 's/\\\\\\\\x1b\\\\\\\\[[0-9;]*m//g' | ta"
+  },
+  {
+   "instance": "apostrophecms__sanitize-html-692",
+   "nP": 3000,
+   "nF": 467,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.9388418197631836
+    },
+    "iso": {
+     "kl": 0.1224777027964592,
+     "top1": 0.9099999666213989,
+     "nll": 3.0591728687286377
+    },
+    "repair_k64": {
+     "kl": 0.07706454396247864,
+     "top1": 0.9649999737739563,
+     "nll": 2.9779138565063477
+    },
+    "repair_p15": {
+     "kl": 0.0878915935754776,
+     "top1": 0.949999988079071,
+     "nll": 3.0267040729522705
+    },
+    "repair_p30": {
+     "kl": 0.09728404134511948,
+     "top1": 0.949999988079071,
+     "nll": 3.004225015640259
+    },
+    "repair_dev15": {
+     "kl": 0.07406508177518845,
+     "top1": 0.9599999785423279,
+     "nll": 2.9930572509765625
+    },
+    "repair_dev30": {
+     "kl": 0.07863909751176834,
+     "top1": 0.9749999642372131,
+     "nll": 2.984875440597534
+    },
+    "nofile": {
+     "kl": 0.0459233857691288,
+     "top1": 0.9399999976158142,
+     "nll": 3.035057306289673
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/test.js\\\"}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/test.js\\\"}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/test.js\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"cat /testbed/node_modules/htmlparser2/package.json | grep '\\\\\\\"version\\\\\\\"' && node -e \\\\\\\"\\\\nconst htmlparser = require('htmlparser2');\\\\nconst parser ="
+  },
+  {
+   "instance": "jlongster__prettier-556",
+   "nP": 3000,
+   "nF": 678,
+   "nS": 84,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.906245708465576
+    },
+    "iso": {
+     "kl": 0.23261043429374695,
+     "top1": 0.9047619104385376,
+     "nll": 2.822960376739502
+    },
+    "repair_k64": {
+     "kl": 0.5543012619018555,
+     "top1": 0.8571428656578064,
+     "nll": 2.8189878463745117
+    },
+    "repair_p15": {
+     "kl": 0.2766726315021515,
+     "top1": 0.8690476417541504,
+     "nll": 2.7779548168182373
+    },
+    "repair_p30": {
+     "kl": 0.21352259814739227,
+     "top1": 0.9047619104385376,
+     "nll": 2.7821402549743652
+    },
+    "repair_dev15": {
+     "kl": 0.3257289528846741,
+     "top1": 0.9047619104385376,
+     "nll": 2.6463637351989746
+    },
+    "repair_dev30": {
+     "kl": 0.3936288058757782,
+     "top1": 0.9047619104385376,
+     "nll": 2.889251470565796
+    },
+    "nofile": {
+     "kl": 0.7031344771385193,
+     "top1": 0.8690476417541504,
+     "nll": 2.884077310562134
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/printer.js\\\", \\\"limit\\\": 55, \\\"offset\\\": 2495}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/printer.js\\\", \\\"limit\\\": 55, \\\"offset\\\": 2441}\"}",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"cd /tmp && cat > re.js <<'EOF'\\\\nconst regex = new RegExp(\\\\n  \\\\\\\"^\\\\\\\\\\\\\\\\s*\\\\\\\" + // beginning of the line\\\\n    \\\\\\\"name\\\\\\\\\\\\\\\\s*=\\\\\\\\\\\\\\\\s*\\\\\\\""
+   },
+   "ref": "{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/printer.js\\\", \\\"limit\\\": 60, \\\"offset\\\": 2495}\"}"
+  },
+  {
+   "instance": "reubeno__brush-551",
+   "nP": 3000,
+   "nF": 1260,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.2602272033691406
+    },
+    "iso": {
+     "kl": 0.06792858242988586,
+     "top1": 0.9449999928474426,
+     "nll": 2.1348700523376465
+    },
+    "repair_k64": {
+     "kl": 0.6170646548271179,
+     "top1": 0.85999995470047,
+     "nll": 2.419358730316162
+    },
+    "repair_p15": {
+     "kl": 0.26603418588638306,
+     "top1": 0.9399999976158142,
+     "nll": 2.1955716609954834
+    },
+    "repair_p30": {
+     "kl": 0.24717892706394196,
+     "top1": 0.9149999618530273,
+     "nll": 2.220853805541992
+    },
+    "repair_dev15": {
+     "kl": 0.34542316198349,
+     "top1": 0.9049999713897705,
+     "nll": 2.2245614528656006
+    },
+    "repair_dev30": {
+     "kl": 0.15622521936893463,
+     "top1": 0.9350000023841858,
+     "nll": 2.2096550464630127
+    },
+    "nofile": {
+     "kl": 1.1616153717041016,
+     "top1": 0.7699999809265137,
+     "nll": 3.139735460281372
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/brush-parser/src/tokenizer.rs\\\", \\\"offset\\\": 737, \\\"limit\\\": 115}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/brush-parser/src/tokenizer.rs\\\", \\\"offset\\\": 715, \\\"limit\\\": 115}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/brush-parser/src/tokenizer.rs\\\", \\\"offset\\\": 623, \\\"limit\\\": 115}\"}"
+   },
+   "ref": "{\"name\": \"Edit\", \"arguments\": \"{\\\"replace_all\\\": false, \\\"file_path\\\": \\\"/testbed/brush-parser/src/tokenizer.rs\\\", \\\"old_string\\\": \\\"                // Verify we're not in a here document.\\\\n         "
+  },
+  {
+   "instance": "rust-lang__cc-rs-1295",
+   "nP": 3000,
+   "nF": 753,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.4620792865753174
+    },
+    "iso": {
+     "kl": 0.1336456835269928,
+     "top1": 0.8650000095367432,
+     "nll": 3.484652042388916
+    },
+    "repair_k64": {
+     "kl": 0.20510360598564148,
+     "top1": 0.9300000071525574,
+     "nll": 3.425776243209839
+    },
+    "repair_p15": {
+     "kl": 0.10946155339479446,
+     "top1": 0.9449999928474426,
+     "nll": 3.3478288650512695
+    },
+    "repair_p30": {
+     "kl": 0.1332051306962967,
+     "top1": 0.9399999976158142,
+     "nll": 3.4200737476348877
+    },
+    "repair_dev15": {
+     "kl": 0.19934920966625214,
+     "top1": 0.9300000071525574,
+     "nll": 3.408681869506836
+    },
+    "repair_dev30": {
+     "kl": 0.1622864454984665,
+     "top1": 0.9449999928474426,
+     "nll": 3.4170055389404297
+    },
+    "nofile": {
+     "kl": 0.13233226537704468,
+     "top1": 0.9099999666213989,
+     "nll": 3.559995651245117
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/command_helpers.rs\\\", \\\"offset\\\": 336, \\\"limit\\\": 65}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/command_helpers.rs\\\", \\\"offset\\\": 312, \\\"limit\\\": 65}\"}",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"cargo build 2>&1 | tail -5\\\", \\\"description\\\": \\\"Build the cc crate\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"rustc --edition 2018 --crate-type lib --emit=metadata -o /tmp/chk.rmeta src/command_helpers.rs 2>&1 | grep -E \\\\\\\"^error\\\\\\\" | grep -v \\\\\\\"can't find cra"
+  },
+  {
+   "instance": "eclipse__microprofile-lra-310",
+   "nP": 3000,
+   "nF": 479,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.6142895221710205
+    },
+    "iso": {
+     "kl": 0.07447917014360428,
+     "top1": 0.9099999666213989,
+     "nll": 3.774763345718384
+    },
+    "repair_k64": {
+     "kl": 0.055954866111278534,
+     "top1": 0.9549999833106995,
+     "nll": 3.5771148204803467
+    },
+    "repair_p15": {
+     "kl": 0.009994182735681534,
+     "top1": 0.9699999690055847,
+     "nll": 3.6265697479248047
+    },
+    "repair_p30": {
+     "kl": 0.0292250607162714,
+     "top1": 0.9799999594688416,
+     "nll": 3.581279754638672
+    },
+    "repair_dev15": {
+     "kl": 0.0534239187836647,
+     "top1": 0.9549999833106995,
+     "nll": 3.6233808994293213
+    },
+    "repair_dev30": {
+     "kl": 0.04524470120668411,
+     "top1": 0.9549999833106995,
+     "nll": 3.5856809616088867
+    },
+    "nofile": {
+     "kl": 0.04498438164591789,
+     "top1": 0.9399999976158142,
+     "nll": 3.649808883666992
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"cat > /testbed/tck/src/main/java/org/eclipse/microprofile/lra/tck/participant/api/RecoveryResource.java << 'EOF'\\\\n/*\\\\n ******************************************",
+    "iso": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"cat > /testbed/tck/src/main/java/org/eclipse/microprofile/lra/tck/participant/api/RecoveryResource.java << 'EOF'\\\\n/*\\\\n ******************************************",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/tck/src/main/java/org/eclipse/microprofile/lra/tck/participant/api/RecoveryResource.java\\\", \\\"limit\\\": 45}\"}"
+   },
+   "ref": "{\"name\": \"Edit\", \"arguments\": \"{\\\"replace_all\\\": false, \\\"file_path\\\": \\\"/testbed/tck/src/main/java/org/eclipse/microprofile/lra/tck/participant/api/RecoveryResource.java\\\", \\\"old_string\\\": \\\"import o"
+  },
+  {
+   "instance": "lyraproj__hiera-52",
+   "nP": 3000,
+   "nF": 1488,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.3441033363342285
+    },
+    "iso": {
+     "kl": 0.11468622088432312,
+     "top1": 0.8849999904632568,
+     "nll": 3.4271202087402344
+    },
+    "repair_k64": {
+     "kl": 0.11858474463224411,
+     "top1": 0.875,
+     "nll": 3.3185536861419678
+    },
+    "repair_p15": {
+     "kl": 0.0930514708161354,
+     "top1": 0.9399999976158142,
+     "nll": 3.4436986446380615
+    },
+    "repair_p30": {
+     "kl": 0.09063071012496948,
+     "top1": 0.9399999976158142,
+     "nll": 3.4578521251678467
+    },
+    "repair_dev15": {
+     "kl": 0.08086423575878143,
+     "top1": 0.8999999761581421,
+     "nll": 3.3145785331726074
+    },
+    "repair_dev30": {
+     "kl": 0.07697110623121262,
+     "top1": 0.9199999570846558,
+     "nll": 3.3433897495269775
+    },
+    "nofile": {
+     "kl": 0.06729650497436523,
+     "top1": 0.8899999856948853,
+     "nll": 3.3741400241851807
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/hiera/hiera.go\\\"}\"}\n{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/hiera/hieraapi.go\\\"}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/cli/hiera.go\\\"}\"}\n{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/cli/hiera_test.go\\\"}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/cli/hiera.go\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"cp lookup/testdata/hieratestplugin/hieratestplugin.go /tmp/hieratestplugin.go.bak && cp lookup/lookup_test.go /tmp/lookup_test.go.bak && echo \\\\\\\"backed "
+  },
+  {
+   "instance": "kubernetes-csi__csi-driver-nfs-770",
+   "nP": 3000,
+   "nF": 621,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.694611072540283
+    },
+    "iso": {
+     "kl": 0.11223340779542923,
+     "top1": 0.8799999952316284,
+     "nll": 2.6434035301208496
+    },
+    "repair_k64": {
+     "kl": 0.2688893973827362,
+     "top1": 0.8650000095367432,
+     "nll": 2.660602569580078
+    },
+    "repair_p15": {
+     "kl": 0.10921680182218552,
+     "top1": 0.8849999904632568,
+     "nll": 2.5448338985443115
+    },
+    "repair_p30": {
+     "kl": 0.09477179497480392,
+     "top1": 0.9099999666213989,
+     "nll": 2.6232969760894775
+    },
+    "repair_dev15": {
+     "kl": 0.35278478264808655,
+     "top1": 0.8549999594688416,
+     "nll": 2.720477819442749
+    },
+    "repair_dev30": {
+     "kl": 0.21180438995361328,
+     "top1": 0.8899999856948853,
+     "nll": 2.633781671524048
+    },
+    "nofile": {
+     "kl": 0.5800391435623169,
+     "top1": 0.7949999570846558,
+     "nll": 3.068471670150757
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pkg/nfs/nodeserver.go\\\", \\\"offset\\\": 189, \\\"limit\\\": 40}\"}",
+    "iso": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"cat /testbed/pkg/nfs/nodeserver.go | grep -A 10 \\\"func (ns *NodeServer) NodeUnpublishVolume\\\"\\\"}\"}",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"cat > /testbed/pkg/nfs/tmp_sanity_test.go <<'EOF'\\\\npackage nfs\\\\n\\\\nimport (\\\\n\\\\t\\\\\\\"os\\\\\\\"\\\\n\\\\t\\\\\\\"path/filepath\\\\\\\"\\\\n\\\\t\\\\\\\"testing\\\\"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -n \\\\\\\"func CleanupMountPoint\\\\\\\" -A 30 /testbed/vendor/k8s.io/mount-utils/mount.go /testbed/vendor/k8s.io/mount-utils/mount_linux.go 2>/dev/null | "
+  },
+  {
+   "instance": "codeception__codeceptjs-368",
+   "nP": 3000,
+   "nF": 1004,
+   "nS": 192,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 1.5610345602035522
+    },
+    "iso": {
+     "kl": 0.2507908046245575,
+     "top1": 0.921875,
+     "nll": 1.8719409704208374
+    },
+    "repair_k64": {
+     "kl": 0.2826603055000305,
+     "top1": 0.9166666865348816,
+     "nll": 1.910841941833496
+    },
+    "repair_p15": {
+     "kl": 0.10293243825435638,
+     "top1": 0.9427083730697632,
+     "nll": 1.733802080154419
+    },
+    "repair_p30": {
+     "kl": 0.06739817559719086,
+     "top1": 0.953125,
+     "nll": 1.7170724868774414
+    },
+    "repair_dev15": {
+     "kl": 0.13789044320583344,
+     "top1": 0.9427083730697632,
+     "nll": 1.780930519104004
+    },
+    "repair_dev30": {
+     "kl": 0.0786186009645462,
+     "top1": 0.9479166865348816,
+     "nll": 1.6793240308761597
+    },
+    "nofile": {
+     "kl": 0.4549251198768616,
+     "top1": 0.8645833730697632,
+     "nll": 2.099729537963867
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"say\\\\\\\" /testbed/lib /testbed/test /testbed/translations --include=\\\\\\\"*.js\\\\\\\" | grep -v \\\\\\\"behave\\\\\\\\|language\\\\\\\\|says\\\\\\\" | head -20\\\", \\\"descrip",
+    "iso": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"started\\\\\\\" /testbed/lib /testbed/test /testbed/translations --include=\\\\\\\"*.js\\\\\\\" | grep -v \\\\\\\"behave\\\\\\\\|language\\\\\\\\|says\\\\\\\" | head -20\\\", \\\"des",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"say\\\\\\\" /testbed/docs --include=\\\\\\\"*.md\\\\\\\" | head -20\\\", \\\"description\\\": \\\"Search for say in docs\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"output.say\\\\\\\\|\\\\\\\\.say\\\\\\\" /testbed/lib /testbed/test --include=\\\\\\\"*.js\\\\\\\" | grep -v node_modules\\\", \\\"description\\\": \\\"Find usages of ou"
+  },
+  {
+   "instance": "rigetticomputing__pyquil-177",
+   "nP": 1315,
+   "nF": 711,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 1.787587285041809
+    },
+    "iso": {
+     "kl": 0.24039988219738007,
+     "top1": 0.875,
+     "nll": 1.8534355163574219
+    },
+    "repair_k64": {
+     "kl": 0.2294057458639145,
+     "top1": 0.8799999952316284,
+     "nll": 1.7914505004882812
+    },
+    "repair_p15": {
+     "kl": 0.32187095284461975,
+     "top1": 0.8700000047683716,
+     "nll": 1.9329416751861572
+    },
+    "repair_p30": {
+     "kl": 0.17553825676441193,
+     "top1": 0.8899999856948853,
+     "nll": 1.744225263595581
+    },
+    "repair_dev15": {
+     "kl": 0.4022730886936188,
+     "top1": 0.8499999642372131,
+     "nll": 1.9173285961151123
+    },
+    "repair_dev30": {
+     "kl": 0.3280229866504669,
+     "top1": 0.8650000095367432,
+     "nll": 1.879834532737732
+    },
+    "nofile": {
+     "kl": 0.7084925770759583,
+     "top1": 0.8199999928474426,
+     "nll": 2.4576117992401123
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pyquil/tests/test_quil.py\\\"}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pyquil/kraus.py\\\"}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pyquil/kraus.py\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -n \\\\\\\"class Pragma\\\\\\\" -A 40 /testbed/pyquil/quilbase.py\\\", \\\"description\\\": \\\"Show Pragma class definition\\\"}\"}"
+  },
+  {
+   "instance": "acloudguru__serverless-plugin-aws-alerts-87",
+   "nP": 3000,
+   "nF": 797,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.0608372688293457
+    },
+    "iso": {
+     "kl": 0.1423974186182022,
+     "top1": 0.9199999570846558,
+     "nll": 3.181854248046875
+    },
+    "repair_k64": {
+     "kl": 0.075860396027565,
+     "top1": 0.949999988079071,
+     "nll": 2.957932710647583
+    },
+    "repair_p15": {
+     "kl": 0.07117179781198502,
+     "top1": 0.9399999976158142,
+     "nll": 3.2023448944091797
+    },
+    "repair_p30": {
+     "kl": 0.06671854108572006,
+     "top1": 0.9599999785423279,
+     "nll": 3.1938695907592773
+    },
+    "repair_dev15": {
+     "kl": 0.06240120157599449,
+     "top1": 0.9599999785423279,
+     "nll": 2.9993791580200195
+    },
+    "repair_dev30": {
+     "kl": 0.05759795382618904,
+     "top1": 0.9649999737739563,
+     "nll": 2.975283145904541
+    },
+    "nofile": {
+     "kl": 0.11231574416160583,
+     "top1": 0.9599999785423279,
+     "nll": 3.0102734565734863
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rni \\\\\\\"datapoints\\\\\\\" /testbed --include=\\\\\\\"*.js\\\\\\\" --include=\\\\\\\"*.md\\\\\\\" --include=\\\\\\\"*.yml\\\\\\\" -l 2>/dev/null | grep -v node_modules",
+    "iso": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rni \\\\\\\"functionErrors\\\\\\\" /testbed --include=\\\\\\\"*.js\\\\\\\" --include=\\\\\\\"*.md\\\\\\\" --include=\\\\\\\"*.yml\\\\\\\" -l 2>/dev/null | grep -v node_modules",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/example/serverless.yml\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"ls node_modules/.bin/ 2>/dev/null | head -5; npx jest 2>&1 | tail -20\\\", \\\"description\\\": \\\"Run existing jest test suite for baseline\\\", \\\"timeout\\\": 180"
+  },
+  {
+   "instance": "cross-rs__cross-1183",
+   "nP": 3000,
+   "nF": 530,
+   "nS": 52,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.2585809230804443
+    },
+    "iso": {
+     "kl": 0.42520052194595337,
+     "top1": 0.9038462042808533,
+     "nll": 3.3853228092193604
+    },
+    "repair_k64": {
+     "kl": 0.4140259325504303,
+     "top1": 0.9038462042808533,
+     "nll": 3.0479345321655273
+    },
+    "repair_p15": {
+     "kl": 0.37865471839904785,
+     "top1": 0.9038462042808533,
+     "nll": 3.1341049671173096
+    },
+    "repair_p30": {
+     "kl": 0.2973769009113312,
+     "top1": 0.942307710647583,
+     "nll": 2.800771951675415
+    },
+    "repair_dev15": {
+     "kl": 0.37120601534843445,
+     "top1": 0.9230769872665405,
+     "nll": 2.9911108016967773
+    },
+    "repair_dev30": {
+     "kl": 0.29623761773109436,
+     "top1": 0.942307710647583,
+     "nll": 2.639371633529663
+    },
+    "nofile": {
+     "kl": 0.48078516125679016,
+     "top1": 0.8461538553237915,
+     "nll": 3.692688226699829
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/docker/remote.rs\\\"}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/docker/mod.rs\\\"}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/docker/mod.rs\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/docker/image.rs\\\"}\"}"
+  },
+  {
+   "instance": "codeceptjs__codeceptjs-3432",
+   "nP": 3000,
+   "nF": 408,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.7085931301116943
+    },
+    "iso": {
+     "kl": 0.1847069263458252,
+     "top1": 0.8449999690055847,
+     "nll": 3.79315185546875
+    },
+    "repair_k64": {
+     "kl": 0.32188838720321655,
+     "top1": 0.85999995470047,
+     "nll": 3.6938536167144775
+    },
+    "repair_p15": {
+     "kl": 0.2449737936258316,
+     "top1": 0.8449999690055847,
+     "nll": 3.6456058025360107
+    },
+    "repair_p30": {
+     "kl": 0.22026917338371277,
+     "top1": 0.8949999809265137,
+     "nll": 3.6288654804229736
+    },
+    "repair_dev15": {
+     "kl": 0.24416394531726837,
+     "top1": 0.8700000047683716,
+     "nll": 3.6189656257629395
+    },
+    "repair_dev30": {
+     "kl": 0.18045806884765625,
+     "top1": 0.8799999952316284,
+     "nll": 3.6478140354156494
+    },
+    "nofile": {
+     "kl": 0.6174055933952332,
+     "top1": 0.7949999570846558,
+     "nll": 3.901536703109741
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/lib/data/step.js\\\"}\"}",
+    "iso": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"secret\\\\\\\" /testbed/lib/step.js /testbed/lib/secret.js /testbed/lib/helper/WebDriver.js /testbed/lib/helper/REST.js\\\", \\\"description\\\": \\\"Check secret",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"secret\\\\\\\" /testbed/lib/data/table.js\\\", \\\"description\\\": \\\"Check secret usage in table data\\\"}\"}\n{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep "
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"secret\\\\\\\" /testbed/test --include=\\\\\\\"*.js\\\\\\\" -l | grep -v node_modules\\\", \\\"description\\\": \\\"Find test files using secret\\\"}\"}"
+  },
+  {
+   "instance": "dikhan__terraform-provider-openapi-319",
+   "nP": 3000,
+   "nF": 571,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.213817596435547
+    },
+    "iso": {
+     "kl": 0.17719703912734985,
+     "top1": 0.9449999928474426,
+     "nll": 2.297292470932007
+    },
+    "repair_k64": {
+     "kl": 0.12798255681991577,
+     "top1": 0.9699999690055847,
+     "nll": 2.2137527465820312
+    },
+    "repair_p15": {
+     "kl": 0.11463826149702072,
+     "top1": 0.9449999928474426,
+     "nll": 2.315018653869629
+    },
+    "repair_p30": {
+     "kl": 0.028400132432579994,
+     "top1": 0.949999988079071,
+     "nll": 2.21425199508667
+    },
+    "repair_dev15": {
+     "kl": 0.13263258337974548,
+     "top1": 0.9549999833106995,
+     "nll": 2.1937155723571777
+    },
+    "repair_dev30": {
+     "kl": 0.12392185628414154,
+     "top1": 0.9599999785423279,
+     "nll": 2.1875221729278564
+    },
+    "nofile": {
+     "kl": 0.08011625707149506,
+     "top1": 0.949999988079071,
+     "nll": 2.134168863296509
+    }
+   }
+  },
+  {
+   "instance": "pennylaneai__pennylane-4540",
+   "nP": 3000,
+   "nF": 1431,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.7840428352355957
+    },
+    "iso": {
+     "kl": 0.1789090633392334,
+     "top1": 0.9049999713897705,
+     "nll": 2.93648099899292
+    },
+    "repair_k64": {
+     "kl": 0.11421939730644226,
+     "top1": 0.9099999666213989,
+     "nll": 2.779860496520996
+    },
+    "repair_p15": {
+     "kl": 0.08936889469623566,
+     "top1": 0.9199999570846558,
+     "nll": 2.779813766479492
+    },
+    "repair_p30": {
+     "kl": 0.06320066750049591,
+     "top1": 0.9749999642372131,
+     "nll": 2.7556862831115723
+    },
+    "repair_dev15": {
+     "kl": 0.0694684237241745,
+     "top1": 0.9350000023841858,
+     "nll": 2.741259813308716
+    },
+    "repair_dev30": {
+     "kl": 0.05202173441648483,
+     "top1": 0.9649999737739563,
+     "nll": 2.7639498710632324
+    },
+    "nofile": {
+     "kl": 0.0610545389354229,
+     "top1": 0.9449999928474426,
+     "nll": 2.784482002258301
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pennylane/ops/qubit/hamiltonian.py\\\"}\"}",
+    "iso": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -n \\\\\\\"_convert_op_to_numpy_data\\\\\\\\|_convert_measurement_to_numpy_data\\\\\\\" /testbed/pennylane/transforms/convert_to_numpy_parameters.py\\\", \\\"description\\\": \\",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pennylane/ops/qubit/hamiltonian.py\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rln \\\\\\\"convert_to_numpy_parameters\\\\\\\" /testbed/tests | head; grep -rn \\\\\\\"Hamiltonian\\\\\\\" /testbed/tests/transforms/test_convert_to_numpy_paramet"
+  },
+  {
+   "instance": "jpadilla__pyjwt-316",
+   "nP": 3000,
+   "nF": 269,
+   "nS": 140,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.6499664783477783
+    },
+    "iso": {
+     "kl": 0.09453202784061432,
+     "top1": 0.9071428775787354,
+     "nll": 2.6958682537078857
+    },
+    "repair_k64": {
+     "kl": 0.03623531386256218,
+     "top1": 0.9428571462631226,
+     "nll": 2.5883190631866455
+    },
+    "repair_p15": {
+     "kl": 0.051334448158741,
+     "top1": 0.9357143044471741,
+     "nll": 2.6300532817840576
+    },
+    "repair_p30": {
+     "kl": 0.0247955285012722,
+     "top1": 0.949999988079071,
+     "nll": 2.658656120300293
+    },
+    "repair_dev15": {
+     "kl": 0.039879411458969116,
+     "top1": 0.9642857313156128,
+     "nll": 2.6049914360046387
+    },
+    "repair_dev30": {
+     "kl": 0.029201269149780273,
+     "top1": 0.9642857313156128,
+     "nll": 2.631704807281494
+    },
+    "nofile": {
+     "kl": 0.21956129372119904,
+     "top1": 0.9285714626312256,
+     "nll": 2.713557004928589
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Answer\", \"arguments\": \"{\\\"answer\\\": \\\"The code has been reviewed and the necessary changes have been made. The exception class for signature verification failure is already defined as DecodeError, whi",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/jwt/api_jwt.py\\\"}\"}\n</think>\n\n</think>\n\nI'll implement the `SignatureVerificationError` exception as requested. This exception should be a subclass of `",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/jwt/api_jwt.py\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"InvalidSignature\\\\\\\" /testbed --include=\\\\\\\"*.py\\\\\\\" | head -30; echo \\\\\\\"---\\\\\\\"; grep -rn \\\\\\\"Signature verification failed\\\\\\\" /testbed -"
+  },
+  {
+   "instance": "streamich__memfs-1076",
+   "nP": 3000,
+   "nF": 1260,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 4.062109470367432
+    },
+    "iso": {
+     "kl": 0.09567281603813171,
+     "top1": 0.9149999618530273,
+     "nll": 3.9847991466522217
+    },
+    "repair_k64": {
+     "kl": 0.12684041261672974,
+     "top1": 0.8549999594688416,
+     "nll": 3.8075499534606934
+    },
+    "repair_p15": {
+     "kl": 0.0929831936955452,
+     "top1": 0.9049999713897705,
+     "nll": 3.8245677947998047
+    },
+    "repair_p30": {
+     "kl": 0.07364576309919357,
+     "top1": 0.9249999523162842,
+     "nll": 3.868387460708618
+    },
+    "repair_dev15": {
+     "kl": 0.11668123304843903,
+     "top1": 0.8899999856948853,
+     "nll": 3.7551262378692627
+    },
+    "repair_dev30": {
+     "kl": 0.06424412876367569,
+     "top1": 0.9099999666213989,
+     "nll": 3.7569854259490967
+    },
+    "nofile": {
+     "kl": 0.13218335807323456,
+     "top1": 0.8999999761581421,
+     "nll": 4.020478248596191
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/volume.ts\\\", \\\"offset\\\": 360, \\\"limit\\\": 120}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/volume.ts\\\", \\\"offset\\\": 240, \\\"limit\\\": 120}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/volume.ts\\\", \\\"offset\\\": 240, \\\"limit\\\": 120}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -n \\\\\\\"nullCheck\\\\\\\" /testbed/src/node/util.ts && sed -n 1,60p /testbed/src/node/util.ts\\\", \\\"description\\\": \\\"Show nullCheck and top of node/util.t"
+  },
+  {
+   "instance": "keithamus__sort-package-json-361",
+   "nP": 3000,
+   "nF": 1143,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.2092461585998535
+    },
+    "iso": {
+     "kl": 0.053981177508831024,
+     "top1": 0.8949999809265137,
+     "nll": 3.2045068740844727
+    },
+    "repair_k64": {
+     "kl": 0.06496403366327286,
+     "top1": 0.9049999713897705,
+     "nll": 3.0929315090179443
+    },
+    "repair_p15": {
+     "kl": 0.04274818301200867,
+     "top1": 0.9449999928474426,
+     "nll": 3.107877731323242
+    },
+    "repair_p30": {
+     "kl": 0.04088020324707031,
+     "top1": 0.9599999785423279,
+     "nll": 3.1035454273223877
+    },
+    "repair_dev15": {
+     "kl": 0.021532917395234108,
+     "top1": 0.9699999690055847,
+     "nll": 3.1758155822753906
+    },
+    "repair_dev30": {
+     "kl": 0.019801240414381027,
+     "top1": 0.9699999690055847,
+     "nll": 3.1654350757598877
+    },
+    "nofile": {
+     "kl": 0.05006733909249306,
+     "top1": 0.9099999666213989,
+     "nll": 3.1752543449401855
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "sort-package-json\", \"version\": \"1.0.0\", \"description\": \"Sort package.json files\", \"main\": \"index.js\", \"scripts\": { \"sort\": \"node index.js\" }, \"keywords\": [\"package\", \"json\", \"sort\"], \"author\": \"Your N",
+    "iso": "sort-package-json\", \"version\": \"1.0.0\", \"description\": \"Sort package.json files\", \"main\": \"index.js\", \"scripts\": { \"test\": \"echo \\\"Error: No test script defined\\\" && exit 1\" }, \"keywords\": [\"package\",",
+    "nofile": "sort-package-json\", \"version\": \"1.0.0\", \"description\": \"Sorts the keys of a package.json file in a standardized way.\", \"main\": \"index.js\", \"scripts\": { \"test\": \"echo \\\"Error: No test specified\\\" && ex"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"ls /testbed/tests\\\", \\\"description\\\": \\\"List test files\\\"}\"}"
+  },
+  {
+   "instance": "evertras__bubble-table-166",
+   "nP": 3000,
+   "nF": 705,
+   "nS": 126,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.0555648803710938
+    },
+    "iso": {
+     "kl": 0.3256886303424835,
+     "top1": 0.888888955116272,
+     "nll": 3.240773916244507
+    },
+    "repair_k64": {
+     "kl": 0.35475754737854004,
+     "top1": 0.888888955116272,
+     "nll": 3.1122684478759766
+    },
+    "repair_p15": {
+     "kl": 0.17146773636341095,
+     "top1": 0.9047619700431824,
+     "nll": 3.0776796340942383
+    },
+    "repair_p30": {
+     "kl": 0.04394732043147087,
+     "top1": 0.9523810148239136,
+     "nll": 3.069228172302246
+    },
+    "repair_dev15": {
+     "kl": 0.2162337750196457,
+     "top1": 0.9126984477043152,
+     "nll": 3.1777830123901367
+    },
+    "repair_dev30": {
+     "kl": 0.09667636454105377,
+     "top1": 0.944444477558136,
+     "nll": 3.1324589252471924
+    },
+    "nofile": {
+     "kl": 0.37868890166282654,
+     "top1": 0.8730159401893616,
+     "nll": 3.2615137100219727
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"cat > /testbed/table/zz_repro_test.go << 'EOF'\\\\npackage table\\\\n\\\\nimport (\\\\n\\\\t\\\\\\\"testing\\\\\\\"\\\\n\\\\n\\\\t\\\\\\\"github.com/stretchr/testify/assert\\\\\\\"\\\\n)\\\\",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/table/update_test.go\\\", \\\"offset\\\": 290, \\\"limit\\\": 60}\"}",
+    "nofile": "Edit\", \"arguments\": \"{\\\"replace_all\\\": false, \\\"file_path\\\": \\\"/testbed/table/update_test.go\\\", \\\"old_string\\\": \\\"// Update applies a change to the model.\\\\nfunc (m Model) Update(msg interface{}) (Mod"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -n \\\\\\\"RowSelectToggle\\\\\\\" /testbed/table/keys.go\\\", \\\"description\\\": \\\"Check default toggle key binding\\\"}\"}"
+  },
+  {
+   "instance": "arco-design__arco-design-263",
+   "nP": 3000,
+   "nF": 1064,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.559471607208252
+    },
+    "iso": {
+     "kl": 0.13323478400707245,
+     "top1": 0.9449999928474426,
+     "nll": 2.765512704849243
+    },
+    "repair_k64": {
+     "kl": 0.2856764793395996,
+     "top1": 0.9099999666213989,
+     "nll": 2.7685558795928955
+    },
+    "repair_p15": {
+     "kl": 0.254000186920166,
+     "top1": 0.9249999523162842,
+     "nll": 2.757427215576172
+    },
+    "repair_p30": {
+     "kl": 0.24441523849964142,
+     "top1": 0.9300000071525574,
+     "nll": 2.8155462741851807
+    },
+    "repair_dev15": {
+     "kl": 0.2702213227748871,
+     "top1": 0.9199999570846558,
+     "nll": 2.8190088272094727
+    },
+    "repair_dev30": {
+     "kl": 0.24214209616184235,
+     "top1": 0.9399999976158142,
+     "nll": 2.757016897201538
+    },
+    "nofile": {
+     "kl": 0.3248607814311981,
+     "top1": 0.8899999856948853,
+     "nll": 2.922105312347412
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/components/Menu/inline/index.tsx\\\"}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/components/Menu/sub-menu/pop.tsx\\\"}\"}\n{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/components/Menu/sub-menu/index.tsx\\\"}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/components/Menu/sub-menu/pop.tsx\\\"}\"}\n{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/components/Menu/sub-menu/inline.tsx\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"transition-timing-function\\\\\\\" /testbed/components/style/theme/default.less | head; echo ---; grep -rn \\\\\\\"transition-duration-2\\\\\\\" /testbe"
+  },
+  {
+   "instance": "sermant-io__sermant-1692",
+   "nP": 3000,
+   "nF": 530,
+   "nS": 81,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.4229495525360107
+    },
+    "iso": {
+     "kl": 0.3028682470321655,
+     "top1": 0.8888888955116272,
+     "nll": 2.8124759197235107
+    },
+    "repair_k64": {
+     "kl": 0.23938718438148499,
+     "top1": 0.9629629850387573,
+     "nll": 2.468517780303955
+    },
+    "repair_p15": {
+     "kl": 0.23916706442832947,
+     "top1": 0.9876543283462524,
+     "nll": 2.518951416015625
+    },
+    "repair_p30": {
+     "kl": 0.2249680757522583,
+     "top1": 0.9753086566925049,
+     "nll": 2.4570276737213135
+    },
+    "repair_dev15": {
+     "kl": 0.22095593810081482,
+     "top1": 0.9506173133850098,
+     "nll": 2.422513008117676
+    },
+    "repair_dev30": {
+     "kl": 0.2345031201839447,
+     "top1": 0.9753086566925049,
+     "nll": 2.4996020793914795
+    },
+    "nofile": {
+     "kl": 0.10185136646032333,
+     "top1": 0.9135802388191223,
+     "nll": 2.589174747467041
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/sermant-agentcore/sermant-agentcore-core/src/main/java/io/sermant/core/command/CommandExecutor.java\\\"}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/sermant-agentcore/sermant-agentcore-core/src/main/java/io/sermant/core/command/PluginsInstallCommandExecutor.java\\\"}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/sermant-agentcore/sermant-agentcore-core/src/main/java/io/sermant/core/command/PluginsInstallCommandExecutor.java\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/sermant-agentcore/sermant-agentcore-core/src/main/java/io/sermant/core/AgentCoreEntrance.java\\\"}\"}"
+  },
+  {
+   "instance": "gphotosuploader__gphotos-uploader-cli-153",
+   "nP": 3000,
+   "nF": 1245,
+   "nS": 197,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.5922048091888428
+    },
+    "iso": {
+     "kl": 0.183924600481987,
+     "top1": 0.903553307056427,
+     "nll": 2.6240694522857666
+    },
+    "repair_k64": {
+     "kl": 0.07821423560380936,
+     "top1": 0.9695430994033813,
+     "nll": 2.518615961074829
+    },
+    "repair_p15": {
+     "kl": 0.16584673523902893,
+     "top1": 0.9289339780807495,
+     "nll": 2.7587759494781494
+    },
+    "repair_p30": {
+     "kl": 0.1426992565393448,
+     "top1": 0.9441624283790588,
+     "nll": 2.705230712890625
+    },
+    "repair_dev15": {
+     "kl": 0.07559998333454132,
+     "top1": 0.9695430994033813,
+     "nll": 2.5161242485046387
+    },
+    "repair_dev30": {
+     "kl": 0.06204947829246521,
+     "top1": 0.9746192693710327,
+     "nll": 2.5065343379974365
+    },
+    "nofile": {
+     "kl": 0.035193245857954025,
+     "top1": 0.9593908190727234,
+     "nll": 2.4430654048919678
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/upload/folderUploadJob.go\\\"}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/utils/filesystem/filesystem_test.go\\\"}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/upload/folderUploadJob.go\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/config/config_test.go\\\"}\"}"
+  },
+  {
+   "instance": "auth0__auth0-spa-js-558",
+   "nP": 3000,
+   "nF": 820,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 4.096799373626709
+    },
+    "iso": {
+     "kl": 0.04828651249408722,
+     "top1": 0.9350000023841858,
+     "nll": 4.064685344696045
+    },
+    "repair_k64": {
+     "kl": 0.0664827823638916,
+     "top1": 0.9049999713897705,
+     "nll": 3.941347599029541
+    },
+    "repair_p15": {
+     "kl": 0.030915774405002594,
+     "top1": 0.9449999928474426,
+     "nll": 3.9990074634552
+    },
+    "repair_p30": {
+     "kl": 0.017990795895457268,
+     "top1": 0.9649999737739563,
+     "nll": 4.010234355926514
+    },
+    "repair_dev15": {
+     "kl": 0.049598731100559235,
+     "top1": 0.9249999523162842,
+     "nll": 3.9589602947235107
+    },
+    "repair_dev30": {
+     "kl": 0.040402546525001526,
+     "top1": 0.949999988079071,
+     "nll": 3.9688878059387207
+    },
+    "nofile": {
+     "kl": 0.07863814383745193,
+     "top1": 0.9099999666213989,
+     "nll": 3.975696563720703
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"sed -n 1575,1650p /testbed/__tests__/index.test.ts\\\", \\\"description\\\": \\\"Read getTokenSilently tests when refresh tokens are used\\\"}\"}",
+    "iso": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"sed -n 1501,1550p /testbed/__tests__/index.test.ts\\\", \\\"description\\\": \\\"Read test cases for getTokenSilently()\\\"}\"}",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"sed -n 1501,1575p /testbed/__tests__/index.test.ts\\\", \\\"description\\\": \\\"Read test cases for getTokenSilently\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"ls -la /testbed && cat /testbed/jest.config.js && cat /testbed/package.json | sed -n '1,60p'\\\", \\\"description\\\": \\\"Show repo root, jest config and packag"
+  },
+  {
+   "instance": "pycqa__pyflakes-273",
+   "nP": 3000,
+   "nF": 1759,
+   "nS": 101,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.4465954303741455
+    },
+    "iso": {
+     "kl": 0.15945371985435486,
+     "top1": 0.8811880946159363,
+     "nll": 2.4570021629333496
+    },
+    "repair_k64": {
+     "kl": 0.07924944907426834,
+     "top1": 0.9306930303573608,
+     "nll": 2.471926212310791
+    },
+    "repair_p15": {
+     "kl": 0.059521909803152084,
+     "top1": 0.9009900689125061,
+     "nll": 2.525131940841675
+    },
+    "repair_p30": {
+     "kl": 0.050599176436662674,
+     "top1": 0.9504950046539307,
+     "nll": 2.51186466217041
+    },
+    "repair_dev15": {
+     "kl": 0.025009145960211754,
+     "top1": 0.9702970385551453,
+     "nll": 2.3956003189086914
+    },
+    "repair_dev30": {
+     "kl": 0.012023243121802807,
+     "top1": 0.9900990128517151,
+     "nll": 2.3867688179016113
+    },
+    "nofile": {
+     "kl": 0.18701273202896118,
+     "top1": 0.8811880946159363,
+     "nll": 2.848423480987549
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pyflakes/checker.py\\\", \\\"offset\\\": 1230, \\\"limit\\\": 150}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pyflakes/checker.py\\\", \\\"offset\\\": 1230, \\\"limit\\\": 150}\"}",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -n \\\\\\\"docstring\\\\\\\\|getDocstring\\\\\\\\|handleDoctests\\\\\\\" /testbed/pyflakes/checker.py\\\", \\\"description\\\": \\\"Find all references to docstring in checker.py\\\"}\""
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -n \\\\\\\"def MODULE\\\\\\\\|def handleNodeModule\\\\\\\\|_in_doctest\\\\\\\\|withDoctest\\\\\\\" /testbed/pyflakes/checker.py\\\", \\\"description\\\": \\\"Find MODULE handle"
+  },
+  {
+   "instance": "go-kratos__kratos-1731",
+   "nP": 3000,
+   "nF": 1227,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.5656654834747314
+    },
+    "iso": {
+     "kl": 0.06373728811740875,
+     "top1": 0.875,
+     "nll": 3.683398962020874
+    },
+    "repair_k64": {
+     "kl": 0.12408672273159027,
+     "top1": 0.8549999594688416,
+     "nll": 3.5216338634490967
+    },
+    "repair_p15": {
+     "kl": 0.10392013937234879,
+     "top1": 0.8549999594688416,
+     "nll": 3.559277296066284
+    },
+    "repair_p30": {
+     "kl": 0.07280582934617996,
+     "top1": 0.875,
+     "nll": 3.57720685005188
+    },
+    "repair_dev15": {
+     "kl": 0.1098039448261261,
+     "top1": 0.8349999785423279,
+     "nll": 3.5267083644866943
+    },
+    "repair_dev30": {
+     "kl": 0.09543494880199432,
+     "top1": 0.8650000095367432,
+     "nll": 3.497286081314087
+    },
+    "nofile": {
+     "kl": 0.23345650732517242,
+     "top1": 0.7899999618530273,
+     "nll": 3.5618813037872314
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/transport/http/client.go\\\"}\"}",
+    "iso": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"discovery\\\\\\\" /testbed/transport/http/client.go /testbed/transport/grpc/client.go | head; ls /testbed/transport/http /testbed/transport/grpc\\\", \\\"desc",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"discovery\\\\\\\" /testbed/transport/http/client.go /testbed/transport/grpc/client.go | head; ls /testbed/transport/http /testbed/transport/grpc\\\", \\\"desc"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"git -C /testbed log --oneline -10 -- contrib/registry/consul/\\\", \\\"description\\\": \\\"Show commit history for consul registry\\\"}\"}"
+  },
+  {
+   "instance": "js-data__js-data-473",
+   "nP": 3000,
+   "nF": 339,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.1274430751800537
+    },
+    "iso": {
+     "kl": 0.14123857021331787,
+     "top1": 0.8650000095367432,
+     "nll": 3.2310523986816406
+    },
+    "repair_k64": {
+     "kl": 0.19786299765110016,
+     "top1": 0.8799999952316284,
+     "nll": 3.152588367462158
+    },
+    "repair_p15": {
+     "kl": 0.16736075282096863,
+     "top1": 0.9099999666213989,
+     "nll": 3.192885637283325
+    },
+    "repair_p30": {
+     "kl": 0.1371060311794281,
+     "top1": 0.9099999666213989,
+     "nll": 3.187934398651123
+    },
+    "repair_dev15": {
+     "kl": 0.18554197251796722,
+     "top1": 0.85999995470047,
+     "nll": 3.1884050369262695
+    },
+    "repair_dev30": {
+     "kl": 0.16352401673793793,
+     "top1": 0.8849999904632568,
+     "nll": 3.118863344192505
+    },
+    "nofile": {
+     "kl": 0.34573057293891907,
+     "top1": 0.8100000023841858,
+     "nll": 3.3364453315734863
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/utils.js\\\", \\\"offset\\\": 1460, \\\"limit\\\": 31}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/utils.js\\\", \\\"offset\\\": 1460, \\\"limit\\\": 31}\"}",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"cd /testbed\\\\necho \\\\\\\"=== WITH FIX: 8 runs ===\\\\\\\"\\\\np=0; f=0\\\\nfor i in $(seq 1 8); do\\\\n  out=$(npx mocha --recursive -t "
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"cd /testbed\\\\nnpx standard src/utils.js 2>&1 | head -20 && echo \\\\\\\"LINT_EXIT=$?\\\\\\\"\\\", \\\"description\\\": \\\"Lint the modified file with standard\\\"}\"}"
+  },
+  {
+   "instance": "solid__community-server-867",
+   "nP": 3000,
+   "nF": 701,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.4860002994537354
+    },
+    "iso": {
+     "kl": 0.08742544800043106,
+     "top1": 0.8899999856948853,
+     "nll": 3.511204957962036
+    },
+    "repair_k64": {
+     "kl": 0.06565698236227036,
+     "top1": 0.9199999570846558,
+     "nll": 3.2965264320373535
+    },
+    "repair_p15": {
+     "kl": 0.051089439541101456,
+     "top1": 0.9199999570846558,
+     "nll": 3.2990355491638184
+    },
+    "repair_p30": {
+     "kl": 0.03330787271261215,
+     "top1": 0.9300000071525574,
+     "nll": 3.404025077819824
+    },
+    "repair_dev15": {
+     "kl": 0.04390175640583038,
+     "top1": 0.9350000023841858,
+     "nll": 3.388697385787964
+    },
+    "repair_dev30": {
+     "kl": 0.06893045455217361,
+     "top1": 0.9300000071525574,
+     "nll": 3.4206957817077637
+    },
+    "nofile": {
+     "kl": 0.06587778031826019,
+     "top1": 0.9049999713897705,
+     "nll": 3.360743999481201
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/identity/interaction/InteractionHttpHandler.ts\\\"}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/identity/IdentityProviderHttpHandler.ts\\\"}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/identity/IdentityProviderHttpHandler.ts\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"data\\\\\\\" /testbed/src/identity --include=*.ts | grep -in \\\\\\\"data/\\\\\\\" | head; echo ---; cat /testbed/src/identity/interaction/InteractionHt"
+  },
+  {
+   "instance": "aaugustin__websockets-629",
+   "nP": 3000,
+   "nF": 1674,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.158442258834839
+    },
+    "iso": {
+     "kl": 0.12251010537147522,
+     "top1": 0.8899999856948853,
+     "nll": 3.328528881072998
+    },
+    "repair_k64": {
+     "kl": 0.030268047004938126,
+     "top1": 0.9350000023841858,
+     "nll": 3.128884792327881
+    },
+    "repair_p15": {
+     "kl": 0.02552471123635769,
+     "top1": 0.9449999928474426,
+     "nll": 3.06905460357666
+    },
+    "repair_p30": {
+     "kl": 0.023760123178362846,
+     "top1": 0.9599999785423279,
+     "nll": 3.147617816925049
+    },
+    "repair_dev15": {
+     "kl": 0.020028935745358467,
+     "top1": 0.9549999833106995,
+     "nll": 3.125563383102417
+    },
+    "repair_dev30": {
+     "kl": 0.012837369926273823,
+     "top1": 0.9599999785423279,
+     "nll": 3.1593191623687744
+    },
+    "nofile": {
+     "kl": 0.1274740993976593,
+     "top1": 0.9249999523162842,
+     "nll": 3.254702568054199
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"InvalidHandshake\\\\\\\\|InvalidOrigin\\\\\\\\|InvalidUpgrade\\\\\\\\|InvalidStatusCode\\\\\\\\|InvalidHeader\\\\\\\\|InvalidMessage\\\\\\\\|InvalidMessage\\\\\\\\|InvalidMessage",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/websockets/server.py\\\", \\\"offset\\\": 180, \\\"limit\\\": 200}\"}",
+    "nofile": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"InvalidHandshake\\\\\\\\|InvalidStatusCode\\\\\\\\|NegotiationError\\\\\\\\|InvalidHandshake\\\\\\\\|InvalidHandshake\\\\\\\\|InvalidHandshake\\\\\\\\|InvalidHandshake\\\\\\\\|In"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"Malformed\\\\\\\\|InvalidMessage\\\\\\\" tests/ compliance/ src/ | grep -v build/\\\", \\\"description\\\": \\\"Find Malformed/InvalidMessage references\\\"}\""
+  },
+  {
+   "instance": "vaskoz__dailycodingproblem-go-144",
+   "nP": 3000,
+   "nF": 1548,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.559227228164673
+    },
+    "iso": {
+     "kl": 0.0904795229434967,
+     "top1": 0.9249999523162842,
+     "nll": 2.6380441188812256
+    },
+    "repair_k64": {
+     "kl": 0.2572428584098816,
+     "top1": 0.875,
+     "nll": 2.6706671714782715
+    },
+    "repair_p15": {
+     "kl": 0.18375883996486664,
+     "top1": 0.8899999856948853,
+     "nll": 2.5420982837677
+    },
+    "repair_p30": {
+     "kl": 0.10490693151950836,
+     "top1": 0.9149999618530273,
+     "nll": 2.4242165088653564
+    },
+    "repair_dev15": {
+     "kl": 0.24348562955856323,
+     "top1": 0.8549999594688416,
+     "nll": 2.636955499649048
+    },
+    "repair_dev30": {
+     "kl": 0.20062530040740967,
+     "top1": 0.9149999618530273,
+     "nll": 2.6094260215759277
+    },
+    "nofile": {
+     "kl": 0.4696614742279053,
+     "top1": 0.8050000071525574,
+     "nll": 2.939316987991333
+    }
+   }
+  },
+  {
+   "instance": "nats-io__nsc-610",
+   "nP": 3000,
+   "nF": 963,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 0.87395840883255
+    },
+    "iso": {
+     "kl": 0.05192001536488533,
+     "top1": 0.9699999690055847,
+     "nll": 1.0076719522476196
+    },
+    "repair_k64": {
+     "kl": 0.03957139700651169,
+     "top1": 0.9699999690055847,
+     "nll": 0.9352491497993469
+    },
+    "repair_p15": {
+     "kl": 0.038917627185583115,
+     "top1": 0.9699999690055847,
+     "nll": 0.9186047315597534
+    },
+    "repair_p30": {
+     "kl": 0.030549559742212296,
+     "top1": 0.98499995470047,
+     "nll": 0.9146053791046143
+    },
+    "repair_dev15": {
+     "kl": 0.0452406220138073,
+     "top1": 0.9799999594688416,
+     "nll": 0.9238535761833191
+    },
+    "repair_dev30": {
+     "kl": 0.04958195611834526,
+     "top1": 0.9899999499320984,
+     "nll": 0.908211886882782
+    },
+    "nofile": {
+     "kl": 0.006148390471935272,
+     "top1": 0.9899999499320984,
+     "nll": 0.8707627058029175
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": false,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"convert-to-signing-key\\\\\\\\|ConvertToSigningKey\\\\\\\\|convertToSigningKey\\\\\\\" /testbed/cmd/reissueoperator.go\\\"}\"}\n{\"name\": \"Bash\", \"arguments\": \"{\\\"comm",
+    "iso": "Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"reissue\\\\\\\" /testbed/cmd/\\\"}\"}\n{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -rn \\\\\\\"reissue\\\\\\\" /testbed/\\\"}\"}\n{\"name\": \"Bash\",",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/cmd/reissueoperator_test.go\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"ls /testbed/cmd/reissue* 2>/dev/null; grep -rln \\\\\\\"reissue\\\\\\\" /testbed/cmd --include=\\\\\\\"*.go\\\\\\\" | grep -v _test | head\\\", \\\"description\\\": \\\"Find all"
+  },
+  {
+   "instance": "deislabs__ratify-815",
+   "nP": 3000,
+   "nF": 656,
+   "nS": 105,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.101172924041748
+    },
+    "iso": {
+     "kl": 0.13401906192302704,
+     "top1": 0.9238095879554749,
+     "nll": 2.227508068084717
+    },
+    "repair_k64": {
+     "kl": 0.09761428087949753,
+     "top1": 0.9523810148239136,
+     "nll": 2.160400867462158
+    },
+    "repair_p15": {
+     "kl": 0.11823253333568573,
+     "top1": 0.9142857789993286,
+     "nll": 2.388105869293213
+    },
+    "repair_p30": {
+     "kl": 0.11061020195484161,
+     "top1": 0.9142857789993286,
+     "nll": 2.369346857070923
+    },
+    "repair_dev15": {
+     "kl": 0.0850684717297554,
+     "top1": 0.9523810148239136,
+     "nll": 2.1203038692474365
+    },
+    "repair_dev30": {
+     "kl": 0.08452733606100082,
+     "top1": 0.9428572058677673,
+     "nll": 2.1191608905792236
+    },
+    "nofile": {
+     "kl": 0.07389499992132187,
+     "top1": 0.9523810148239136,
+     "nll": 2.08970046043396
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pkg/verifier/notaryv2/notaryv2.go\\\"}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pkg/verifier/notaryv2/verifier.go\\\"}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pkg/verifier/notaryv2/truststore.go\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pkg/verifier/factory/factory_test.go\\\"}\"}"
+  },
+  {
+   "instance": "ota-meshi__eslint-plugin-regexp-646",
+   "nP": 3000,
+   "nF": 447,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 1.7099065780639648
+    },
+    "iso": {
+     "kl": 0.04150448739528656,
+     "top1": 0.9799999594688416,
+     "nll": 1.7351775169372559
+    },
+    "repair_k64": {
+     "kl": 0.031418707221746445,
+     "top1": 0.9749999642372131,
+     "nll": 1.738008737564087
+    },
+    "repair_p15": {
+     "kl": 0.023106779903173447,
+     "top1": 0.9649999737739563,
+     "nll": 1.695424199104309
+    },
+    "repair_p30": {
+     "kl": 0.028496097773313522,
+     "top1": 0.9699999690055847,
+     "nll": 1.7102885246276855
+    },
+    "repair_dev15": {
+     "kl": 0.04656202346086502,
+     "top1": 0.9649999737739563,
+     "nll": 1.734363079071045
+    },
+    "repair_dev30": {
+     "kl": 0.039542268961668015,
+     "top1": 0.9699999690055847,
+     "nll": 1.7355986833572388
+    },
+    "nofile": {
+     "kl": 0.051483429968357086,
+     "top1": 0.949999988079071,
+     "nll": 1.6827846765518188
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/lib/utils/index.ts\\\"}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/lib/utils/index.ts\\\"}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/lib/utils/index.ts\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"grep -n \\\\\\\"StringAlternative\\\\\\\" /testbed/node_modules/@eslint-community/regexpp/visitor.d.ts | head; grep -rn \\\\\\\"onStringAlternativeEnter\\\\\\\\|onClassS"
+  },
+  {
+   "instance": "rust-lang__rustfmt-5669",
+   "nP": 3000,
+   "nF": 844,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 2.4422805309295654
+    },
+    "iso": {
+     "kl": 0.17875030636787415,
+     "top1": 0.8399999737739563,
+     "nll": 2.5571820735931396
+    },
+    "repair_k64": {
+     "kl": 0.23954971134662628,
+     "top1": 0.8999999761581421,
+     "nll": 2.5723180770874023
+    },
+    "repair_p15": {
+     "kl": 0.16827720403671265,
+     "top1": 0.9099999666213989,
+     "nll": 2.466095447540283
+    },
+    "repair_p30": {
+     "kl": 0.06775376945734024,
+     "top1": 0.9399999976158142,
+     "nll": 2.373753309249878
+    },
+    "repair_dev15": {
+     "kl": 0.13258355855941772,
+     "top1": 0.9149999618530273,
+     "nll": 2.4864559173583984
+    },
+    "repair_dev30": {
+     "kl": 0.072383813560009,
+     "top1": 0.9399999976158142,
+     "nll": 2.473114252090454
+    },
+    "nofile": {
+     "kl": 0.11103019118309021,
+     "top1": 0.9199999570846558,
+     "nll": 2.5063488483428955
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": false,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/items.rs\\\", \\\"limit\\\": 75, \\\"offset\\\": 1278}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/items.rs\\\", \\\"limit\\\": 75, \\\"offset\\\": 1003}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/src/items.rs\\\", \\\"limit\\\": 75, \\\"offset\\\": 1003}\"}"
+   },
+   "ref": "{\"name\": \"Bash\", \"arguments\": \"{\\\"command\\\": \\\"sed -n '1078,1160p' /testbed/src/items.rs | grep -n \\\\\\\"body_lo\\\\\\\"\\\", \\\"description\\\": \\\"Find body_lo usage in format_trait\\\"}\"}"
+  },
+  {
+   "instance": "amacneil__dbmate-145",
+   "nP": 3000,
+   "nF": 468,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.300262451171875
+    },
+    "iso": {
+     "kl": 0.1102144718170166,
+     "top1": 0.9249999523162842,
+     "nll": 3.5237181186676025
+    },
+    "repair_k64": {
+     "kl": 0.10074353218078613,
+     "top1": 0.9399999976158142,
+     "nll": 3.272451162338257
+    },
+    "repair_p15": {
+     "kl": 0.08396530896425247,
+     "top1": 0.9350000023841858,
+     "nll": 3.3933818340301514
+    },
+    "repair_p30": {
+     "kl": 0.07604686915874481,
+     "top1": 0.9350000023841858,
+     "nll": 3.3843307495117188
+    },
+    "repair_dev15": {
+     "kl": 0.10126588493585587,
+     "top1": 0.9449999928474426,
+     "nll": 3.2572431564331055
+    },
+    "repair_dev30": {
+     "kl": 0.0818076804280281,
+     "top1": 0.949999988079071,
+     "nll": 3.230790376663208
+    },
+    "nofile": {
+     "kl": 0.07757740467786789,
+     "top1": 0.9199999570846558,
+     "nll": 3.3373024463653564
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pkg/dbmate/migration.go\\\"}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pkg/dbmate/migration.go\\\"}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pkg/dbmate/migration.go\\\"}\"}"
+   },
+   "ref": "{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/pkg/dbmate/mysql.go\\\"}\"}"
+  },
+  {
+   "instance": "warpnet__salt-lint-214",
+   "nP": 3000,
+   "nF": 275,
+   "nS": 200,
+   "m": {
+    "full": {
+     "kl": 0.0,
+     "top1": 1.0,
+     "nll": 3.617694616317749
+    },
+    "iso": {
+     "kl": 0.122249536216259,
+     "top1": 0.9049999713897705,
+     "nll": 3.7002809047698975
+    },
+    "repair_k64": {
+     "kl": 0.08798762410879135,
+     "top1": 0.9549999833106995,
+     "nll": 3.65045428276062
+    },
+    "repair_p15": {
+     "kl": 0.06522949039936066,
+     "top1": 0.9549999833106995,
+     "nll": 3.621673583984375
+    },
+    "repair_p30": {
+     "kl": 0.07028553634881973,
+     "top1": 0.9649999737739563,
+     "nll": 3.587245464324951
+    },
+    "repair_dev15": {
+     "kl": 0.07592759281396866,
+     "top1": 0.9549999833106995,
+     "nll": 3.6028544902801514
+    },
+    "repair_dev30": {
+     "kl": 0.0769844651222229,
+     "top1": 0.9649999737739563,
+     "nll": 3.636046886444092
+    },
+    "nofile": {
+     "kl": 0.1459217667579651,
+     "top1": 0.9399999976158142,
+     "nll": 3.65480375289917
+    }
+   },
+   "g": {
+    "full": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": true
+    },
+    "iso": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_k64": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_p30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev15": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "repair_dev30": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    },
+    "nofile": {
+     "name_ref": true,
+     "exact_ref": false,
+     "name_full": true,
+     "exact_full": false
+    }
+   },
+   "gen_text": {
+    "full": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/saltlint/rules/Rule.py\\\"}\"}\n{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/saltlint/rules/RuleBase.py\\\"}\"}",
+    "iso": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/saltlint/rules/SLSFileNameRule.py\\\"}\"}",
+    "nofile": "Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/saltlint/rules/SLSFileNameRule.py\\\"}\"}\n{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/saltlint/rules/SLSFileNameRule.py\\\"}\"}\n{\"name\": \"Read\","
+   },
+   "ref": "{\"name\": \"Read\", \"arguments\": \"{\\\"file_path\\\": \\\"/testbed/setup.py\\\"}\"}"
+  }
+ ]
+}

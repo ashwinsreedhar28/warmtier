@@ -1,0 +1,287 @@
+Tue Nov 10 19:52:26 UTC 2026
+NVIDIA A40, 46068 MiB
+[notice] A new release of pip is available: 23.3.1 -> 26.3
+[notice] To update, run: python -m pip install --upgrade pip
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+torch 2.14.1+cu130 tf 5.20.2 cuda True
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:  25%|██▌       | 1/4 [00:02<00:08,  2.71s/it]Fetching 4 files:  50%|█████     | 2/4 [00:03<00:02,  1.49s/it]Fetching 4 files: 100%|██████████| 4/4 [00:03<00:00,  1.55it/s]Fetching 4 files: 100%|██████████| 4/4 [00:03<00:00,  1.10it/s]
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:  25%|██▌       | 1/4 [00:02<00:06,  2.04s/it]Fetching 4 files:  50%|█████     | 2/4 [00:02<00:02,  1.24s/it]Fetching 4 files:  75%|███████▌  | 3/4 [00:02<00:00,  1.33it/s]Fetching 4 files: 100%|██████████| 4/4 [00:02<00:00,  1.36it/s]
+/w/data/data/claudecode/qwen38_27b/swe-rebench-v2/: train-00000-of-00008.parquet train-00001-of-00008.parquet train-00002-of-00008.parquet train-00003-of-00008.parquet  /w/train/data/claudecode/qwen38_27b/swe-rebench-v2/: train-00004-of-00008.parquet train-00005-of-00008.parquet train-00006-of-00008.parquet train-00007-of-00008.parquet 
+=== TRAIN
+Tue Nov 10 19:54:16 UTC 2026
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files:  33%|███▎      | 1/3 [00:01<00:03,  1.51s/it]Fetching 3 files:  67%|██████▋   | 2/3 [00:06<00:03,  3.54s/it]Fetching 3 files: 100%|██████████| 3/3 [00:08<00:00,  2.74s/it]Fetching 3 files: 100%|██████████| 3/3 [00:08<00:00,  2.75s/it]
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights: 100%|██████████| 398/398 [00:00<00:00, 6123.00it/s]
+model Qwen/Qwen3-4B; trainable 5.90M params
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (163613 > 131072). Running this sequence through the model will result in indexing errors
+2000 train / 24 val samples tokenised in 178s
+step 0 val KL (plain reuse, no repair) 0.1548
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  ema = float(loss) if ema is None else 0.98 * ema + 0.02 * float(loss)
+step 50/4000 loss_ema 0.1643 1.34s/step ~88 min left mem 18.3G skipped 0
+step 100/4000 loss_ema 0.1425 1.43s/step ~93 min left mem 19.2G skipped 0
+step 150/4000 loss_ema 0.1134 1.47s/step ~94 min left mem 19.2G skipped 0
+step 200/4000 loss_ema 0.1089 1.45s/step ~92 min left mem 19.2G skipped 0
+step 250/4000 loss_ema 0.0936 1.43s/step ~90 min left mem 19.2G skipped 0
+step 300/4000 loss_ema 0.0877 1.41s/step ~87 min left mem 19.2G skipped 0
+step 350/4000 loss_ema 0.0759 1.41s/step ~86 min left mem 19.2G skipped 0
+step 400/4000 loss_ema 0.0681 1.40s/step ~84 min left mem 19.2G skipped 0
+step 450/4000 loss_ema 0.0719 1.40s/step ~83 min left mem 19.2G skipped 0
+step 500/4000 loss_ema 0.0633 1.40s/step ~81 min left mem 19.2G skipped 0
+== step 500 val KL 0.0608 (start 0.1548)
+step 550/4000 loss_ema 0.0633 1.43s/step ~82 min left mem 19.2G skipped 0
+step 600/4000 loss_ema 0.0602 1.42s/step ~81 min left mem 19.2G skipped 0
+step 650/4000 loss_ema 0.0616 1.42s/step ~79 min left mem 19.2G skipped 0
+step 700/4000 loss_ema 0.0604 1.41s/step ~78 min left mem 19.2G skipped 0
+step 750/4000 loss_ema 0.0583 1.40s/step ~76 min left mem 19.2G skipped 0
+step 800/4000 loss_ema 0.0588 1.40s/step ~75 min left mem 19.2G skipped 0
+step 850/4000 loss_ema 0.0611 1.40s/step ~73 min left mem 19.2G skipped 0
+step 900/4000 loss_ema 0.0565 1.39s/step ~72 min left mem 19.2G skipped 0
+step 950/4000 loss_ema 0.0524 1.39s/step ~71 min left mem 19.2G skipped 0
+step 1000/4000 loss_ema 0.0450 1.39s/step ~69 min left mem 19.2G skipped 0
+== step 1000 val KL 0.0516 (start 0.1548)
+step 1050/4000 loss_ema 0.0595 1.40s/step ~69 min left mem 19.2G skipped 0
+step 1100/4000 loss_ema 0.0545 1.40s/step ~68 min left mem 19.2G skipped 0
+step 1150/4000 loss_ema 0.0519 1.40s/step ~66 min left mem 19.2G skipped 0
+step 1200/4000 loss_ema 0.0497 1.40s/step ~65 min left mem 19.2G skipped 0
+step 1250/4000 loss_ema 0.0552 1.40s/step ~64 min left mem 19.2G skipped 0
+step 1300/4000 loss_ema 0.0487 1.40s/step ~63 min left mem 19.2G skipped 0
+step 1350/4000 loss_ema 0.0503 1.40s/step ~62 min left mem 19.2G skipped 0
+step 1400/4000 loss_ema 0.0538 1.40s/step ~61 min left mem 19.2G skipped 0
+step 1450/4000 loss_ema 0.0552 1.39s/step ~59 min left mem 19.2G skipped 0
+step 1500/4000 loss_ema 0.0584 1.40s/step ~58 min left mem 19.2G skipped 0
+== step 1500 val KL 0.0484 (start 0.1548)
+step 1550/4000 loss_ema 0.0560 1.41s/step ~57 min left mem 19.2G skipped 0
+step 1600/4000 loss_ema 0.0561 1.40s/step ~56 min left mem 19.2G skipped 0
+step 1650/4000 loss_ema 0.0534 1.40s/step ~55 min left mem 19.2G skipped 0
+step 1700/4000 loss_ema 0.0512 1.40s/step ~54 min left mem 19.2G skipped 0
+step 1750/4000 loss_ema 0.0585 1.40s/step ~52 min left mem 19.2G skipped 0
+step 1800/4000 loss_ema 0.0567 1.40s/step ~51 min left mem 19.2G skipped 0
+step 1850/4000 loss_ema 0.0504 1.40s/step ~50 min left mem 19.2G skipped 0
+step 1900/4000 loss_ema 0.0529 1.40s/step ~49 min left mem 19.2G skipped 0
+step 1950/4000 loss_ema 0.0526 1.40s/step ~48 min left mem 19.2G skipped 0
+step 2000/4000 loss_ema 0.0485 1.40s/step ~47 min left mem 19.2G skipped 0
+== step 2000 val KL 0.0435 (start 0.1548)
+step 2050/4000 loss_ema 0.0416 1.40s/step ~46 min left mem 19.2G skipped 0
+step 2100/4000 loss_ema 0.0392 1.40s/step ~44 min left mem 19.2G skipped 0
+step 2150/4000 loss_ema 0.0375 1.40s/step ~43 min left mem 19.2G skipped 0
+step 2200/4000 loss_ema 0.0374 1.40s/step ~42 min left mem 19.2G skipped 0
+step 2250/4000 loss_ema 0.0403 1.40s/step ~41 min left mem 19.2G skipped 0
+step 2300/4000 loss_ema 0.0394 1.40s/step ~40 min left mem 19.2G skipped 0
+step 2350/4000 loss_ema 0.0399 1.40s/step ~39 min left mem 19.2G skipped 0
+step 2400/4000 loss_ema 0.0363 1.40s/step ~37 min left mem 19.2G skipped 0
+step 2450/4000 loss_ema 0.0369 1.40s/step ~36 min left mem 19.2G skipped 0
+step 2500/4000 loss_ema 0.0371 1.40s/step ~35 min left mem 19.2G skipped 0
+== step 2500 val KL 0.0442 (start 0.1548)
+step 2550/4000 loss_ema 0.0383 1.40s/step ~34 min left mem 19.2G skipped 0
+step 2600/4000 loss_ema 0.0373 1.40s/step ~33 min left mem 19.2G skipped 0
+step 2650/4000 loss_ema 0.0402 1.40s/step ~32 min left mem 19.2G skipped 0
+step 2700/4000 loss_ema 0.0371 1.40s/step ~30 min left mem 19.2G skipped 0
+step 2750/4000 loss_ema 0.0371 1.40s/step ~29 min left mem 19.2G skipped 0
+step 2800/4000 loss_ema 0.0347 1.40s/step ~28 min left mem 19.2G skipped 0
+step 2850/4000 loss_ema 0.0348 1.40s/step ~27 min left mem 19.2G skipped 0
+step 2900/4000 loss_ema 0.0338 1.40s/step ~26 min left mem 19.2G skipped 0
+step 2950/4000 loss_ema 0.0357 1.40s/step ~24 min left mem 19.2G skipped 0
+step 3000/4000 loss_ema 0.0370 1.40s/step ~23 min left mem 19.2G skipped 0
+== step 3000 val KL 0.0440 (start 0.1548)
+step 3050/4000 loss_ema 0.0364 1.40s/step ~22 min left mem 19.2G skipped 0
+step 3100/4000 loss_ema 0.0352 1.40s/step ~21 min left mem 19.2G skipped 0
+step 3150/4000 loss_ema 0.0346 1.40s/step ~20 min left mem 19.2G skipped 0
+step 3200/4000 loss_ema 0.0339 1.40s/step ~19 min left mem 19.2G skipped 0
+step 3250/4000 loss_ema 0.0368 1.40s/step ~17 min left mem 19.2G skipped 0
+step 3300/4000 loss_ema 0.0356 1.40s/step ~16 min left mem 19.2G skipped 0
+step 3350/4000 loss_ema 0.0338 1.40s/step ~15 min left mem 19.2G skipped 0
+step 3400/4000 loss_ema 0.0400 1.40s/step ~14 min left mem 19.2G skipped 0
+step 3450/4000 loss_ema 0.0375 1.40s/step ~13 min left mem 19.2G skipped 0
+step 3500/4000 loss_ema 0.0405 1.40s/step ~12 min left mem 19.2G skipped 0
+== step 3500 val KL 0.0433 (start 0.1548)
+step 3550/4000 loss_ema 0.0394 1.40s/step ~11 min left mem 19.2G skipped 0
+step 3600/4000 loss_ema 0.0400 1.40s/step ~9 min left mem 19.2G skipped 0
+step 3650/4000 loss_ema 0.0349 1.40s/step ~8 min left mem 19.2G skipped 0
+step 3700/4000 loss_ema 0.0337 1.40s/step ~7 min left mem 19.2G skipped 0
+step 3750/4000 loss_ema 0.0333 1.40s/step ~6 min left mem 19.2G skipped 0
+step 3800/4000 loss_ema 0.0340 1.40s/step ~5 min left mem 19.2G skipped 0
+step 3850/4000 loss_ema 0.0349 1.40s/step ~4 min left mem 19.2G skipped 0
+step 3900/4000 loss_ema 0.0322 1.40s/step ~2 min left mem 19.2G skipped 0
+step 3950/4000 loss_ema 0.0342 1.40s/step ~1 min left mem 19.2G skipped 0
+step 4000/4000 loss_ema 0.0375 1.40s/step ~0 min left mem 19.2G skipped 0
+== step 4000 val KL 0.0430 (start 0.1548)
+done: val KL 0.1548 -> 0.0430; saved /w/out/writer_qwen3_4b.pt
+=== EVAL
+Tue Nov 10 21:31:46 UTC 2026
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   6%|▋         | 25/398 [00:00<00:01, 248.16it/s]Loading weights:  13%|█▎        | 50/398 [00:00<00:01, 242.53it/s]Loading weights:  20%|█▉        | 78/398 [00:00<00:01, 253.66it/s]Loading weights:  26%|██▌       | 104/398 [00:00<00:01, 147.84it/s]Loading weights:  31%|███       | 123/398 [00:00<00:02, 130.08it/s]Loading weights:  35%|███▍      | 139/398 [00:00<00:02, 111.33it/s]Loading weights:  38%|███▊      | 153/398 [00:01<00:02, 97.61it/s] Loading weights:  41%|████▏     | 165/398 [00:01<00:02, 101.50it/s]Loading weights:  44%|████▍     | 177/398 [00:01<00:02, 104.54it/s]Loading weights:  47%|████▋     | 189/398 [00:01<00:01, 106.04it/s]Loading weights:  51%|█████     | 201/398 [00:01<00:02, 87.94it/s] Loading weights:  54%|█████▎    | 213/398 [00:01<00:02, 79.97it/s]Loading weights:  56%|█████▋    | 224/398 [00:01<00:02, 85.70it/s]Loading weights:  59%|█████▉    | 234/398 [00:02<00:01, 87.47it/s]Loading weights:  61%|██████▏   | 244/398 [00:02<00:02, 74.13it/s]Loading weights:  64%|██████▎   | 253/398 [00:02<00:01, 77.61it/s]Loading weights:  66%|██████▌   | 262/398 [00:02<00:02, 64.70it/s]Loading weights:  70%|██████▉   | 278/398 [00:02<00:01, 84.95it/s]Loading weights:  72%|███████▏  | 288/398 [00:02<00:01, 88.08it/s]Loading weights:  75%|███████▍  | 298/398 [00:03<00:01, 61.25it/s]Loading weights:  78%|███████▊  | 310/398 [00:03<00:01, 72.49it/s]Loading weights:  80%|████████  | 320/398 [00:03<00:01, 64.80it/s]Loading weights:  82%|████████▏ | 328/398 [00:03<00:01, 67.49it/s]Loading weights:  84%|████████▍ | 336/398 [00:03<00:01, 57.55it/s]Loading weights:  86%|████████▋ | 344/398 [00:03<00:00, 62.11it/s]Loading weights:  89%|████████▉ | 355/398 [00:03<00:00, 72.65it/s]Loading weights:  92%|█████████▏| 366/398 [00:04<00:00, 65.11it/s]Loading weights:  94%|█████████▍| 375/398 [00:04<00:00, 70.04it/s]Loading weights:  96%|█████████▌| 383/398 [00:04<00:00, 70.89it/s]Loading weights:  98%|█████████▊| 391/398 [00:04<00:00, 60.84it/s]Loading weights: 100%|██████████| 398/398 [00:04<00:00, 88.51it/s]
+model Qwen/Qwen3-4B on cuda (torch.float16)
+self-check: 4-D mask vs none 1.27e-03 | iso F vs other prefix 0.00e+00 | iso vs full on F 7.46e-01
+adapter loaded: /w/out/writer_qwen3_4b.pt
+[1/60] P=824 F=293 S=137 iso kl=0.193 top1=0.94 | 45.9s each, ~45 min left
+[2/60] P=3000 F=826 S=200 iso kl=0.045 top1=0.96 | 26.9s each, ~26 min left
+[3/60] P=3000 F=1217 S=200 iso kl=0.081 top1=0.88 | 28.0s each, ~27 min left
+[4/60] P=3000 F=1281 S=171 iso kl=0.134 top1=0.93 | 27.1s each, ~25 min left
+[5/60] P=3000 F=807 S=112 iso kl=0.151 top1=0.90 | 26.9s each, ~25 min left
+[6/60] P=3000 F=1636 S=200 iso kl=0.174 top1=0.83 | 27.3s each, ~25 min left
+[7/60] P=3000 F=362 S=175 iso kl=0.066 top1=0.94 | 27.1s each, ~24 min left
+[8/60] P=3000 F=865 S=122 iso kl=0.233 top1=0.94 | 26.5s each, ~23 min left
+[9/60] P=3000 F=504 S=176 iso kl=0.120 top1=0.90 | 27.0s each, ~23 min left
+[10/60] P=3000 F=1037 S=200 iso kl=0.120 top1=0.92 | 27.7s each, ~23 min left
+[11/60] P=1356 F=240 S=135 iso kl=0.299 top1=0.90 | 26.6s each, ~22 min left
+[12/60] P=3000 F=920 S=200 iso kl=0.071 top1=0.91 | 26.8s each, ~21 min left
+[13/60] P=3000 F=904 S=200 iso kl=0.113 top1=0.91 | 26.6s each, ~21 min left
+[14/60] P=2892 F=573 S=72 iso kl=0.611 top1=0.90 | 26.1s each, ~20 min left
+[15/60] P=3000 F=564 S=200 iso kl=0.160 top1=0.94 | 26.1s each, ~20 min left
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (148737 > 131072). Running this sequence through the model will result in indexing errors
+[16/60] P=3000 F=1293 S=200 iso kl=0.123 top1=0.96 | 26.6s each, ~20 min left
+[17/60] P=3000 F=917 S=200 iso kl=0.101 top1=0.92 | 26.9s each, ~19 min left
+[18/60] P=3000 F=782 S=200 iso kl=0.160 top1=0.87 | 27.4s each, ~19 min left
+[19/60] P=3000 F=429 S=200 iso kl=0.111 top1=0.91 | 27.2s each, ~19 min left
+[20/60] P=3000 F=586 S=69 iso kl=0.368 top1=0.90 | 26.9s each, ~18 min left
+[21/60] P=3000 F=1416 S=80 iso kl=0.061 top1=0.95 | 26.9s each, ~17 min left
+[22/60] P=3000 F=432 S=200 iso kl=0.086 top1=0.96 | 26.0s each, ~16 min left
+[23/60] P=3000 F=589 S=200 iso kl=0.094 top1=0.93 | 26.3s each, ~16 min left
+[24/60] P=3000 F=663 S=200 iso kl=0.067 top1=0.90 | 26.1s each, ~16 min left
+[25/60] P=3000 F=1005 S=200 iso kl=0.069 top1=0.88 | 26.2s each, ~15 min left
+[26/60] P=3000 F=933 S=200 iso kl=0.111 top1=0.91 | 26.6s each, ~15 min left
+[27/60] P=3000 F=467 S=200 iso kl=0.122 top1=0.91 | 26.3s each, ~14 min left
+[28/60] P=3000 F=678 S=84 iso kl=0.233 top1=0.90 | 26.4s each, ~14 min left
+[29/60] P=3000 F=1260 S=200 iso kl=0.068 top1=0.94 | 26.5s each, ~14 min left
+[30/60] P=3000 F=753 S=200 iso kl=0.134 top1=0.87 | 26.6s each, ~13 min left
+[31/60] P=3000 F=479 S=200 iso kl=0.074 top1=0.91 | 26.9s each, ~13 min left
+[32/60] P=3000 F=1488 S=200 iso kl=0.115 top1=0.88 | 27.1s each, ~13 min left
+[33/60] P=3000 F=621 S=200 iso kl=0.112 top1=0.88 | 27.1s each, ~12 min left
+[34/60] P=3000 F=1004 S=192 iso kl=0.251 top1=0.92 | 27.4s each, ~12 min left
+[35/60] P=1315 F=711 S=200 iso kl=0.240 top1=0.88 | 27.1s each, ~11 min left
+[36/60] P=3000 F=797 S=200 iso kl=0.142 top1=0.92 | 27.3s each, ~11 min left
+[37/60] P=3000 F=530 S=52 iso kl=0.425 top1=0.90 | 27.1s each, ~10 min left
+[38/60] P=3000 F=408 S=200 iso kl=0.185 top1=0.84 | 27.0s each, ~10 min left
+[39/60] P=3000 F=571 S=200 iso kl=0.177 top1=0.94 | 26.5s each, ~9 min left
+[40/60] P=3000 F=1431 S=200 iso kl=0.179 top1=0.90 | 26.6s each, ~9 min left
+[41/60] P=3000 F=269 S=140 iso kl=0.095 top1=0.91 | 26.6s each, ~8 min left
+[42/60] P=3000 F=1260 S=200 iso kl=0.096 top1=0.91 | 26.7s each, ~8 min left
+[43/60] P=3000 F=1143 S=200 iso kl=0.054 top1=0.89 | 26.9s each, ~8 min left
+[44/60] P=3000 F=705 S=126 iso kl=0.326 top1=0.89 | 27.1s each, ~7 min left
+[45/60] P=3000 F=1064 S=200 iso kl=0.133 top1=0.94 | 27.1s each, ~7 min left
+[46/60] P=3000 F=530 S=81 iso kl=0.303 top1=0.89 | 27.2s each, ~6 min left
+[47/60] P=3000 F=1245 S=197 iso kl=0.184 top1=0.90 | 27.1s each, ~6 min left
+[48/60] P=3000 F=820 S=200 iso kl=0.048 top1=0.94 | 27.2s each, ~5 min left
+[49/60] P=3000 F=1759 S=101 iso kl=0.159 top1=0.88 | 27.3s each, ~5 min left
+[50/60] P=3000 F=1227 S=200 iso kl=0.064 top1=0.88 | 27.4s each, ~5 min left
+[51/60] P=3000 F=339 S=200 iso kl=0.141 top1=0.87 | 27.3s each, ~4 min left
+[52/60] P=3000 F=701 S=200 iso kl=0.087 top1=0.89 | 27.2s each, ~4 min left
+[53/60] P=3000 F=1674 S=200 iso kl=0.123 top1=0.89 | 27.5s each, ~3 min left
+[54/60] P=3000 F=1548 S=200 iso kl=0.090 top1=0.92 | 27.2s each, ~3 min left
+[55/60] P=3000 F=963 S=200 iso kl=0.052 top1=0.97 | 27.3s each, ~2 min left
+[56/60] P=3000 F=656 S=105 iso kl=0.134 top1=0.92 | 27.2s each, ~2 min left
+[57/60] P=3000 F=447 S=200 iso kl=0.042 top1=0.98 | 27.1s each, ~1 min left
+[58/60] P=3000 F=844 S=200 iso kl=0.179 top1=0.84 | 27.1s each, ~1 min left
+[59/60] P=3000 F=468 S=200 iso kl=0.110 top1=0.92 | 26.9s each, ~0 min left
+[60/60] P=3000 F=275 S=200 iso kl=0.122 top1=0.90 | 26.9s each, ~0 min left
+{
+ "full": {
+  "kl_mean": 0.0,
+  "kl_median": 0.0,
+  "top1_mean": 1.0,
+  "nll_mean": 2.7157,
+  "retained": 1.0,
+  "gen_n": 56,
+  "name_ref": 0.3929,
+  "exact_ref": 0.0,
+  "name_full": 1.0,
+  "exact_full": 1.0
+ },
+ "iso": {
+  "kl_mean": 0.1487,
+  "kl_median": 0.1224,
+  "top1_mean": 0.9093,
+  "nll_mean": 2.8398,
+  "retained": 0.2268,
+  "gen_n": 56,
+  "name_ref": 0.4286,
+  "exact_ref": 0.0,
+  "name_full": 0.7679,
+  "exact_full": 0.2321
+ },
+ "repair_k64": {
+  "kl_mean": 0.1636,
+  "kl_median": 0.1119,
+  "top1_mean": 0.9252,
+  "nll_mean": 2.7406,
+  "retained": 0.8447,
+  "gen_n": 56,
+  "name_ref": 0.5,
+  "exact_ref": 0.0,
+  "name_full": 0.8571,
+  "exact_full": 0.3393
+ },
+ "repair_p15": {
+  "kl_mean": 0.1243,
+  "kl_median": 0.0957,
+  "top1_mean": 0.9291,
+  "nll_mean": 2.7542,
+  "retained": 0.7599,
+  "gen_n": 56,
+  "name_ref": 0.4464,
+  "exact_ref": 0.0,
+  "name_full": 0.875,
+  "exact_full": 0.3571
+ },
+ "repair_p30": {
+  "kl_mean": 0.1012,
+  "kl_median": 0.0732,
+  "top1_mean": 0.9435,
+  "nll_mean": 2.7321,
+  "retained": 0.8978,
+  "gen_n": 56,
+  "name_ref": 0.4464,
+  "exact_ref": 0.0,
+  "name_full": 0.8929,
+  "exact_full": 0.4464
+ },
+ "repair_dev15": {
+  "kl_mean": 0.1421,
+  "kl_median": 0.1071,
+  "top1_mean": 0.9331,
+  "nll_mean": 2.7245,
+  "retained": 0.9447,
+  "gen_n": 56,
+  "name_ref": 0.4464,
+  "exact_ref": 0.0,
+  "name_full": 0.9107,
+  "exact_full": 0.3929
+ },
+ "repair_dev30": {
+  "kl_mean": 0.1183,
+  "kl_median": 0.0849,
+  "top1_mean": 0.9446,
+  "nll_mean": 2.7176,
+  "retained": 0.9879,
+  "gen_n": 56,
+  "name_ref": 0.4464,
+  "exact_ref": 0.0,
+  "name_full": 0.9286,
+  "exact_full": 0.4464
+ },
+ "writer": {
+  "kl_mean": 0.0337,
+  "kl_median": 0.032,
+  "top1_mean": 0.9501,
+  "nll_mean": 2.5732,
+  "retained": 1.8874,
+  "gen_n": 56,
+  "name_ref": 0.3929,
+  "exact_ref": 0.0,
+  "name_full": 0.9286,
+  "exact_full": 0.4643
+ },
+ "nofile": {
+  "kl_mean": 0.2316,
+  "kl_median": 0.119,
+  "top1_mean": 0.9022,
+  "nll_mean": 2.8762,
+  "retained": 0.0,
+  "gen_n": 56,
+  "name_ref": 0.4821,
+  "exact_ref": 0.0,
+  "name_full": 0.6964,
+  "exact_full": 0.25
+ }
+}
+Tue Nov 10 21:58:57 UTC 2026
+ALLDONE

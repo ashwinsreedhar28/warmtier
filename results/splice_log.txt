@@ -1,0 +1,370 @@
+Tue Nov 10 20:42:45 UTC 2026
+NVIDIA L40S, 46068 MiB
+[notice] A new release of pip is available: 23.3.1 -> 26.3
+[notice] To update, run: python -m pip install --upgrade pip
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+torch 2.14.1+cu130 tf 5.20.2 cuda True
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:  25%|██▌       | 1/4 [00:01<00:05,  1.96s/it]Fetching 4 files:  50%|█████     | 2/4 [00:02<00:02,  1.16s/it]Fetching 4 files:  75%|███████▌  | 3/4 [00:03<00:00,  1.09it/s]Fetching 4 files: 100%|██████████| 4/4 [00:03<00:00,  1.47it/s]Fetching 4 files: 100%|██████████| 4/4 [00:03<00:00,  1.14it/s]
+train-00000-of-00008.parquet train-00001-of-00008.parquet train-00002-of-00008.parquet train-00003-of-00008.parquet 
+=== SPLICE Qwen3-4B
+Tue Nov 10 20:44:09 UTC 2026
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files:  33%|███▎      | 1/3 [00:01<00:02,  1.41s/it]Fetching 3 files:  67%|██████▋   | 2/3 [00:08<00:04,  4.60s/it]Fetching 3 files: 100%|██████████| 3/3 [00:31<00:00, 12.98s/it]Fetching 3 files: 100%|██████████| 3/3 [00:31<00:00, 10.40s/it]
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   6%|▌         | 23/398 [00:00<00:01, 229.84it/s]Loading weights:  17%|█▋        | 66/398 [00:00<00:00, 347.04it/s]Loading weights:  28%|██▊       | 110/398 [00:00<00:00, 389.04it/s]Loading weights:  37%|███▋      | 149/398 [00:00<00:00, 388.18it/s]Loading weights:  47%|████▋     | 188/398 [00:00<00:00, 383.59it/s]Loading weights:  57%|█████▋    | 227/398 [00:00<00:00, 385.71it/s]Loading weights:  67%|██████▋   | 266/398 [00:00<00:00, 381.78it/s]Loading weights:  77%|███████▋  | 305/398 [00:00<00:00, 379.78it/s]Loading weights:  86%|████████▌ | 343/398 [00:00<00:00, 373.85it/s]Loading weights:  96%|█████████▌| 381/398 [00:01<00:00, 304.22it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 359.45it/s]
+model Qwen/Qwen3-4B on cuda (torch.float16)
+self-check: 4-D mask vs none 1.83e-03 | iso F vs other prefix 0.00e+00 | iso vs full on F 7.48e-01
+[1/120] P=2500 F=1161 M=1037 splice kl=0.017 mask_all kl=0.018 full kl=0.032 | 12.3s each, ~24 min left
+[2/120] P=2500 F=532 M=158 splice kl=0.031 mask_all kl=0.020 full kl=0.068 | 9.3s each, ~18 min left
+[3/120] P=2500 F=515 M=269 splice kl=0.015 mask_all kl=0.011 full kl=0.030 | 8.8s each, ~17 min left
+[4/120] P=2500 F=551 M=444 splice kl=0.114 mask_all kl=0.011 full kl=0.105 | 8.8s each, ~17 min left
+[5/120] P=2500 F=319 M=637 splice kl=0.020 mask_all kl=0.007 full kl=0.029 | 8.8s each, ~17 min left
+[6/120] P=2500 F=315 M=221 splice kl=0.008 mask_all kl=0.008 full kl=0.008 | 8.3s each, ~16 min left
+[7/120] P=2500 F=1276 M=1503 splice kl=0.026 mask_all kl=0.011 full kl=0.129 | 8.5s each, ~16 min left
+[8/120] P=2500 F=866 M=670 splice kl=0.010 mask_all kl=0.011 full kl=0.062 | 8.2s each, ~15 min left
+[9/120] P=2500 F=303 M=609 splice kl=0.035 mask_all kl=0.010 full kl=0.037 | 8.2s each, ~15 min left
+[10/120] P=2500 F=278 M=994 splice kl=0.008 mask_all kl=0.008 full kl=0.009 | 8.0s each, ~15 min left
+[11/120] P=2500 F=349 M=2156 splice kl=0.005 mask_all kl=0.003 full kl=0.005 | 8.3s each, ~15 min left
+[12/120] P=2500 F=249 M=471 splice kl=0.036 mask_all kl=0.015 full kl=0.010 | 8.3s each, ~15 min left
+[13/120] P=2500 F=1953 M=2327 splice kl=0.094 mask_all kl=0.010 full kl=1.882 | 8.5s each, ~15 min left
+[14/120] P=2500 F=277 M=1095 splice kl=0.018 mask_all kl=0.015 full kl=0.018 | 8.4s each, ~15 min left
+[15/120] P=2500 F=1385 M=208 splice kl=0.034 mask_all kl=0.024 full kl=0.175 | 8.3s each, ~14 min left
+[16/120] P=2500 F=471 M=719 splice kl=0.022 mask_all kl=0.016 full kl=0.023 | 8.3s each, ~14 min left
+[17/120] P=2500 F=1076 M=1692 splice kl=0.011 mask_all kl=0.006 full kl=0.012 | 8.3s each, ~14 min left
+[18/120] P=2500 F=476 M=542 splice kl=0.045 mask_all kl=0.022 full kl=0.129 | 8.3s each, ~14 min left
+[19/120] P=2500 F=541 M=965 splice kl=0.098 mask_all kl=0.016 full kl=0.663 | 8.3s each, ~14 min left
+[20/120] P=2500 F=573 M=280 splice kl=0.106 mask_all kl=0.007 full kl=0.075 | 8.3s each, ~14 min left
+[21/120] P=2500 F=809 M=152 splice kl=0.086 mask_all kl=0.038 full kl=0.189 | 8.3s each, ~14 min left
+[22/120] P=2500 F=228 M=262 splice kl=0.024 mask_all kl=0.015 full kl=0.021 | 8.2s each, ~13 min left
+[23/120] P=2500 F=281 M=103 splice kl=0.026 mask_all kl=0.010 full kl=0.093 | 8.1s each, ~13 min left
+[24/120] P=2500 F=461 M=273 splice kl=0.008 mask_all kl=0.004 full kl=0.009 | 8.1s each, ~13 min left
+[25/120] P=1155 F=632 M=1364 splice kl=0.011 mask_all kl=0.019 full kl=0.012 | 8.0s each, ~13 min left
+[26/120] P=898 F=1765 M=2557 splice kl=0.019 mask_all kl=0.020 full kl=0.015 | 8.0s each, ~13 min left
+[27/120] P=2500 F=1089 M=483 splice kl=0.013 mask_all kl=0.009 full kl=0.011 | 8.0s each, ~12 min left
+[28/120] P=2500 F=932 M=208 splice kl=0.049 mask_all kl=0.045 full kl=0.068 | 8.0s each, ~12 min left
+[29/120] P=2500 F=422 M=558 splice kl=0.012 mask_all kl=0.008 full kl=0.012 | 8.0s each, ~12 min left
+[30/120] P=2500 F=445 M=324 splice kl=0.017 mask_all kl=0.013 full kl=0.031 | 7.9s each, ~12 min left
+[31/120] P=2500 F=445 M=462 splice kl=0.020 mask_all kl=0.014 full kl=0.018 | 7.9s each, ~12 min left
+[32/120] P=2500 F=385 M=678 splice kl=0.021 mask_all kl=0.020 full kl=0.020 | 8.0s each, ~12 min left
+[33/120] P=2500 F=628 M=275 splice kl=0.140 mask_all kl=0.025 full kl=1.118 | 8.0s each, ~12 min left
+[34/120] P=2500 F=633 M=579 splice kl=0.059 mask_all kl=0.013 full kl=0.015 | 8.0s each, ~11 min left
+[35/120] P=2500 F=264 M=203 splice kl=0.053 mask_all kl=0.011 full kl=0.139 | 8.0s each, ~11 min left
+[36/120] P=2500 F=342 M=342 splice kl=0.013 mask_all kl=0.008 full kl=0.011 | 8.0s each, ~11 min left
+[37/120] P=2500 F=568 M=326 splice kl=0.023 mask_all kl=0.016 full kl=0.028 | 8.0s each, ~11 min left
+[38/120] P=2500 F=313 M=137 splice kl=0.008 mask_all kl=0.007 full kl=0.014 | 7.9s each, ~11 min left
+[39/120] P=2500 F=599 M=966 splice kl=0.015 mask_all kl=0.010 full kl=0.024 | 8.0s each, ~11 min left
+[40/120] P=2500 F=857 M=2075 splice kl=0.134 mask_all kl=0.006 full kl=0.122 | 8.1s each, ~11 min left
+[41/120] P=2500 F=390 M=792 splice kl=0.036 mask_all kl=0.002 full kl=0.051 | 8.1s each, ~11 min left
+[42/120] P=1693 F=689 M=2580 splice kl=0.011 mask_all kl=0.006 full kl=0.120 | 8.1s each, ~11 min left
+[43/120] P=2500 F=483 M=1892 splice kl=0.048 mask_all kl=0.011 full kl=0.024 | 8.2s each, ~10 min left
+[44/120] P=2500 F=350 M=1014 splice kl=0.095 mask_all kl=0.005 full kl=0.374 | 8.2s each, ~10 min left
+[45/120] P=2500 F=590 M=606 splice kl=0.015 mask_all kl=0.014 full kl=0.014 | 8.1s each, ~10 min left
+[46/120] P=2500 F=340 M=1424 splice kl=0.016 mask_all kl=0.018 full kl=0.026 | 8.2s each, ~10 min left
+[47/120] P=555 F=996 M=1847 splice kl=0.019 mask_all kl=0.020 full kl=0.017 | 8.2s each, ~10 min left
+[48/120] P=2500 F=528 M=239 splice kl=0.035 mask_all kl=0.035 full kl=0.037 | 8.1s each, ~10 min left
+[49/120] P=2500 F=380 M=261 splice kl=0.013 mask_all kl=0.012 full kl=0.016 | 8.1s each, ~10 min left
+[50/120] P=2500 F=593 M=226 splice kl=0.014 mask_all kl=0.010 full kl=0.029 | 8.1s each, ~9 min left
+[51/120] P=2500 F=253 M=449 splice kl=0.037 mask_all kl=0.020 full kl=0.035 | 8.0s each, ~9 min left
+[52/120] P=2500 F=466 M=518 splice kl=0.051 mask_all kl=0.013 full kl=0.437 | 8.0s each, ~9 min left
+[53/120] P=2500 F=757 M=1804 splice kl=0.027 mask_all kl=0.007 full kl=0.035 | 8.1s each, ~9 min left
+[54/120] P=988 F=370 M=1165 splice kl=0.008 mask_all kl=0.004 full kl=0.009 | 8.1s each, ~9 min left
+[55/120] P=2500 F=350 M=521 splice kl=0.026 mask_all kl=0.017 full kl=0.026 | 8.0s each, ~9 min left
+[56/120] P=2500 F=977 M=1096 splice kl=0.206 mask_all kl=0.017 full kl=0.052 | 8.1s each, ~9 min left
+[57/120] P=2500 F=840 M=1881 splice kl=0.013 mask_all kl=0.006 full kl=0.015 | 8.1s each, ~9 min left
+[58/120] P=2500 F=912 M=492 splice kl=0.084 mask_all kl=0.014 full kl=0.030 | 8.2s each, ~8 min left
+[59/120] P=2500 F=230 M=305 splice kl=0.142 mask_all kl=0.008 full kl=0.055 | 8.1s each, ~8 min left
+[60/120] P=2500 F=530 M=1279 splice kl=0.040 mask_all kl=0.005 full kl=0.104 | 8.2s each, ~8 min left
+[61/120] P=2500 F=920 M=633 splice kl=0.005 mask_all kl=0.006 full kl=0.006 | 8.2s each, ~8 min left
+[62/120] P=1115 F=1380 M=2686 splice kl=0.013 mask_all kl=0.016 full kl=0.014 | 8.2s each, ~8 min left
+[63/120] P=2500 F=447 M=367 splice kl=0.009 mask_all kl=0.006 full kl=0.009 | 8.2s each, ~8 min left
+[64/120] P=2500 F=385 M=1563 splice kl=0.088 mask_all kl=0.016 full kl=0.112 | 8.2s each, ~8 min left
+[65/120] P=2500 F=867 M=224 splice kl=0.035 mask_all kl=0.038 full kl=0.039 | 8.2s each, ~8 min left
+[66/120] P=2500 F=704 M=442 splice kl=0.212 mask_all kl=0.008 full kl=1.457 | 8.2s each, ~7 min left
+[67/120] P=2500 F=393 M=427 splice kl=0.065 mask_all kl=0.007 full kl=0.108 | 8.2s each, ~7 min left
+[68/120] P=2500 F=566 M=276 splice kl=0.041 mask_all kl=0.031 full kl=0.040 | 8.2s each, ~7 min left
+[69/120] P=2500 F=2000 M=2866 splice kl=0.013 mask_all kl=0.011 full kl=0.016 | 8.3s each, ~7 min left
+[70/120] P=2500 F=269 M=310 splice kl=0.024 mask_all kl=0.015 full kl=0.079 | 8.3s each, ~7 min left
+[71/120] P=2500 F=668 M=377 splice kl=0.008 mask_all kl=0.008 full kl=0.013 | 8.3s each, ~7 min left
+[72/120] P=2500 F=620 M=2977 splice kl=0.010 mask_all kl=0.005 full kl=0.007 | 8.3s each, ~7 min left
+[73/120] P=2500 F=872 M=302 splice kl=0.019 mask_all kl=0.010 full kl=0.293 | 8.3s each, ~7 min left
+[74/120] P=2500 F=1560 M=343 splice kl=0.026 mask_all kl=0.027 full kl=0.040 | 8.3s each, ~6 min left
+[75/120] P=2500 F=417 M=204 splice kl=0.016 mask_all kl=0.012 full kl=0.018 | 8.3s each, ~6 min left
+[76/120] P=2500 F=1650 M=482 splice kl=0.127 mask_all kl=0.057 full kl=0.888 | 8.3s each, ~6 min left
+[77/120] P=2500 F=518 M=374 splice kl=0.048 mask_all kl=0.022 full kl=0.050 | 8.3s each, ~6 min left
+[78/120] P=2500 F=647 M=2227 splice kl=0.011 mask_all kl=0.003 full kl=0.009 | 8.3s each, ~6 min left
+[79/120] P=2500 F=531 M=2086 splice kl=0.025 mask_all kl=0.003 full kl=0.019 | 8.4s each, ~6 min left
+[80/120] P=2500 F=430 M=1519 splice kl=0.004 mask_all kl=0.002 full kl=0.005 | 8.4s each, ~6 min left
+[81/120] P=2500 F=567 M=518 splice kl=0.017 mask_all kl=0.007 full kl=0.026 | 8.3s each, ~5 min left
+[82/120] P=2500 F=245 M=334 splice kl=0.011 mask_all kl=0.005 full kl=0.011 | 8.3s each, ~5 min left
+[83/120] P=2500 F=1912 M=387 splice kl=0.017 mask_all kl=0.010 full kl=0.097 | 8.4s each, ~5 min left
+[84/120] P=2500 F=477 M=1982 splice kl=0.004 mask_all kl=0.004 full kl=0.006 | 8.4s each, ~5 min left
+[85/120] P=2500 F=633 M=259 splice kl=0.022 mask_all kl=0.011 full kl=0.040 | 8.4s each, ~5 min left
+[86/120] P=2500 F=584 M=667 splice kl=0.013 mask_all kl=0.005 full kl=0.007 | 8.3s each, ~5 min left
+[87/120] P=2500 F=689 M=1814 splice kl=0.008 mask_all kl=0.006 full kl=0.008 | 8.4s each, ~5 min left
+[88/120] P=2500 F=377 M=197 splice kl=0.017 mask_all kl=0.009 full kl=0.021 | 8.4s each, ~4 min left
+[89/120] P=2500 F=345 M=2854 splice kl=0.006 mask_all kl=0.006 full kl=0.005 | 8.4s each, ~4 min left
+[90/120] P=1367 F=793 M=961 splice kl=0.125 mask_all kl=0.026 full kl=0.355 | 8.4s each, ~4 min left
+[91/120] P=2500 F=842 M=2977 splice kl=0.014 mask_all kl=0.007 full kl=0.021 | 8.4s each, ~4 min left
+[92/120] P=2500 F=535 M=622 splice kl=0.031 mask_all kl=0.015 full kl=0.019 | 8.4s each, ~4 min left
+[93/120] P=2500 F=286 M=1547 splice kl=0.012 mask_all kl=0.005 full kl=0.013 | 8.4s each, ~4 min left
+[94/120] P=1000 F=1037 M=2993 splice kl=0.006 mask_all kl=0.010 full kl=0.005 | 8.4s each, ~4 min left
+[95/120] P=2500 F=764 M=645 splice kl=0.017 mask_all kl=0.011 full kl=0.014 | 8.4s each, ~4 min left
+[96/120] P=2500 F=329 M=2278 splice kl=0.005 mask_all kl=0.003 full kl=0.006 | 8.5s each, ~3 min left
+[97/120] P=2500 F=1426 M=368 splice kl=0.035 mask_all kl=0.027 full kl=3.346 | 8.4s each, ~3 min left
+[98/120] P=2500 F=578 M=405 splice kl=0.007 mask_all kl=0.006 full kl=0.008 | 8.4s each, ~3 min left
+[99/120] P=2500 F=840 M=797 splice kl=0.008 mask_all kl=0.007 full kl=0.009 | 8.4s each, ~3 min left
+[100/120] P=2500 F=475 M=782 splice kl=0.040 mask_all kl=0.011 full kl=0.033 | 8.4s each, ~3 min left
+[101/120] P=2500 F=826 M=370 splice kl=0.053 mask_all kl=0.027 full kl=0.047 | 8.4s each, ~3 min left
+[102/120] P=2500 F=570 M=293 splice kl=0.017 mask_all kl=0.013 full kl=0.027 | 8.4s each, ~3 min left
+[103/120] P=2500 F=561 M=930 splice kl=0.090 mask_all kl=0.010 full kl=0.078 | 8.4s each, ~2 min left
+[104/120] P=2500 F=455 M=158 splice kl=0.018 mask_all kl=0.017 full kl=0.026 | 8.4s each, ~2 min left
+[105/120] P=2500 F=565 M=554 splice kl=0.033 mask_all kl=0.030 full kl=0.038 | 8.4s each, ~2 min left
+[106/120] P=2500 F=1190 M=526 splice kl=0.079 mask_all kl=0.042 full kl=0.310 | 8.4s each, ~2 min left
+[107/120] P=2500 F=610 M=1595 splice kl=0.057 mask_all kl=0.010 full kl=0.077 | 8.4s each, ~2 min left
+[108/120] P=2500 F=399 M=364 splice kl=0.022 mask_all kl=0.011 full kl=0.065 | 8.4s each, ~2 min left
+[109/120] P=2500 F=693 M=287 splice kl=0.024 mask_all kl=0.038 full kl=0.054 | 8.4s each, ~2 min left
+[110/120] P=2500 F=533 M=208 splice kl=0.013 mask_all kl=0.008 full kl=0.015 | 8.4s each, ~1 min left
+[111/120] P=2500 F=832 M=1691 splice kl=0.026 mask_all kl=0.020 full kl=0.020 | 8.4s each, ~1 min left
+[112/120] P=2500 F=578 M=1092 splice kl=0.035 mask_all kl=0.023 full kl=0.029 | 8.4s each, ~1 min left
+[113/120] P=2500 F=455 M=1152 splice kl=0.019 mask_all kl=0.007 full kl=0.018 | 8.4s each, ~1 min left
+[114/120] P=2500 F=471 M=171 splice kl=0.026 mask_all kl=0.016 full kl=0.111 | 8.4s each, ~1 min left
+[115/120] P=2500 F=259 M=470 splice kl=0.030 mask_all kl=0.007 full kl=0.035 | 8.3s each, ~1 min left
+[116/120] P=2500 F=401 M=319 splice kl=0.056 mask_all kl=0.029 full kl=0.922 | 8.3s each, ~1 min left
+[117/120] P=2500 F=797 M=201 splice kl=0.022 mask_all kl=0.021 full kl=0.033 | 8.3s each, ~0 min left
+[118/120] P=2500 F=423 M=1900 splice kl=0.005 mask_all kl=0.006 full kl=0.005 | 8.3s each, ~0 min left
+[119/120] P=2500 F=1909 M=2296 splice kl=0.022 mask_all kl=0.013 full kl=0.199 | 8.3s each, ~0 min left
+[120/120] P=2500 F=330 M=524 splice kl=0.163 mask_all kl=0.097 full kl=0.164 | 8.3s each, ~0 min left
+{
+ "full": {
+  "nll_mean": 2.3784,
+  "kl_evict_mean": 0.1377,
+  "top1_evict_mean": 0.9457,
+  "kl_full_mean": 0.0,
+  "gen_n": 120,
+  "name_ref": 0.5833,
+  "exact_ref": 0.0,
+  "name_evict": 0.875,
+  "exact_evict": 0.4333,
+  "name_full": 1.0,
+  "exact_full": 1.0
+ },
+ "evict_text": {
+  "nll_mean": 2.4049,
+  "kl_evict_mean": 0.0,
+  "top1_evict_mean": 1.0,
+  "kl_full_mean": 0.0736,
+  "gen_n": 120,
+  "name_ref": 0.5667,
+  "exact_ref": 0.0,
+  "name_evict": 1.0,
+  "exact_evict": 1.0,
+  "name_full": 0.875,
+  "exact_full": 0.4333
+ },
+ "splice": {
+  "nll_mean": 2.4317,
+  "kl_evict_mean": 0.0372,
+  "top1_evict_mean": 0.9537,
+  "kl_full_mean": 0.0681,
+  "gen_n": 120,
+  "name_ref": 0.5917,
+  "exact_ref": 0.0,
+  "name_evict": 0.8667,
+  "exact_evict": 0.45,
+  "name_full": 0.9667,
+  "exact_full": 0.675
+ },
+ "mask_all": {
+  "nll_mean": 2.4194,
+  "kl_evict_mean": 0.0145,
+  "top1_evict_mean": 0.9643,
+  "kl_full_mean": 0.0689,
+  "gen_n": 120,
+  "name_ref": 0.575,
+  "exact_ref": 0.0,
+  "name_evict": 0.8833,
+  "exact_evict": 0.5417,
+  "name_full": 0.9167,
+  "exact_full": 0.4833
+ }
+}
+=== SPLICE Qwen3-8B
+Tue Nov 10 21:01:32 UTC 2026
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files:  20%|██        | 1/5 [00:09<00:38,  9.71s/it]Fetching 5 files:  40%|████      | 2/5 [00:11<00:14,  4.90s/it]Fetching 5 files:  60%|██████    | 3/5 [00:13<00:07,  3.54s/it]Fetching 5 files:  80%|████████  | 4/5 [00:15<00:03,  3.22s/it]Fetching 5 files: 100%|██████████| 5/5 [00:19<00:00,  3.28s/it]Fetching 5 files: 100%|██████████| 5/5 [00:19<00:00,  3.86s/it]
+Loading weights:   0%|          | 0/399 [00:00<?, ?it/s]Loading weights:   1%|          | 2/399 [00:00<00:20, 18.91it/s]Loading weights:   8%|▊         | 32/399 [00:00<00:02, 124.42it/s]Loading weights:  14%|█▍        | 56/399 [00:00<00:02, 166.01it/s]Loading weights:  20%|█▉        | 78/399 [00:00<00:01, 183.26it/s]Loading weights:  24%|██▍       | 97/399 [00:00<00:01, 184.30it/s]Loading weights:  29%|██▉       | 116/399 [00:00<00:01, 184.27it/s]Loading weights:  34%|███▍      | 137/399 [00:00<00:01, 191.45it/s]Loading weights:  39%|███▉      | 157/399 [00:00<00:01, 192.95it/s]Loading weights:  45%|████▍     | 178/399 [00:00<00:01, 195.46it/s]Loading weights:  51%|█████     | 202/399 [00:01<00:01, 167.18it/s]Loading weights:  55%|█████▌    | 220/399 [00:01<00:01, 170.18it/s]Loading weights:  60%|█████▉    | 238/399 [00:01<00:00, 171.38it/s]Loading weights:  64%|██████▍   | 256/399 [00:01<00:00, 172.94it/s]Loading weights:  69%|██████▊   | 274/399 [00:01<00:00, 174.84it/s]Loading weights:  73%|███████▎  | 292/399 [00:01<00:00, 174.98it/s]Loading weights:  78%|███████▊  | 310/399 [00:01<00:00, 175.76it/s]Loading weights:  83%|████████▎ | 331/399 [00:01<00:00, 183.73it/s]Loading weights:  88%|████████▊ | 350/399 [00:02<00:00, 148.12it/s]Loading weights:  92%|█████████▏| 366/399 [00:02<00:00, 148.87it/s]Loading weights:  97%|█████████▋| 386/399 [00:02<00:00, 160.27it/s]Loading weights: 100%|██████████| 399/399 [00:02<00:00, 173.17it/s]
+model Qwen/Qwen3-8B on cuda (torch.float16)
+self-check: 4-D mask vs none 1.16e-03 | iso F vs other prefix 0.00e+00 | iso vs full on F 3.97e-01
+[1/120] P=2500 F=1161 M=1037 splice kl=0.016 mask_all kl=0.021 full kl=0.031 | 16.2s each, ~32 min left
+[2/120] P=2500 F=532 M=158 splice kl=0.035 mask_all kl=0.012 full kl=0.056 | 12.9s each, ~25 min left
+[3/120] P=2500 F=515 M=269 splice kl=0.021 mask_all kl=0.012 full kl=0.024 | 11.6s each, ~23 min left
+[4/120] P=2500 F=551 M=444 splice kl=0.049 mask_all kl=0.005 full kl=0.098 | 11.0s each, ~21 min left
+[5/120] P=2500 F=319 M=637 splice kl=0.014 mask_all kl=0.008 full kl=0.017 | 10.4s each, ~20 min left
+[6/120] P=2500 F=315 M=221 splice kl=0.010 mask_all kl=0.009 full kl=0.013 | 10.5s each, ~20 min left
+[7/120] P=2500 F=1276 M=1503 splice kl=0.021 mask_all kl=0.008 full kl=0.094 | 10.8s each, ~20 min left
+[8/120] P=2500 F=866 M=670 splice kl=0.009 mask_all kl=0.009 full kl=0.042 | 10.4s each, ~19 min left
+[9/120] P=2500 F=303 M=609 splice kl=0.020 mask_all kl=0.004 full kl=0.024 | 10.3s each, ~19 min left
+[10/120] P=2500 F=278 M=994 splice kl=0.004 mask_all kl=0.003 full kl=0.003 | 10.4s each, ~19 min left
+[11/120] P=2500 F=349 M=2156 splice kl=0.004 mask_all kl=0.002 full kl=0.007 | 10.9s each, ~20 min left
+[12/120] P=2500 F=249 M=471 splice kl=0.019 mask_all kl=0.021 full kl=0.012 | 10.7s each, ~19 min left
+[13/120] P=2500 F=1953 M=2327 splice kl=0.049 mask_all kl=0.009 full kl=1.666 | 11.0s each, ~20 min left
+[14/120] P=2500 F=277 M=1095 splice kl=0.009 mask_all kl=0.007 full kl=0.009 | 11.0s each, ~19 min left
+[15/120] P=2500 F=1385 M=208 splice kl=0.016 mask_all kl=0.010 full kl=0.210 | 10.8s each, ~19 min left
+[16/120] P=2500 F=471 M=719 splice kl=0.019 mask_all kl=0.010 full kl=0.015 | 10.9s each, ~19 min left
+[17/120] P=2500 F=1076 M=1692 splice kl=0.009 mask_all kl=0.006 full kl=0.014 | 11.1s each, ~19 min left
+[18/120] P=2500 F=476 M=542 splice kl=0.039 mask_all kl=0.020 full kl=0.088 | 10.8s each, ~18 min left
+[19/120] P=2500 F=541 M=965 splice kl=0.221 mask_all kl=0.008 full kl=0.614 | 10.9s each, ~18 min left
+[20/120] P=2500 F=573 M=280 splice kl=0.068 mask_all kl=0.005 full kl=0.064 | 11.0s each, ~18 min left
+[21/120] P=2500 F=809 M=152 splice kl=0.029 mask_all kl=0.019 full kl=0.085 | 11.0s each, ~18 min left
+[22/120] P=2500 F=228 M=262 splice kl=0.019 mask_all kl=0.006 full kl=0.027 | 10.8s each, ~18 min left
+[23/120] P=2500 F=281 M=103 splice kl=0.017 mask_all kl=0.011 full kl=0.034 | 10.8s each, ~17 min left
+[24/120] P=2500 F=461 M=273 splice kl=0.004 mask_all kl=0.004 full kl=0.004 | 10.7s each, ~17 min left
+[25/120] P=1155 F=632 M=1364 splice kl=0.008 mask_all kl=0.005 full kl=0.008 | 10.6s each, ~17 min left
+[26/120] P=898 F=1765 M=2557 splice kl=0.015 mask_all kl=0.005 full kl=0.023 | 10.6s each, ~17 min left
+[27/120] P=2500 F=1089 M=483 splice kl=0.013 mask_all kl=0.007 full kl=0.011 | 10.7s each, ~17 min left
+[28/120] P=2500 F=932 M=208 splice kl=0.009 mask_all kl=0.006 full kl=0.013 | 10.7s each, ~16 min left
+[29/120] P=2500 F=422 M=558 splice kl=0.010 mask_all kl=0.007 full kl=0.013 | 10.6s each, ~16 min left
+[30/120] P=2500 F=445 M=324 splice kl=0.006 mask_all kl=0.005 full kl=0.009 | 10.6s each, ~16 min left
+[31/120] P=2500 F=445 M=462 splice kl=0.010 mask_all kl=0.009 full kl=0.011 | 10.6s each, ~16 min left
+[32/120] P=2500 F=385 M=678 splice kl=0.010 mask_all kl=0.007 full kl=0.010 | 10.6s each, ~16 min left
+[33/120] P=2500 F=628 M=275 splice kl=0.135 mask_all kl=0.019 full kl=1.145 | 10.7s each, ~15 min left
+[34/120] P=2500 F=633 M=579 splice kl=0.023 mask_all kl=0.013 full kl=0.018 | 10.7s each, ~15 min left
+[35/120] P=2500 F=264 M=203 splice kl=0.025 mask_all kl=0.007 full kl=0.099 | 10.7s each, ~15 min left
+[36/120] P=2500 F=342 M=342 splice kl=0.011 mask_all kl=0.007 full kl=0.010 | 10.8s each, ~15 min left
+[37/120] P=2500 F=568 M=326 splice kl=0.022 mask_all kl=0.017 full kl=0.022 | 10.7s each, ~15 min left
+[38/120] P=2500 F=313 M=137 splice kl=0.006 mask_all kl=0.005 full kl=0.007 | 10.7s each, ~15 min left
+[39/120] P=2500 F=599 M=966 splice kl=0.015 mask_all kl=0.009 full kl=0.021 | 10.7s each, ~14 min left
+[40/120] P=2500 F=857 M=2075 splice kl=0.032 mask_all kl=0.005 full kl=0.066 | 10.8s each, ~14 min left
+[41/120] P=2500 F=390 M=792 splice kl=0.027 mask_all kl=0.002 full kl=0.034 | 10.8s each, ~14 min left
+[42/120] P=1693 F=689 M=2580 splice kl=0.006 mask_all kl=0.001 full kl=0.181 | 10.9s each, ~14 min left
+[43/120] P=2500 F=483 M=1892 splice kl=0.040 mask_all kl=0.006 full kl=0.011 | 11.0s each, ~14 min left
+[44/120] P=2500 F=350 M=1014 splice kl=0.090 mask_all kl=0.004 full kl=0.091 | 11.0s each, ~14 min left
+[45/120] P=2500 F=590 M=606 splice kl=0.017 mask_all kl=0.012 full kl=0.013 | 10.9s each, ~14 min left
+[46/120] P=2500 F=340 M=1424 splice kl=0.014 mask_all kl=0.009 full kl=0.012 | 11.0s each, ~14 min left
+[47/120] P=555 F=996 M=1847 splice kl=0.016 mask_all kl=0.008 full kl=0.018 | 11.0s each, ~13 min left
+[48/120] P=2500 F=528 M=239 splice kl=0.008 mask_all kl=0.006 full kl=0.010 | 11.0s each, ~13 min left
+[49/120] P=2500 F=380 M=261 splice kl=0.010 mask_all kl=0.009 full kl=0.013 | 11.0s each, ~13 min left
+[50/120] P=2500 F=593 M=226 splice kl=0.015 mask_all kl=0.008 full kl=0.022 | 10.9s each, ~13 min left
+[51/120] P=2500 F=253 M=449 splice kl=0.022 mask_all kl=0.012 full kl=0.035 | 10.9s each, ~12 min left
+[52/120] P=2500 F=466 M=518 splice kl=0.062 mask_all kl=0.006 full kl=0.239 | 10.9s each, ~12 min left
+[53/120] P=2500 F=757 M=1804 splice kl=0.022 mask_all kl=0.005 full kl=0.020 | 10.9s each, ~12 min left
+[54/120] P=988 F=370 M=1165 splice kl=0.007 mask_all kl=0.007 full kl=0.007 | 10.8s each, ~12 min left
+[55/120] P=2500 F=350 M=521 splice kl=0.031 mask_all kl=0.022 full kl=0.021 | 10.8s each, ~12 min left
+[56/120] P=2500 F=977 M=1096 splice kl=0.130 mask_all kl=0.017 full kl=0.037 | 10.8s each, ~11 min left
+[57/120] P=2500 F=840 M=1881 splice kl=0.008 mask_all kl=0.003 full kl=0.009 | 10.8s each, ~11 min left
+[58/120] P=2500 F=912 M=492 splice kl=0.046 mask_all kl=0.010 full kl=0.030 | 10.9s each, ~11 min left
+[59/120] P=2500 F=230 M=305 splice kl=0.160 mask_all kl=0.007 full kl=0.062 | 10.8s each, ~11 min left
+[60/120] P=2500 F=530 M=1279 splice kl=0.020 mask_all kl=0.003 full kl=0.077 | 10.9s each, ~11 min left
+[61/120] P=2500 F=920 M=633 splice kl=0.006 mask_all kl=0.007 full kl=0.007 | 10.9s each, ~11 min left
+[62/120] P=1115 F=1380 M=2686 splice kl=0.009 mask_all kl=0.010 full kl=0.011 | 10.9s each, ~11 min left
+[63/120] P=2500 F=447 M=367 splice kl=0.018 mask_all kl=0.010 full kl=0.027 | 10.9s each, ~10 min left
+[64/120] P=2500 F=385 M=1563 splice kl=0.075 mask_all kl=0.008 full kl=0.108 | 10.9s each, ~10 min left
+[65/120] P=2500 F=867 M=224 splice kl=0.013 mask_all kl=0.011 full kl=0.013 | 10.9s each, ~10 min left
+[66/120] P=2500 F=704 M=442 splice kl=0.110 mask_all kl=0.012 full kl=1.221 | 10.9s each, ~10 min left
+[67/120] P=2500 F=393 M=427 splice kl=0.049 mask_all kl=0.007 full kl=0.157 | 10.9s each, ~10 min left
+[68/120] P=2500 F=566 M=276 splice kl=0.020 mask_all kl=0.022 full kl=0.019 | 10.9s each, ~9 min left
+[69/120] P=2500 F=2000 M=2866 splice kl=0.014 mask_all kl=0.009 full kl=0.015 | 11.0s each, ~9 min left
+[70/120] P=2500 F=269 M=310 splice kl=0.014 mask_all kl=0.005 full kl=0.030 | 11.0s each, ~9 min left
+[71/120] P=2500 F=668 M=377 splice kl=0.006 mask_all kl=0.003 full kl=0.009 | 11.0s each, ~9 min left
+[72/120] P=2500 F=620 M=2977 splice kl=0.012 mask_all kl=0.007 full kl=0.012 | 11.0s each, ~9 min left
+[73/120] P=2500 F=872 M=302 splice kl=0.012 mask_all kl=0.010 full kl=0.264 | 11.0s each, ~9 min left
+[74/120] P=2500 F=1560 M=343 splice kl=0.025 mask_all kl=0.019 full kl=0.057 | 11.0s each, ~8 min left
+[75/120] P=2500 F=417 M=204 splice kl=0.017 mask_all kl=0.018 full kl=0.022 | 11.0s each, ~8 min left
+[76/120] P=2500 F=1650 M=482 splice kl=0.127 mask_all kl=0.016 full kl=0.736 | 11.1s each, ~8 min left
+[77/120] P=2500 F=518 M=374 splice kl=0.036 mask_all kl=0.018 full kl=0.042 | 11.0s each, ~8 min left
+[78/120] P=2500 F=647 M=2227 splice kl=0.016 mask_all kl=0.002 full kl=0.014 | 11.0s each, ~8 min left
+[79/120] P=2500 F=531 M=2086 splice kl=0.019 mask_all kl=0.008 full kl=0.017 | 11.1s each, ~8 min left
+[80/120] P=2500 F=430 M=1519 splice kl=0.004 mask_all kl=0.004 full kl=0.005 | 11.1s each, ~7 min left
+[81/120] P=2500 F=567 M=518 splice kl=0.014 mask_all kl=0.009 full kl=0.018 | 11.1s each, ~7 min left
+[82/120] P=2500 F=245 M=334 splice kl=0.031 mask_all kl=0.006 full kl=0.015 | 11.1s each, ~7 min left
+[83/120] P=2500 F=1912 M=387 splice kl=0.037 mask_all kl=0.017 full kl=0.089 | 11.1s each, ~7 min left
+[84/120] P=2500 F=477 M=1982 splice kl=0.003 mask_all kl=0.003 full kl=0.004 | 11.1s each, ~7 min left
+[85/120] P=2500 F=633 M=259 splice kl=0.007 mask_all kl=0.006 full kl=0.016 | 11.1s each, ~6 min left
+[86/120] P=2500 F=584 M=667 splice kl=0.007 mask_all kl=0.003 full kl=0.010 | 11.2s each, ~6 min left
+[87/120] P=2500 F=689 M=1814 splice kl=0.003 mask_all kl=0.003 full kl=0.003 | 11.2s each, ~6 min left
+[88/120] P=2500 F=377 M=197 splice kl=0.011 mask_all kl=0.011 full kl=0.012 | 11.2s each, ~6 min left
+[89/120] P=2500 F=345 M=2854 splice kl=0.008 mask_all kl=0.004 full kl=0.008 | 11.2s each, ~6 min left
+[90/120] P=1367 F=793 M=961 splice kl=0.024 mask_all kl=0.013 full kl=0.413 | 11.2s each, ~6 min left
+[91/120] P=2500 F=842 M=2977 splice kl=0.011 mask_all kl=0.006 full kl=0.009 | 11.3s each, ~5 min left
+[92/120] P=2500 F=535 M=622 splice kl=0.035 mask_all kl=0.012 full kl=0.023 | 11.3s each, ~5 min left
+[93/120] P=2500 F=286 M=1547 splice kl=0.013 mask_all kl=0.005 full kl=0.017 | 11.3s each, ~5 min left
+[94/120] P=1000 F=1037 M=2993 splice kl=0.006 mask_all kl=0.002 full kl=0.007 | 11.4s each, ~5 min left
+[95/120] P=2500 F=764 M=645 splice kl=0.014 mask_all kl=0.008 full kl=0.011 | 11.3s each, ~5 min left
+[96/120] P=2500 F=329 M=2278 splice kl=0.007 mask_all kl=0.003 full kl=0.007 | 11.4s each, ~5 min left
+[97/120] P=2500 F=1426 M=368 splice kl=0.025 mask_all kl=0.023 full kl=2.935 | 11.4s each, ~4 min left
+[98/120] P=2500 F=578 M=405 splice kl=0.006 mask_all kl=0.006 full kl=0.007 | 11.4s each, ~4 min left
+[99/120] P=2500 F=840 M=797 splice kl=0.008 mask_all kl=0.008 full kl=0.009 | 11.3s each, ~4 min left
+[100/120] P=2500 F=475 M=782 splice kl=0.034 mask_all kl=0.006 full kl=0.058 | 11.3s each, ~4 min left
+[101/120] P=2500 F=826 M=370 splice kl=0.031 mask_all kl=0.006 full kl=0.036 | 11.4s each, ~4 min left
+[102/120] P=2500 F=570 M=293 splice kl=0.015 mask_all kl=0.017 full kl=0.015 | 11.3s each, ~3 min left
+[103/120] P=2500 F=561 M=930 splice kl=0.058 mask_all kl=0.013 full kl=0.074 | 11.3s each, ~3 min left
+[104/120] P=2500 F=455 M=158 splice kl=0.013 mask_all kl=0.006 full kl=0.009 | 11.3s each, ~3 min left
+[105/120] P=2500 F=565 M=554 splice kl=0.048 mask_all kl=0.031 full kl=0.061 | 11.3s each, ~3 min left
+[106/120] P=2500 F=1190 M=526 splice kl=0.026 mask_all kl=0.017 full kl=0.100 | 11.3s each, ~3 min left
+[107/120] P=2500 F=610 M=1595 splice kl=0.034 mask_all kl=0.005 full kl=0.074 | 11.3s each, ~2 min left
+[108/120] P=2500 F=399 M=364 splice kl=0.021 mask_all kl=0.009 full kl=0.038 | 11.3s each, ~2 min left
+[109/120] P=2500 F=693 M=287 splice kl=0.016 mask_all kl=0.016 full kl=0.024 | 11.3s each, ~2 min left
+[110/120] P=2500 F=533 M=208 splice kl=0.008 mask_all kl=0.007 full kl=0.012 | 11.3s each, ~2 min left
+[111/120] P=2500 F=832 M=1691 splice kl=0.017 mask_all kl=0.006 full kl=0.017 | 11.3s each, ~2 min left
+[112/120] P=2500 F=578 M=1092 splice kl=0.018 mask_all kl=0.008 full kl=0.010 | 11.3s each, ~2 min left
+[113/120] P=2500 F=455 M=1152 splice kl=0.011 mask_all kl=0.012 full kl=0.007 | 11.3s each, ~1 min left
+[114/120] P=2500 F=471 M=171 splice kl=0.031 mask_all kl=0.015 full kl=0.073 | 11.3s each, ~1 min left
+[115/120] P=2500 F=259 M=470 splice kl=0.018 mask_all kl=0.005 full kl=0.047 | 11.3s each, ~1 min left
+[116/120] P=2500 F=401 M=319 splice kl=0.031 mask_all kl=0.025 full kl=1.040 | 11.3s each, ~1 min left
+[117/120] P=2500 F=797 M=201 splice kl=0.016 mask_all kl=0.012 full kl=0.019 | 11.2s each, ~1 min left
+[118/120] P=2500 F=423 M=1900 splice kl=0.006 mask_all kl=0.005 full kl=0.005 | 11.3s each, ~0 min left
+[119/120] P=2500 F=1909 M=2296 splice kl=0.021 mask_all kl=0.008 full kl=0.179 | 11.3s each, ~0 min left
+[120/120] P=2500 F=330 M=524 splice kl=0.091 mask_all kl=0.011 full kl=0.078 | 11.3s each, ~0 min left
+{
+ "full": {
+  "nll_mean": 2.0507,
+  "kl_evict_mean": 0.1171,
+  "top1_evict_mean": 0.949,
+  "kl_full_mean": 0.0,
+  "gen_n": 120,
+  "name_ref": 0.6167,
+  "exact_ref": 0.0,
+  "name_evict": 0.8833,
+  "exact_evict": 0.3917,
+  "name_full": 1.0,
+  "exact_full": 1.0
+ },
+ "evict_text": {
+  "nll_mean": 2.0867,
+  "kl_evict_mean": 0.0,
+  "top1_evict_mean": 1.0,
+  "kl_full_mean": 0.061,
+  "gen_n": 120,
+  "name_ref": 0.6417,
+  "exact_ref": 0.0,
+  "name_evict": 1.0,
+  "exact_evict": 1.0,
+  "name_full": 0.8833,
+  "exact_full": 0.3917
+ },
+ "splice": {
+  "nll_mean": 2.0969,
+  "kl_evict_mean": 0.0271,
+  "top1_evict_mean": 0.9571,
+  "kl_full_mean": 0.0566,
+  "gen_n": 120,
+  "name_ref": 0.6167,
+  "exact_ref": 0.0,
+  "name_evict": 0.875,
+  "exact_evict": 0.4083,
+  "name_full": 0.9667,
+  "exact_full": 0.6417
+ },
+ "mask_all": {
+  "nll_mean": 2.0897,
+  "kl_evict_mean": 0.0093,
+  "top1_evict_mean": 0.97,
+  "kl_full_mean": 0.0561,
+  "gen_n": 120,
+  "name_ref": 0.6167,
+  "exact_ref": 0.0,
+  "name_evict": 0.925,
+  "exact_evict": 0.5417,
+  "name_full": 0.9083,
+  "exact_full": 0.4083
+ }
+}
+Tue Nov 10 21:24:39 UTC 2026
+ALLDONE

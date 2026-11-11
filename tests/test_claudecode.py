@@ -48,3 +48,4 @@ def test_run():
     assert vb[3] == "/testbed/b.py" and vb[10] is None
     assert run[17] == len(READ) * (4 - 2)
     assert chunks[0][5] == "tools" and chunks[0][9] == 4
+    assert run[19] == 4 * len("think") and run[20] == len("think") * (3 + 2 + 1 + 0)

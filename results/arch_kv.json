@@ -1,0 +1,42 @@
+{
+  "context_tokens": 100000,
+  "stale_share_of_context": {
+    "sweagent": 0.151,
+    "claudecode_style": 0.127
+  },
+  "models": {
+    "Qwen/Qwen3-4B": {
+      "attention_layers": 36,
+      "layers": 36,
+      "kv_bytes_per_token": 147456,
+      "kv_per_token_vs_qwen3_4b": 1.0,
+      "kv_gb_at_context": 14.75,
+      "linear_state_mb_estimate": 0,
+      "linear_state_in_tokens_of_kv_estimate": 0,
+      "gb_freed_by_eviction_sweagent": 2.23,
+      "gb_freed_by_eviction_claudecode_style": 1.87
+    },
+    "Qwen/Qwen3-8B": {
+      "attention_layers": 36,
+      "layers": 36,
+      "kv_bytes_per_token": 147456,
+      "kv_per_token_vs_qwen3_4b": 1.0,
+      "kv_gb_at_context": 14.75,
+      "linear_state_mb_estimate": 0,
+      "linear_state_in_tokens_of_kv_estimate": 0,
+      "gb_freed_by_eviction_sweagent": 2.23,
+      "gb_freed_by_eviction_claudecode_style": 1.87
+    },
+    "Qwen/Qwen3.5-4B": {
+      "attention_layers": 8,
+      "layers": 32,
+      "kv_bytes_per_token": 32768,
+      "kv_per_token_vs_qwen3_4b": 0.222,
+      "kv_gb_at_context": 3.28,
+      "linear_state_mb_estimate": 25.2,
+      "linear_state_in_tokens_of_kv_estimate": 768,
+      "gb_freed_by_eviction_sweagent": 0.49,
+      "gb_freed_by_eviction_claudecode_style": 0.42
+    }
+  }
+}

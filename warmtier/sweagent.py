@@ -119,7 +119,7 @@ def process_run(row: dict, run_id: int):
     stale_win = sum(v[5] * (n_calls - v[11]) for v in views if v[11] is not None)
     run = (run_id, iid, repo, row["model_name"], bool(row["target"]), row["exit_status"], n_calls,
            tot["system"], tot["task"], tot["assistant"], tot["observation"], prefill,
-           len(views), len({v[3] for v in views}), len(edits), view_chars, view_cc, stale_file, stale_win)
+           len(views), len({v[3] for v in views}), len(edits), view_chars, view_cc, stale_file, stale_win, 0, 0)
     return chunks, [tuple(v) for v in views], run
 
 
@@ -128,7 +128,8 @@ VIEW_COLS = ["run", "instance", "repo", "file", "call", "chars", "sha", "line_lo
              "stale_file_call", "stale_window_call", "scratch"]
 RUN_COLS = ["run", "instance", "repo", "model", "resolved", "exit", "n_calls", "system_chars", "task_chars",
             "assistant_chars", "observation_chars", "prefill_chars_no_cache", "n_views", "n_files_viewed",
-            "n_edits", "view_chars", "view_char_calls", "stale_file_char_calls", "stale_window_char_calls"]
+            "n_edits", "view_chars", "view_char_calls", "stale_file_char_calls", "stale_window_char_calls",
+            "reasoning_chars", "reasoning_char_calls"]
 
 
 def _write(path: str, cols: list[str], rows: list[tuple]) -> None:

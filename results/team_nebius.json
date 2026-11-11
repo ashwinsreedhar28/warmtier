@@ -1,0 +1,51 @@
+{
+  "instances": 3591,
+  "runs": 80036,
+  "seed": 0,
+  "sizes": {
+    "2": {
+      "teams": 3581,
+      "header_share_of_prefill_pct": 14.3,
+      "all_prefix_chain_pct": 7.09,
+      "all_content_addressed_pct": 10.21,
+      "body_prefix_chain_pct": 0.01,
+      "body_content_addressed_pct": 3.65,
+      "view_share_of_prefill_pct": 44.28,
+      "view_content_reuse_pct": 6.33,
+      "view_file_reuse_pct": 24.8
+    },
+    "4": {
+      "teams": 3387,
+      "header_share_of_prefill_pct": 14.41,
+      "all_prefix_chain_pct": 10.77,
+      "all_content_addressed_pct": 17.1,
+      "body_prefix_chain_pct": 0.03,
+      "body_content_addressed_pct": 7.42,
+      "view_share_of_prefill_pct": 44.53,
+      "view_content_reuse_pct": 12.63,
+      "view_file_reuse_pct": 42.17
+    },
+    "8": {
+      "teams": 2929,
+      "header_share_of_prefill_pct": 14.64,
+      "all_prefix_chain_pct": 12.82,
+      "all_content_addressed_pct": 22.29,
+      "body_prefix_chain_pct": 0.05,
+      "body_content_addressed_pct": 11.14,
+      "view_share_of_prefill_pct": 44.93,
+      "view_content_reuse_pct": 18.6,
+      "view_file_reuse_pct": 54.08
+    },
+    "16": {
+      "teams": 1811,
+      "header_share_of_prefill_pct": 15.6,
+      "all_prefix_chain_pct": 14.66,
+      "all_content_addressed_pct": 27.54,
+      "body_prefix_chain_pct": 0.07,
+      "body_content_addressed_pct": 15.34,
+      "view_share_of_prefill_pct": 46.54,
+      "view_content_reuse_pct": 24.27,
+      "view_file_reuse_pct": 62.03
+    }
+  }
+}

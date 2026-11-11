@@ -78,6 +78,13 @@
       "stale_pct_window_level": 51.3
     }
   ],
+  "reasoning": {
+    "pct_of_decoded_chars": 72.7,
+    "reasoning_chars_per_run": 67620.0,
+    "keep_adds_pct_to_prefill_no_cache": 56.31,
+    "keep_adds_pct_to_unique_context": 59.53,
+    "strip_reprefill_pct_of_unique_context": 22.39
+  },
   "cross_run_identical_text": [
     {
       "scope": "same_instance",

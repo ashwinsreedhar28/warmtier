@@ -1,0 +1,7 @@
+{
+  "runs": 80036,
+  "unique_chars": 4823611518,
+  "prefix_chain_pct": 15.02,
+  "content_addressed_pct": 30.43,
+  "content_addressed_over_prefix_chain": 2.03
+}

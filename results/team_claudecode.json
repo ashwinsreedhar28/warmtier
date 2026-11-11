@@ -1,0 +1,29 @@
+{
+  "instances": 39611,
+  "runs": 133376,
+  "seed": 0,
+  "sizes": {
+    "2": {
+      "teams": 38251,
+      "header_share_of_prefill_pct": 5.45,
+      "all_prefix_chain_pct": 1.59,
+      "all_content_addressed_pct": 8.9,
+      "body_prefix_chain_pct": 0.01,
+      "body_content_addressed_pct": 7.16,
+      "view_share_of_prefill_pct": 39.22,
+      "view_content_reuse_pct": 16.43,
+      "view_file_reuse_pct": null
+    },
+    "4": {
+      "teams": 21875,
+      "header_share_of_prefill_pct": 6.15,
+      "all_prefix_chain_pct": 3.16,
+      "all_content_addressed_pct": 17.23,
+      "body_prefix_chain_pct": 0.04,
+      "body_content_addressed_pct": 14.17,
+      "view_share_of_prefill_pct": 39.86,
+      "view_content_reuse_pct": 31.41,
+      "view_file_reuse_pct": null
+    }
+  }
+}
