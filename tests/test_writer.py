@@ -114,3 +114,33 @@ def test_gen_kd_loss_trains_the_adapter():
     loss.backward()
     grads = [p.grad for n, p in m.named_parameters() if n.endswith(".B")]
     assert grads and any(g is not None and float(g.abs().sum()) > 0 for g in grads)
+
+
+def test_reader_adapter_trains_and_decodes_consistently():
+    """With a reader adapter, cached greedy decoding must equal one full masked pass with the
+    writer gate on the file and the reader gate on everything after it."""
+    from warmtier.writer import gen_kd_loss, install as inst
+    torch.manual_seed(0)
+    cfg = transformers.LlamaConfig(vocab_size=300, hidden_size=64, intermediate_size=128, num_hidden_layers=3,
+                                   num_attention_heads=4, num_key_value_heads=4, max_position_embeddings=512)
+    m = transformers.LlamaForCausalLM(cfg).eval()
+    gate = inst(m, rank=4, alpha=8.0, reader_rank=4)
+    assert gate.has_reader
+    for n, p in m.named_parameters():                     # make both adapters non-trivial
+        if n.endswith((".B", ".B2")):
+            torch.nn.init.normal_(p, std=0.05)
+    P, F, T = ids(21)
+    gen = G.generate(m, P, F, T, "writer", None, 5, set())
+    cur = P + F + T
+    for t in gen:
+        x = torch.tensor(cur)
+        h = G.hidden(m, x, G.allowed_matrix("writer", len(P), len(F), len(cur) - len(P) - len(F)),
+                     gate_rows=(len(P), len(P) + len(F)))[-1]
+        G._set_gate(m, None, 0, x.device)
+        _, head = G.parts(m)
+        assert int(head(h).argmax()) == t
+        cur.append(t)
+    loss = gen_kd_loss(m, {"P": P, "F": F, "T": T}, 5, set())
+    loss.backward()
+    assert any(p.grad is not None and float(p.grad.abs().sum()) > 0 for n, p in m.named_parameters() if n.endswith(".B2"))
+    assert gate.value is None and gate.reader is None

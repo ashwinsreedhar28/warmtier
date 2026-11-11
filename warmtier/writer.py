@@ -35,30 +35,52 @@ TARGETS = ("q_proj", "k_proj", "v_proj", "o_proj")
 
 
 class Gate:
-    """Shared per-forward gate: None, or a [1, seq, 1] tensor of 0/1."""
+    """Shared per-forward gates: None, or [1, seq, 1] tensors of 0/1.
+
+    value   rows where the writer adapter is on (the file's tokens)
+    reader  rows where the reader adapter is on (tokens after the file), if one is installed"""
     value: torch.Tensor | None = None
+    reader: torch.Tensor | None = None
+    has_reader: bool = False
 
 
 class GatedLoRA(nn.Module):
-    def __init__(self, base: nn.Linear, rank: int, alpha: float, gate: Gate):
+    def __init__(self, base: nn.Linear, rank: int, alpha: float, gate: Gate, reader_rank: int = 0):
         super().__init__()
         self.base, self.gate, self.scale = base, gate, alpha / rank
-        self.A = nn.Parameter(torch.empty(rank, base.in_features, dtype=torch.float32, device=base.weight.device))
-        self.B = nn.Parameter(torch.zeros(base.out_features, rank, dtype=torch.float32, device=base.weight.device))
+        kw = dict(dtype=torch.float32, device=base.weight.device)
+        self.A = nn.Parameter(torch.empty(rank, base.in_features, **kw))
+        self.B = nn.Parameter(torch.zeros(base.out_features, rank, **kw))
         nn.init.kaiming_uniform_(self.A, a=math.sqrt(5))
+        self.A2 = self.B2 = None
+        if reader_rank:
+            self.A2 = nn.Parameter(torch.empty(reader_rank, base.in_features, **kw))
+            self.B2 = nn.Parameter(torch.zeros(base.out_features, reader_rank, **kw))
+            nn.init.kaiming_uniform_(self.A2, a=math.sqrt(5))
+            self.scale2 = alpha / rank
 
     def forward(self, x):
         y = self.base(x)
         g = self.gate.value
-        if g is None:
+        r = self.gate.reader if self.A2 is not None else None
+        if g is None and r is None:
             return y
-        d = Fn.linear(Fn.linear(x.float(), self.A), self.B) * self.scale
-        return y + (d * g).to(y.dtype)
+        xf = x.float()
+        d = 0
+        if g is not None:
+            d = Fn.linear(Fn.linear(xf, self.A), self.B) * self.scale * g
+        if r is not None:
+            d = d + Fn.linear(Fn.linear(xf, self.A2), self.B2) * self.scale2 * r
+        return y + d.to(y.dtype)
 
 
-def install(model, rank: int = 8, alpha: float = 16.0) -> Gate:
-    """Wrap attention projections with gated LoRA. Returns the shared gate."""
+def install(model, rank: int = 8, alpha: float = 16.0, reader_rank: int = 0) -> Gate:
+    """Wrap attention projections with gated LoRA. Returns the shared gate.
+
+    reader_rank > 0 adds a second adapter that is active on the tokens after the file. That is
+    no longer a pure cache trick: it changes the model that reads the cache."""
     gate = Gate()
+    gate.has_reader = bool(reader_rank)
     base, _ = parts(model)
     for p in model.parameters():
         p.requires_grad_(False)
@@ -67,7 +89,7 @@ def install(model, rank: int = 8, alpha: float = 16.0) -> Gate:
         for name in TARGETS:
             lin = getattr(attn, name)
             if isinstance(lin, nn.Linear):
-                setattr(attn, name, GatedLoRA(lin, rank, alpha, gate))
+                setattr(attn, name, GatedLoRA(lin, rank, alpha, gate, reader_rank))
     n = sum(isinstance(m, GatedLoRA) for m in model.modules())
     if n == 0:
         raise SystemExit("no attention projections named q_proj/k_proj/v_proj/o_proj found to adapt")
@@ -76,12 +98,12 @@ def install(model, rank: int = 8, alpha: float = 16.0) -> Gate:
 
 
 def lora_state(model) -> dict:
-    return {k: v.detach().cpu() for k, v in model.state_dict().items() if k.endswith(".A") or k.endswith(".B")}
+    return {k: v.detach().cpu() for k, v in model.state_dict().items() if k.rsplit(".", 1)[-1] in ("A", "B", "A2", "B2")}
 
 
 def load_adapter(model, path: str) -> Gate:
     blob = torch.load(path, map_location="cpu")
-    gate = install(model, blob["rank"], blob["alpha"])
+    gate = install(model, blob["rank"], blob["alpha"], blob.get("reader_rank", 0))
     missing = model.load_state_dict(blob["state"], strict=False)
     assert not missing.unexpected_keys, missing.unexpected_keys[:3]
     return gate
@@ -120,11 +142,14 @@ def student_logp(model, P, F, S, p_cache):
     nP, nF, nS = len(P), len(F), len(S)
     allowed = allowed_matrix("iso", nP, nF, nS)[nP:]          # rows F+S, cols P+F+S
     model._writer_gate.value = f_gate(0, nF, nS, dev)
+    if model._writer_gate.has_reader:
+        model._writer_gate.reader = 1.0 - model._writer_gate.value      # every row after the file
     try:
         out = base(input_ids=torch.tensor(F + S, device=dev)[None], past_key_values=p_cache,
                    attention_mask=_mask4d(model, allowed, dev), use_cache=True)
     finally:
         model._writer_gate.value = None
+        model._writer_gate.reader = None
     return torch.log_softmax(head(out.last_hidden_state[0, nF - 1:-1]).float(), -1)
 
 
@@ -198,6 +223,8 @@ def main() -> None:
     ap.add_argument("--max-file", type=int, default=1500)
     ap.add_argument("--max-suffix", type=int, default=160)
     ap.add_argument("--seed", type=int, default=1)
+    ap.add_argument("--reader-rank", type=int, default=0,
+                    help="also train an adapter active on the tokens after the file (changes the reading model)")
     ap.add_argument("--gen-mix", type=float, default=0.0,
                     help="share of steps that distil on the call the full-prefill model generates, instead of the real next turn")
     ap.add_argument("--gen-max", type=int, default=64)
@@ -211,7 +238,7 @@ def main() -> None:
     except TypeError:
         model = AutoModelForCausalLM.from_pretrained(a.model, torch_dtype=torch.bfloat16)
     model = model.to("cuda").eval()
-    install(model, a.rank, a.alpha)
+    install(model, a.rank, a.alpha, a.reader_rank)
     params = [p for p in model.parameters() if p.requires_grad]
     print(f"model {a.model}; trainable {sum(p.numel() for p in params) / 1e6:.2f}M params", flush=True)
 
@@ -261,11 +288,11 @@ def main() -> None:
                 v = evaluate(model, val)
                 history.append((step, v))
                 print(f"== step {step} val KL {v:.4f} (start {base_kl:.4f})", flush=True)
-                torch.save({"rank": a.rank, "alpha": a.alpha, "model": a.model, "state": lora_state(model),
+                torch.save({"rank": a.rank, "alpha": a.alpha, "reader_rank": a.reader_rank, "model": a.model, "state": lora_state(model),
                             "val_kl_start": base_kl, "history": history, "gen_mix": a.gen_mix, "n_train": len(train)}, a.out)
     v = evaluate(model, val)
     history.append((step, v))
-    torch.save({"rank": a.rank, "alpha": a.alpha, "model": a.model, "state": lora_state(model),
+    torch.save({"rank": a.rank, "alpha": a.alpha, "reader_rank": a.reader_rank, "model": a.model, "state": lora_state(model),
                 "val_kl_start": base_kl, "history": history, "gen_mix": a.gen_mix, "n_train": len(train)}, a.out)
     print(f"done: val KL {base_kl:.4f} -> {v:.4f}; saved {a.out}", flush=True)
 

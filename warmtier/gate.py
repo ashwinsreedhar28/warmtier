@@ -104,10 +104,15 @@ def _set_gate(model, rows: tuple[int, int] | None, length: int, device) -> None:
         return
     if rows is None:
         g.value = None
+        g.reader = None
     else:
         v = torch.zeros(1, length, 1, device=device)
         v[:, rows[0]:rows[1]] = 1.0
         g.value = v
+        if getattr(g, "has_reader", False):          # reader adapter: every row after the file
+            r = torch.zeros(1, length, 1, device=device)
+            r[:, rows[1]:] = 1.0
+            g.reader = r
 
 
 def hidden(model, ids: torch.Tensor, allowed: torch.Tensor | None, layer: int | None = None,
@@ -141,6 +146,8 @@ def generate(model, P: list[int], F: list[int], T: list[int], cond: str, dev, ma
     _set_gate(model, (nP, nP + nF) if cond == "writer" else None, len(ids), device)
     out = base(input_ids=ids[None], attention_mask=_mask4d(model, allowed, device), use_cache=True)
     _set_gate(model, None, 0, device)
+    g = getattr(model, "_writer_gate", None)
+    reader_on = cond == "writer" and g is not None and getattr(g, "has_reader", False)
     pkv = out.past_key_values
     tok = int(head(out.last_hidden_state[0, -1]).argmax())
     gen = []
@@ -153,7 +160,11 @@ def generate(model, P: list[int], F: list[int], T: list[int], cond: str, dev, ma
             break
         gen.append(tok)
         row = torch.cat([row, torch.zeros(1, 1, 1, 1, dtype=dt, device=device)], -1)
+        if reader_on:
+            g.reader = torch.ones(1, 1, 1, device=device)
         out = base(input_ids=torch.tensor([[tok]], device=device), past_key_values=pkv, attention_mask=row, use_cache=True)
+        if reader_on:
+            g.reader = None
         pkv = out.past_key_values
         tok = int(head(out.last_hidden_state[0, -1]).argmax())
     return gen

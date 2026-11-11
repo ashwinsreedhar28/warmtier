@@ -577,6 +577,8 @@ Checks run against the numbers above, and what they changed.
 | Adapter scoring above full prefill on the real next turn | explained as a calibration effect; "retained" metric withdrawn (Twelfth) |
 | Gate run 2 restated on KL | deviation-based repair is no better than even spacing; earlier claim withdrawn (Seventh) |
 | Noise floor of "identical call" | about 80%, not 100% (Fourteenth) |
+| Eviction replay, SWE-agent, recomputed with separate code over all 80,036 runs | exact match: same base prefill and +24.65% for evict-at-once |
+| Characters per token assumed 4.0 in the cost model | measured 3.69 and 3.64; cost model undercounts tokens by about 8% (Sixteenth) |
 
 CORRECTION, SWE-agent "file views": the 41.9% of prefill counted as file views
 is three different things. Every `edit` command echoes a window of the file,
@@ -601,8 +603,9 @@ numbers are reads only.
 Counts behind the correction: `results/audit_sweagent_view_kinds.json`, made by
 `scripts/audit_views.py`.
 
-Not yet audited: the cost model's assumptions, the eviction replay beyond its
-unit tests, the hybrid memory figures against vLLM's real allocation.
+Not yet audited: the cost model's speed and build-cost assumptions, the
+Claude Code style eviction replay, the hybrid memory figures against vLLM's
+real allocation.
 
 ## Fifteenth: pushing the adapter (Nov 11, 2026)
 
@@ -639,6 +642,106 @@ the served model for all later tokens.
 
 Limits: one seed per variant, one model, same dataset family for training and
 scoring. Results: `results/gate4_*.json`, `results/writer_v*_val_kl.txt`.
+
+## Sixteenth: the shares in tokens (Nov 11, 2026)
+
+`python -m warmtier.tokens`. Everything above is in characters. Tokenising
+1,500 runs of each dataset with the Qwen3 tokenizer gives characters per
+token by kind of message:
+
+| | SWE-agent | Claude Code style |
+|---|---|---|
+| all messages | 3.69 | 3.64 |
+| file reads | 3.32 | 3.45 |
+| edit echoes / rejected-edit output | 3.41 / 3.86 | none |
+| other tool output | 3.47 | 3.43 |
+| assistant turns | 4.27 | 3.82 |
+| system prompt / task | 4.36 / 4.23 | 3.26 / 4.09 |
+
+File content packs more tokens per character than prose, so its share grows
+a little when restated in tokens (re-weighting each kind's prefill share by
+its ratio):
+
+| share of prefill | SWE-agent chars | SWE-agent tokens | Claude Code style chars | tokens |
+|---|---|---|---|---|
+| file reads | 20.8% | 23.6% | 48.1% | 48.8% |
+| edit echoes | 12.5% | 13.8% | | |
+| stale context (window to file level) | 15.1% to 18.3% | 16.5% to 20.2% | 12.7% to 14.5% | 12.9% to 14.7% |
+
+The character-based numbers understate the token shares by one to two points
+at most. The cost model assumed 4.0 characters per token; the measured 3.7
+means it undercounts tokens by about 8%.
+
+Limits: one tokenizer; ratios from a 1,500-run sample applied to shares from
+all runs; the Claude Code style tool list is weighted with the system-prompt
+ratio. Results: `results/tokens_qwen3.json`.
+
+## Seventeenth: does a splice's leftover influence last? (Nov 11, 2026)
+
+`python -m warmtier.splice ... --lag K`. The Eleventh section scored the first
+call after the splice and found the spliced model still leaning toward the
+un-evicted run. Here the same splice is scored 2 and 5 turns later. What the
+trace added in between is encoded after the splice and never sees the stale
+view. 120 traces per row; different traces qualify at each lag.
+
+| model, call scored | stale view's effect: full vs text eviction (KL) | splice vs text eviction (KL) | recompute, no stub vs text eviction (KL) | identical call to text eviction: splice / recompute |
+|---|---|---|---|---|
+| Qwen3-4B, first call | 0.138 | 0.037 | 0.015 | 45% / 54% |
+| Qwen3-4B, 2 turns later | 0.026 | 0.014 | 0.008 | 56% / 58% |
+| Qwen3-4B, 5 turns later | 0.019 | 0.009 | 0.007 | 66% / 67% |
+| Qwen3-8B, first call | 0.117 | 0.027 | 0.009 | 41% / 54% |
+| Qwen3-8B, 5 turns later | 0.014 | 0.006 | 0.004 | 74% / 70% |
+
+Reading:
+- The splice's leftover influence fades. The gap between a splice and an
+  honest recompute is 0.022 KL at the first call, 0.006 two turns later and
+  0.002 five turns later (4B). By five turns the two generate the same call
+  as text eviction equally often.
+- The stale view itself matters much less a few turns on: keeping it or
+  evicting it changes the next-token distribution by 0.14 KL right after the
+  edit and by 0.02 five turns later.
+- So "partial eviction" describes the call or two right after a splice, not
+  the rest of the run.
+
+Limits: teacher-forced along the real trace, so the turns in between are the
+real agent's, not what the spliced model would have done. Greedy decoding,
+one call per sample. Results: `results/splice_qwen3_4b_lag{2,5}.json`,
+`results/splice_qwen3_8b_lag5.json`.
+
+## Eighteenth: an adapter on the reading side too (Nov 11, 2026)
+
+The Fifteenth section ended on a guess: the writer adapter cannot close the
+gap because everything that reads the cached file is the unmodified model.
+This run tests it. A second rank-8 adapter is switched on for the tokens
+after the file (`warmtier.writer --reader-rank 8`), trained jointly with the
+writer on the same loss as the best variant (half the steps on generated
+calls), 4,000 steps on Qwen3-4B, scored on the same 200 held-out samples (197
+with a generated call).
+
+| adapter | KL from full | same tool | identical call |
+|---|---|---|---|
+| plain reuse, no adapter | 0.161 | 79% | 22% [17, 28] |
+| writer only, real-turn loss (original) | 0.040 | 92% | 44% [37, 51] |
+| writer only, half generated calls | 0.043 | 91% | 49% [42, 56] |
+| writer + reader, half generated calls | 0.042 | 92% | 45% [38, 51] |
+
+Paired, writer + reader against the original: identical call +0.5 points
+[-5.6, +6.6]. Against the writer-only variant with the same loss: -4.1 points
+[-10.2, +2.0], KL -0.0012 [-0.0024, -0.0001].
+
+Reading:
+- The reader side does not help. Identical calls stay in the 44 to 49% band
+  of every writer-only variant, against a floor of 77 to 86%.
+- The guess from the Fifteenth section is not supported at this size: letting
+  the later tokens adapt as well leaves the gap where it was.
+- Four variants now land in the same place (more rank, a different loss, a
+  reader). What limits a rank-8 to rank-32 LoRA here is still not identified.
+
+Limits: one seed, one model, rank 8 only for the reader, same dataset family
+for training and scoring. The reader changes the served model for every token
+after the file, so it would cost more to deploy than the writer even if it
+had worked. Results: `results/gate4_v4_r8_mix50_reader8.json`,
+`results/writer_v4_r8_mix50_reader8_val_kl.txt`.
 
 ## Next
 

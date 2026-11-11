@@ -1,0 +1,89 @@
+{
+  "model": "Qwen/Qwen3-4B",
+  "seed": 0,
+  "sweagent": {
+    "runs": 1500,
+    "kinds": {
+      "assistant": {
+        "chars": 17967413,
+        "tokens": 4209609,
+        "chars_per_token": 4.268
+      },
+      "create": {
+        "chars": 284962,
+        "tokens": 84665,
+        "chars_per_token": 3.366
+      },
+      "edit_echo": {
+        "chars": 14533065,
+        "tokens": 4257171,
+        "chars_per_token": 3.414
+      },
+      "edit_rejected": {
+        "chars": 8247976,
+        "tokens": 2136710,
+        "chars_per_token": 3.86
+      },
+      "other_observation": {
+        "chars": 11612585,
+        "tokens": 3351672,
+        "chars_per_token": 3.465
+      },
+      "read": {
+        "chars": 24576844,
+        "tokens": 7414088,
+        "chars_per_token": 3.315
+      },
+      "system": {
+        "chars": 7309500,
+        "tokens": 1678500,
+        "chars_per_token": 4.355
+      },
+      "task": {
+        "chars": 6545762,
+        "tokens": 1546319,
+        "chars_per_token": 4.233
+      }
+    },
+    "all": {
+      "chars": 91078107,
+      "tokens": 24678734,
+      "chars_per_token": 3.691
+    }
+  },
+  "claudecode": {
+    "runs": 1500,
+    "kinds": {
+      "assistant": {
+        "chars": 173656472,
+        "tokens": 45440914,
+        "chars_per_token": 3.822
+      },
+      "other_observation": {
+        "chars": 53151661,
+        "tokens": 15482208,
+        "chars_per_token": 3.433
+      },
+      "read": {
+        "chars": 92636053,
+        "tokens": 26820289,
+        "chars_per_token": 3.454
+      },
+      "system": {
+        "chars": 998793,
+        "tokens": 306502,
+        "chars_per_token": 3.259
+      },
+      "task": {
+        "chars": 3809589,
+        "tokens": 931096,
+        "chars_per_token": 4.092
+      }
+    },
+    "all": {
+      "chars": 324252568,
+      "tokens": 88981009,
+      "chars_per_token": 3.644
+    }
+  }
+}

@@ -92,11 +92,12 @@ def logp_tail(model, ids: list[int], allowed: torch.Tensor | None, n_tail: int) 
 @torch.no_grad()
 def score(model, s: dict) -> dict:
     P, F, M, S, n_open = s["P"], s["F"], s["M"], s["S"], s["n_open"]
+    L = s.get("L") or []                     # encoded after the splice; never sees F under splice
     n = len(S) - n_open                      # score the turn body, not the role header
     lp = {}
     for c in ("full", "splice", "mask_all"):
-        lp[c] = logp_tail(model, P + F + M + S, allowed_matrix(c, len(P), len(F), len(M), len(S)), n)
-    lp["evict_text"] = logp_tail(model, P + s["stub"] + M + S, None, n)
+        lp[c] = logp_tail(model, P + F + M + L + S, allowed_matrix(c, len(P), len(F), len(M), len(L) + len(S)), n)
+    lp["evict_text"] = logp_tail(model, P + s["stub"] + M + L + S, None, n)
     tgt = torch.tensor(S[n_open:], device=lp["full"].device)
     ref, full = lp["evict_text"], lp["full"]
     out = {}
@@ -137,7 +138,8 @@ def generate(model, ids: list[int], allowed: torch.Tensor | None, block: tuple[i
 
 
 def generate_all(model, s: dict, max_new: int, stop_ids: set[int]) -> dict[str, list[int]]:
-    P, F, M, T = s["P"], s["F"], s["M"], s["T"]
+    P, F, M = s["P"], s["F"], s["M"]
+    T = (s.get("L") or []) + s["T"]
     f = (len(P), len(P) + len(F))
     out = {}
     for c in ("full", "splice", "mask_all"):
@@ -172,31 +174,38 @@ def leak_check(model, vocab: int) -> tuple[float, float]:
     return masked, seen
 
 
-def find_sample(row: dict, rng: random.Random):
-    """One stale view plus the first model call made after it went stale."""
+def find_sample(row: dict, rng: random.Random, lag: int = 0):
+    """One stale view plus a model call made after it went stale.
+
+    lag=0 scores the first call after the edit (where the splice happens). lag=k scores the call
+    k turns later: what the trace added in between ("later") is encoded after the splice and can
+    never attend to the view under splice or mask_all."""
     msgs = row["messages"]
     stale = [v for v in FileLedger("claudecode").stale(msgs, level="window") if msgs[v.index].get("role") == "tool"]
     asst = [j for j, m in enumerate(msgs) if m["role"] == "assistant"]
     cands = []
     for v in stale:
-        if v.stale_window >= len(asst):
+        if v.stale_window + lag >= len(asst):
             continue
-        j = asst[v.stale_window]              # first assistant turn after the edit result
-        if j > v.index and (msgs[j].get("tool_calls") or []) and len(msgs[v.index].get("content") or "") > 800:
-            cands.append((v, j))
+        j0 = asst[v.stale_window]             # first assistant turn after the edit result
+        j = asst[v.stale_window + lag]        # the turn that is scored
+        if j0 > v.index and (msgs[j].get("tool_calls") or []) and len(msgs[v.index].get("content") or "") > 800:
+            cands.append((v, j0, j))
     if not cands:
         return None
-    v, j = rng.choice(cands)
+    v, j0, j = rng.choice(cands)
     text = lambda m: chatml(m["role"], assistant_text(m, False) if m["role"] == "assistant" else (m.get("content") or ""))
     pre = "".join(text(m) for m in msgs[:v.index]) + "<|im_start|>tool\n"
-    mid = "<|im_end|>\n" + "".join(text(m) for m in msgs[v.index + 1:j])
+    mid = "<|im_end|>\n" + "".join(text(m) for m in msgs[v.index + 1:j0])
+    later = "".join(text(m) for m in msgs[j0:j])
     tc = msgs[j]["tool_calls"][0]["function"]
     ref = json.dumps({"name": tc["name"], "arguments": tc["arguments"]})
-    return {"pre": pre, "file": msgs[v.index]["content"], "mid": mid, "suf": assistant_text(msgs[j], True),
-            "ref": ref, "path": v.path, "calls_between": sum(1 for k in asst if v.index < k < j)}
+    return {"pre": pre, "file": msgs[v.index]["content"], "mid": mid, "later": later, "suf": assistant_text(msgs[j], True),
+            "ref": ref, "path": v.path, "calls_between": sum(1 for k in asst if v.index < k < j0)}
 
 
-def samples(paths: list[str], tok, n: int, seed: int, max_p: int, max_f: int, max_m: int, max_s: int):
+def samples(paths: list[str], tok, n: int, seed: int, max_p: int, max_f: int, max_m: int, max_s: int,
+            lag: int = 0, max_later: int = 3000):
     import pyarrow.parquet as pq
     enc = lambda t: tok(t, add_special_tokens=False)["input_ids"]
     rng = random.Random(seed)
@@ -212,16 +221,19 @@ def samples(paths: list[str], tok, n: int, seed: int, max_p: int, max_f: int, ma
             rows = t.read_row_group(g, columns=["instance_id", "messages"]).to_pylist()
             rng.shuffle(rows)
             for row in rows:
-                s = find_sample(row, rng)
+                s = find_sample(row, rng, lag)
                 if not s:
                     continue
                 F, M = enc(s["file"]), enc(s["mid"])
                 if not 200 <= len(F) <= max_f or len(M) > max_m:
                     continue
+                L = enc(s["later"]) if s["later"] else []
+                if len(L) > max_later:
+                    continue
                 S = (enc(OPEN) + enc(s["suf"]))[:max_s]
                 if len(S) - n_open < 16:
                     continue
-                yield {"instance": row["instance_id"], "P": enc(s["pre"])[-max_p:], "F": F, "M": M, "S": S,
+                yield {"instance": row["instance_id"], "P": enc(s["pre"])[-max_p:], "F": F, "M": M, "L": L, "S": S,
                        "n_open": n_open, "T": enc(OPEN + CALL), "stub": enc(STUB.format(path=s["path"])),
                        "ref": s["ref"], "calls_between": s["calls_between"]}
                 got += 1
@@ -272,6 +284,8 @@ def main() -> None:
     ap.add_argument("--max-between", type=int, default=3000)
     ap.add_argument("--max-suffix", type=int, default=200)
     ap.add_argument("--gen", type=int, default=0, help="also generate the next tool call, up to this many tokens")
+    ap.add_argument("--lag", type=int, default=0, help="score the call this many turns after the splice (0 = first call)")
+    ap.add_argument("--max-later", type=int, default=3000)
     ap.add_argument("--hybrid", action="store_true",
                     help="model has linear-attention layers: masks only reach its attention layers, so 'splice' "
                          "and 'mask_all' leave the span in the linear state (attention-only splice)")
@@ -298,10 +312,11 @@ def main() -> None:
     paths = sorted(glob.glob(a.parquet_glob, recursive=True))
     stop_ids = {i for i in (tok.convert_tokens_to_ids("<|im_end|>"), tok.eos_token_id) if isinstance(i, int) and i >= 0}
     rows, t0 = [], time.time()
-    for i, s in enumerate(samples(paths, tok, a.n, a.seed, a.max_prefix, a.max_file, a.max_between, a.max_suffix), 1):
+    for i, s in enumerate(samples(paths, tok, a.n, a.seed, a.max_prefix, a.max_file, a.max_between, a.max_suffix,
+                                  a.lag, a.max_later), 1):
         m = score(model, s)
         row = {"instance": s["instance"], "nP": len(s["P"]), "nF": len(s["F"]), "nM": len(s["M"]),
-               "nS": len(s["S"]), "calls_between": s["calls_between"], "m": m}
+               "nL": len(s.get("L") or []), "nS": len(s["S"]), "calls_between": s["calls_between"], "m": m}
         if a.gen:
             texts = {c: tok.decode(g) for c, g in generate_all(model, s, a.gen, stop_ids).items()}
             row["g"] = gen_metrics(texts, s["ref"])
@@ -316,7 +331,7 @@ def main() -> None:
               f"{el / i:.1f}s each, ~{el / i * (a.n - i) / 60:.0f} min left", flush=True)
         if a.out and i % 10 == 0:
             json.dump({"model": a.model, "n": len(rows), "aggregate": aggregate(rows), "rows": rows}, open(a.out, "w"))
-    res = {"model": a.model, "device": dev, "n": len(rows), "seed": a.seed, "hybrid": a.hybrid,
+    res = {"model": a.model, "device": dev, "n": len(rows), "seed": a.seed, "hybrid": a.hybrid, "lag": a.lag,
            "leak_check": {"masked": leak, "unmasked": seen},
            "limits": {"prefix": a.max_prefix, "file": a.max_file, "between": a.max_between, "suffix": a.max_suffix},
            "aggregate": aggregate(rows), "rows": rows}

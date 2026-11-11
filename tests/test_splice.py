@@ -100,3 +100,21 @@ def test_gen_metrics():
 def test_leak_check_is_zero_on_attention_only(model):
     masked, seen = leak_check(model, 300)
     assert masked < 1e-5 and seen > 1e-3
+
+
+def test_find_sample_lag_scores_a_later_call():
+    import random
+    body = "\n".join(f"{i}\tline {i} of the file" for i in range(1, 80))
+    msgs = [
+        {"role": "system", "content": "sys"}, {"role": "user", "content": "fix it"},
+        _call("Read", file_path="/r/a.py"), {"role": "tool", "content": body},
+        _call("Edit", file_path="/r/a.py", old_string="line 5 of the file", new_string="x"),
+        {"role": "tool", "content": "The file /r/a.py has been updated."},
+        _call("Bash", command="pytest"), {"role": "tool", "content": "2 failed"},
+        _call("Bash", command="git diff"), {"role": "tool", "content": "diff"},
+    ]
+    s0 = find_sample({"messages": msgs}, random.Random(0), 0)
+    s1 = find_sample({"messages": msgs}, random.Random(0), 1)
+    assert s0["later"] == "" and "pytest" in s0["ref"]
+    assert s1["mid"] == s0["mid"] and "pytest" in s1["later"] and "2 failed" in s1["later"] and "git diff" in s1["ref"]
+    assert find_sample({"messages": msgs}, random.Random(0), 2) is None
