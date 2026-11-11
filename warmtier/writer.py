@@ -135,6 +135,50 @@ def kd_loss(model, s: dict) -> torch.Tensor:
 
 
 @torch.no_grad()
+def teacher_gen(model, P, F, T, max_new: int, stop_ids: set[int]):
+    """Greedy continuation G after P+F+T under full prefill, its log-probs, and the P cache.
+
+    Row i of the returned log-probs is the distribution that produced G[i]; one extra row holds
+    the distribution after the last token (usually the stop token)."""
+    base, head = parts(model)
+    dev = next(model.parameters()).device
+    model._writer_gate.value = None
+    out = base(input_ids=torch.tensor(P + F + T, device=dev)[None], use_cache=True)
+    cache = out.past_key_values
+    rows = [torch.log_softmax(head(out.last_hidden_state[0, -1]).float(), -1)]
+    G = []
+    while len(G) < max_new:
+        tok = int(rows[-1].argmax())
+        if tok in stop_ids:
+            break
+        G.append(tok)
+        out = base(input_ids=torch.tensor([[tok]], device=dev), past_key_values=cache, use_cache=True)
+        cache = out.past_key_values
+        rows.append(torch.log_softmax(head(out.last_hidden_state[0, -1]).float(), -1))
+    drop = len(F) + len(T) + len(G)
+    try:
+        cache.crop(-drop)
+    except (ValueError, TypeError):
+        cache.crop(len(P))
+    assert cache.get_seq_length() == len(P), (cache.get_seq_length(), len(P))
+    return G, torch.stack(rows), cache
+
+
+def gen_kd_loss(model, s: dict, max_new: int, stop_ids: set[int]) -> torch.Tensor | None:
+    """Distil on the call the full-prefill model itself writes, the thing the gate scores.
+
+    None when the teacher stops at once (nothing to match)."""
+    G, t_logp, cache = teacher_gen(model, s["P"], s["F"], s["T"], max_new, stop_ids)
+    if not G:
+        return None
+    nT = len(s["T"])
+    # student_logp row j predicts (T+G)[j]; rows nT.. predict G[0..]. Teacher row i predicts G[i].
+    s_logp = student_logp(model, s["P"], s["F"], s["T"] + G, cache)[nT:nT + len(G)]
+    t_logp = t_logp[:len(G)]
+    return (t_logp.exp() * (t_logp - s_logp)).sum(-1).mean()
+
+
+@torch.no_grad()
 def evaluate(model, val: list[dict]) -> float:
     return sum(float(kd_loss(model, s)) for s in val) / len(val)
 
@@ -154,6 +198,9 @@ def main() -> None:
     ap.add_argument("--max-file", type=int, default=1500)
     ap.add_argument("--max-suffix", type=int, default=160)
     ap.add_argument("--seed", type=int, default=1)
+    ap.add_argument("--gen-mix", type=float, default=0.0,
+                    help="share of steps that distil on the call the full-prefill model generates, instead of the real next turn")
+    ap.add_argument("--gen-max", type=int, default=64)
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
     from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -180,6 +227,8 @@ def main() -> None:
     total = a.epochs * len(train) // a.accum
     sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda u: min(1.0, (u + 1) / 50) * (0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * min(u, total) / total))))
     rng = random.Random(a.seed)
+    stop_ids = {i for i in (tok.convert_tokens_to_ids("<|im_end|>"), tok.eos_token_id) if isinstance(i, int) and i >= 0}
+    n_gen = 0
     step, ema, skipped, t0 = 0, None, 0, time.time()
     history = []
     for ep in range(a.epochs):
@@ -187,7 +236,12 @@ def main() -> None:
         for s in train:
             try:
                 with torch.autocast("cuda", dtype=torch.bfloat16):
-                    loss = kd_loss(model, s)
+                    loss = None
+                    if a.gen_mix and rng.random() < a.gen_mix:
+                        loss = gen_kd_loss(model, s, a.gen_max, stop_ids)
+                        n_gen += loss is not None
+                    if loss is None:
+                        loss = kd_loss(model, s)
                 (loss / a.accum).backward()
             except torch.cuda.OutOfMemoryError:
                 skipped += 1
@@ -202,17 +256,17 @@ def main() -> None:
             if step % 50 == 0:
                 el = time.time() - t0
                 print(f"step {step}/{a.epochs * len(train)} loss_ema {ema:.4f} {el / step:.2f}s/step "
-                      f"~{el / step * (a.epochs * len(train) - step) / 60:.0f} min left mem {torch.cuda.max_memory_allocated() / 2**30:.1f}G skipped {skipped}", flush=True)
+                      f"~{el / step * (a.epochs * len(train) - step) / 60:.0f} min left mem {torch.cuda.max_memory_allocated() / 2**30:.1f}G skipped {skipped} gen-steps {n_gen}", flush=True)
             if step % 500 == 0:
                 v = evaluate(model, val)
                 history.append((step, v))
                 print(f"== step {step} val KL {v:.4f} (start {base_kl:.4f})", flush=True)
                 torch.save({"rank": a.rank, "alpha": a.alpha, "model": a.model, "state": lora_state(model),
-                            "val_kl_start": base_kl, "history": history}, a.out)
+                            "val_kl_start": base_kl, "history": history, "gen_mix": a.gen_mix, "n_train": len(train)}, a.out)
     v = evaluate(model, val)
     history.append((step, v))
     torch.save({"rank": a.rank, "alpha": a.alpha, "model": a.model, "state": lora_state(model),
-                "val_kl_start": base_kl, "history": history}, a.out)
+                "val_kl_start": base_kl, "history": history, "gen_mix": a.gen_mix, "n_train": len(train)}, a.out)
     print(f"done: val KL {base_kl:.4f} -> {v:.4f}; saved {a.out}", flush=True)
 
 

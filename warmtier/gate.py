@@ -332,6 +332,7 @@ def main() -> None:
     ap.add_argument("--max-suffix", type=int, default=200)
     ap.add_argument("--gen", type=int, default=0, help="also generate the next tool call, up to this many tokens")
     ap.add_argument("--adapter", help="writer adapter from warmtier.writer; adds the 'writer' condition")
+    ap.add_argument("--only", help="comma-separated conditions to run (full is always included), e.g. iso,writer,nofile")
     ap.add_argument("--out")
     a = ap.parse_args()
     from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -351,12 +352,15 @@ def main() -> None:
         load_adapter(model, a.adapter)
         CONDITIONS = CONDITIONS[:-1] + ("writer", "nofile")
         print("adapter loaded:", a.adapter)
+    if a.only:
+        globals()["CONDITIONS"] = ("full",) + tuple(c for c in CONDITIONS if c in set(a.only.split(",")) and c != "full")
+        print("conditions:", CONDITIONS)
     paths = sorted(glob.glob(a.parquet_glob, recursive=True))
     rows, t0 = [], time.time()
     stop_ids = {i for i in (tok.convert_tokens_to_ids("<|im_end|>"), tok.eos_token_id) if isinstance(i, int) and i >= 0}
     for i, s in enumerate(samples(paths, tok, a.n, a.seed, a.max_prefix, a.max_file, a.max_suffix), 1):
         ids = torch.tensor(s["P"] + s["F"] + s["S"], device=next(model.parameters()).device)
-        d = deviation(model, ids, len(s["P"]), len(s["F"]), len(s["S"]))
+        d = deviation(model, ids, len(s["P"]), len(s["F"]), len(s["S"])) if any(c.startswith("repair_dev") for c in CONDITIONS) else None
         m = score(model, s["P"], s["F"], s["S"], dev=d)
         row = {"instance": s["instance"], "nP": len(s["P"]), "nF": len(s["F"]), "nS": len(s["S"]), "m": m}
         if a.gen and s["ref"]:

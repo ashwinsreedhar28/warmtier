@@ -1,0 +1,10 @@
+step 0 val KL (plain reuse, no repair) 0.1548
+== step 500 val KL 0.0700 (start 0.1548)
+== step 1000 val KL 0.0636 (start 0.1548)
+== step 1500 val KL 0.0590 (start 0.1548)
+== step 2000 val KL 0.0539 (start 0.1548)
+== step 2500 val KL 0.0513 (start 0.1548)
+== step 3000 val KL 0.0481 (start 0.1548)
+== step 3500 val KL 0.0472 (start 0.1548)
+== step 4000 val KL 0.0456 (start 0.1548)
+done: val KL 0.1548 -> 0.0456; saved /w/out/writer_v2_r32_mix50.pt

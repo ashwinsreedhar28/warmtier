@@ -1,0 +1,1898 @@
+{
+ "model": "Qwen/Qwen3-8B",
+ "n": 60,
+ "seed": 0,
+ "aggregate": {
+  "pre_nl": {
+   "kl_mean": 0.0024,
+   "top1_mean": 0.989,
+   "gen_n": 56,
+   "name_full": 0.9821,
+   "exact_full": 0.8393
+  },
+  "drop8": {
+   "kl_mean": 0.017,
+   "top1_mean": 0.9823,
+   "gen_n": 56,
+   "name_full": 0.9464,
+   "exact_full": 0.8036
+  },
+  "drop64": {
+   "kl_mean": 0.031,
+   "top1_mean": 0.9684,
+   "gen_n": 56,
+   "name_full": 0.9464,
+   "exact_full": 0.6964
+  }
+ },
+ "rows": [
+  {
+   "instance": "brazilian-utils__brutils-python-124",
+   "nP": 824,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0024158074520528316,
+     "top1": 0.9927006959915161
+    },
+    "drop8": {
+     "kl": 0.10918315500020981,
+     "top1": 0.9635036587715149
+    },
+    "drop64": {
+     "kl": 0.11213217675685883,
+     "top1": 0.956204354763031
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": false,
+     "exact_full": false
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": false
+    }
+   }
+  },
+  {
+   "instance": "vaskoz__dailycodingproblem-go-549",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.00030393805354833603,
+     "top1": 0.9950000047683716
+    },
+    "drop8": {
+     "kl": 0.0010683999862521887,
+     "top1": 0.98499995470047
+    },
+    "drop64": {
+     "kl": 0.007012461312115192,
+     "top1": 0.9699999690055847
+    }
+   },
+   "g": {}
+  },
+  {
+   "instance": "getsentry__responses-397",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0002551650395616889,
+     "top1": 0.9950000047683716
+    },
+    "drop8": {
+     "kl": 0.0003616024332586676,
+     "top1": 0.9899999499320984
+    },
+    "drop64": {
+     "kl": 0.0016120374202728271,
+     "top1": 0.9749999642372131
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "s-knibbs__dataclasses-jsonschema-92",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0005045995931141078,
+     "top1": 1.0
+    },
+    "drop8": {
+     "kl": 0.00153154949657619,
+     "top1": 0.9707602262496948
+    },
+    "drop64": {
+     "kl": 0.005143333692103624,
+     "top1": 0.9766082167625427
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "pallets__werkzeug-2723",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0010962507221847773,
+     "top1": 0.9910714626312256
+    },
+    "drop8": {
+     "kl": 0.006812415085732937,
+     "top1": 0.9821429252624512
+    },
+    "drop64": {
+     "kl": 0.014154305681586266,
+     "top1": 0.9821429252624512
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "vuejs__eslint-plugin-vue-2045",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0006723545375280082,
+     "top1": 0.9950000047683716
+    },
+    "drop8": {
+     "kl": 0.002205149969086051,
+     "top1": 0.9749999642372131
+    },
+    "drop64": {
+     "kl": 0.0036953019443899393,
+     "top1": 0.9799999594688416
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "geopandas__geopandas-3272",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.00037408870412036777,
+     "top1": 1.0
+    },
+    "drop8": {
+     "kl": 0.002898517996072769,
+     "top1": 0.977142870426178
+    },
+    "drop64": {
+     "kl": 0.011340412311255932,
+     "top1": 0.9542856812477112
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": false
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": false
+    }
+   }
+  },
+  {
+   "instance": "cuyz__valinor-514",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0009535663994029164,
+     "top1": 0.9999999403953552
+    },
+    "drop8": {
+     "kl": 0.0032840243075042963,
+     "top1": 0.9918032288551331
+    },
+    "drop64": {
+     "kl": 0.0007985225529409945,
+     "top1": 0.9918032288551331
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "pinojs__hapi-pino-116",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.001052380190230906,
+     "top1": 0.9715909361839294
+    },
+    "drop8": {
+     "kl": 0.0020694746635854244,
+     "top1": 0.9659091234207153
+    },
+    "drop64": {
+     "kl": 0.07139506191015244,
+     "top1": 0.9318181872367859
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": false,
+     "exact_full": false
+    },
+    "drop8": {
+     "name_full": false,
+     "exact_full": false
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "rascarlito__axios-cache-adapter-237",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0009582714410498738,
+     "top1": 0.9950000047683716
+    },
+    "drop8": {
+     "kl": 0.002315153367817402,
+     "top1": 1.0
+    },
+    "drop64": {
+     "kl": 0.006939716637134552,
+     "top1": 0.9799999594688416
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": false,
+     "exact_full": false
+    }
+   }
+  },
+  {
+   "instance": "martin-helmich__typo3-typoscript-lint-124",
+   "nP": 1356,
+   "m": {
+    "pre_nl": {
+     "kl": 0.008064326830208302,
+     "top1": 0.9851851463317871
+    },
+    "drop8": {
+     "kl": 0.1757601648569107,
+     "top1": 0.970370352268219
+    },
+    "drop64": {
+     "kl": 0.20912805199623108,
+     "top1": 0.940740704536438
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "lesshint__lesshint-206",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0002595564001239836,
+     "top1": 0.98499995470047
+    },
+    "drop8": {
+     "kl": 0.0007546913693659008,
+     "top1": 0.9899999499320984
+    },
+    "drop64": {
+     "kl": 0.003191375406458974,
+     "top1": 0.9899999499320984
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "getmoto__moto-5870",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.001490206690505147,
+     "top1": 0.9950000047683716
+    },
+    "drop8": {
+     "kl": 0.0009529414819553494,
+     "top1": 0.9950000047683716
+    },
+    "drop64": {
+     "kl": 0.006070398725569248,
+     "top1": 0.9899999499320984
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "onedr0p__exportarr-110",
+   "nP": 2892,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0084155835211277,
+     "top1": 0.9861111044883728
+    },
+    "drop8": {
+     "kl": 0.21149678528308868,
+     "top1": 0.9722222089767456
+    },
+    "drop64": {
+     "kl": 0.2582912743091583,
+     "top1": 0.9583333134651184
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": false
+    }
+   }
+  },
+  {
+   "instance": "argoproj__argo-4494",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0016748534981161356,
+     "top1": 0.9950000047683716
+    },
+    "drop8": {
+     "kl": 0.002628108486533165,
+     "top1": 0.9899999499320984
+    },
+    "drop64": {
+     "kl": 0.017512470483779907,
+     "top1": 0.9899999499320984
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "pydicom__pynetdicom-998",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0006843848968856037,
+     "top1": 0.98499995470047
+    },
+    "drop8": {
+     "kl": 0.0005607816274277866,
+     "top1": 0.98499995470047
+    },
+    "drop64": {
+     "kl": 0.0034274067729711533,
+     "top1": 0.9950000047683716
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": false
+    }
+   }
+  },
+  {
+   "instance": "ungarj__mapchete-683",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0031987037509679794,
+     "top1": 0.9950000047683716
+    },
+    "drop8": {
+     "kl": 0.0003888580540660769,
+     "top1": 0.9899999499320984
+    },
+    "drop64": {
+     "kl": 0.0021841838024556637,
+     "top1": 0.9899999499320984
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "gitleaks__gitleaks-1622",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0019477931782603264,
+     "top1": 0.98499995470047
+    },
+    "drop8": {
+     "kl": 0.0030514567624777555,
+     "top1": 0.98499995470047
+    },
+    "drop64": {
+     "kl": 0.03767834231257439,
+     "top1": 0.9699999690055847
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "google__autocxx-182",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0012918671127408743,
+     "top1": 0.98499995470047
+    },
+    "drop8": {
+     "kl": 0.014175783842802048,
+     "top1": 0.9649999737739563
+    },
+    "drop64": {
+     "kl": 0.14561203122138977,
+     "top1": 0.9300000071525574
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": false
+    }
+   }
+  },
+  {
+   "instance": "guillaumegomez__sysinfo-878",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0008388562127947807,
+     "top1": 0.9855072498321533
+    },
+    "drop8": {
+     "kl": 0.0004924307577311993,
+     "top1": 1.0
+    },
+    "drop64": {
+     "kl": 0.0025443576741963625,
+     "top1": 1.0
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "fhir__sushi-165",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0035737992729991674,
+     "top1": 0.987500011920929
+    },
+    "drop8": {
+     "kl": 0.011785471811890602,
+     "top1": 1.0
+    },
+    "drop64": {
+     "kl": 0.005820257123559713,
+     "top1": 1.0
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "synthetixio__synthetix-v3-234",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.002826334210112691,
+     "top1": 0.9899999499320984
+    },
+    "drop8": {
+     "kl": 0.004074467346072197,
+     "top1": 0.9899999499320984
+    },
+    "drop64": {
+     "kl": 0.0011907056905329227,
+     "top1": 0.9950000047683716
+    }
+   },
+   "g": {}
+  },
+  {
+   "instance": "enselic__cargo-public-api-289",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0003265113919042051,
+     "top1": 0.9950000047683716
+    },
+    "drop8": {
+     "kl": 0.0007114504114724696,
+     "top1": 0.9899999499320984
+    },
+    "drop64": {
+     "kl": 0.0023523590061813593,
+     "top1": 0.9899999499320984
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": false
+    }
+   }
+  },
+  {
+   "instance": "mercurius-js__mercurius-935",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0006284218397922814,
+     "top1": 0.9899999499320984
+    },
+    "drop8": {
+     "kl": 0.0008626902126707137,
+     "top1": 0.9899999499320984
+    },
+    "drop64": {
+     "kl": 0.002565352013334632,
+     "top1": 0.9749999642372131
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "samuelcolvin__pydantic-3551",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.00040818084380589426,
+     "top1": 0.9799999594688416
+    },
+    "drop8": {
+     "kl": 0.0006354922079481184,
+     "top1": 0.9799999594688416
+    },
+    "drop64": {
+     "kl": 0.002939654514193535,
+     "top1": 0.98499995470047
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "php__pie-69",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0004151125904172659,
+     "top1": 0.9950000047683716
+    },
+    "drop8": {
+     "kl": 0.000716222682967782,
+     "top1": 0.9950000047683716
+    },
+    "drop64": {
+     "kl": 0.005556127522140741,
+     "top1": 0.9899999499320984
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "apostrophecms__sanitize-html-692",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.00017682912584859878,
+     "top1": 1.0
+    },
+    "drop8": {
+     "kl": 0.00038360065082088113,
+     "top1": 1.0
+    },
+    "drop64": {
+     "kl": 0.0005490046460181475,
+     "top1": 1.0
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": false
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "jlongster__prettier-556",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0010816972935572267,
+     "top1": 0.9880952835083008
+    },
+    "drop8": {
+     "kl": 0.009883861057460308,
+     "top1": 0.9523809552192688
+    },
+    "drop64": {
+     "kl": 0.005105939228087664,
+     "top1": 0.9761905074119568
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "reubeno__brush-551",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.00025519414339214563,
+     "top1": 1.0
+    },
+    "drop8": {
+     "kl": 0.0011901888065040112,
+     "top1": 0.9950000047683716
+    },
+    "drop64": {
+     "kl": 0.0028392458334565163,
+     "top1": 0.9950000047683716
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "rust-lang__cc-rs-1295",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0007526869885623455,
+     "top1": 0.9899999499320984
+    },
+    "drop8": {
+     "kl": 0.001061786781065166,
+     "top1": 0.9799999594688416
+    },
+    "drop64": {
+     "kl": 0.004871096462011337,
+     "top1": 0.9699999690055847
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "eclipse__microprofile-lra-310",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0007037818431854248,
+     "top1": 0.98499995470047
+    },
+    "drop8": {
+     "kl": 0.0007032867870293558,
+     "top1": 0.9950000047683716
+    },
+    "drop64": {
+     "kl": 0.003151122247800231,
+     "top1": 0.9899999499320984
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "lyraproj__hiera-52",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0007349565275944769,
+     "top1": 0.9799999594688416
+    },
+    "drop8": {
+     "kl": 0.0017577053513377905,
+     "top1": 0.98499995470047
+    },
+    "drop64": {
+     "kl": 0.005308025982230902,
+     "top1": 0.9749999642372131
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": false
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": false
+    },
+    "drop64": {
+     "name_full": false,
+     "exact_full": false
+    }
+   }
+  },
+  {
+   "instance": "kubernetes-csi__csi-driver-nfs-770",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0005174550460651517,
+     "top1": 1.0
+    },
+    "drop8": {
+     "kl": 0.0006583431968465447,
+     "top1": 0.9899999499320984
+    },
+    "drop64": {
+     "kl": 0.003136920277029276,
+     "top1": 0.9649999737739563
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "codeception__codeceptjs-368",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.011389795690774918,
+     "top1": 0.984375
+    },
+    "drop8": {
+     "kl": 0.08434204757213593,
+     "top1": 0.9635416865348816
+    },
+    "drop64": {
+     "kl": 0.020647451281547546,
+     "top1": 0.96875
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": false
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": false
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": false
+    }
+   }
+  },
+  {
+   "instance": "rigetticomputing__pyquil-177",
+   "nP": 1315,
+   "m": {
+    "pre_nl": {
+     "kl": 0.008499323390424252,
+     "top1": 0.9899999499320984
+    },
+    "drop8": {
+     "kl": 0.07211124897003174,
+     "top1": 0.9599999785423279
+    },
+    "drop64": {
+     "kl": 0.09608089178800583,
+     "top1": 0.9399999976158142
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": false
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": false
+    }
+   }
+  },
+  {
+   "instance": "acloudguru__serverless-plugin-aws-alerts-87",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.002863204339519143,
+     "top1": 0.98499995470047
+    },
+    "drop8": {
+     "kl": 0.010593955405056477,
+     "top1": 0.9649999737739563
+    },
+    "drop64": {
+     "kl": 0.015980929136276245,
+     "top1": 0.9699999690055847
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "cross-rs__cross-1183",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0012445435859262943,
+     "top1": 0.9615384936332703
+    },
+    "drop8": {
+     "kl": 0.009304228238761425,
+     "top1": 1.0
+    },
+    "drop64": {
+     "kl": 0.006233611144125462,
+     "top1": 0.942307710647583
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "codeceptjs__codeceptjs-3432",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0009673867025412619,
+     "top1": 0.9899999499320984
+    },
+    "drop8": {
+     "kl": 0.0025342649314552546,
+     "top1": 0.9950000047683716
+    },
+    "drop64": {
+     "kl": 0.006345796398818493,
+     "top1": 0.9699999690055847
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "dikhan__terraform-provider-openapi-319",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.00107264902908355,
+     "top1": 0.9950000047683716
+    },
+    "drop8": {
+     "kl": 0.0029876865446567535,
+     "top1": 0.9799999594688416
+    },
+    "drop64": {
+     "kl": 0.018456127494573593,
+     "top1": 0.9699999690055847
+    }
+   },
+   "g": {}
+  },
+  {
+   "instance": "pennylaneai__pennylane-4540",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0034169494174420834,
+     "top1": 0.98499995470047
+    },
+    "drop8": {
+     "kl": 0.013458122499287128,
+     "top1": 0.9799999594688416
+    },
+    "drop64": {
+     "kl": 0.07843294739723206,
+     "top1": 0.9399999976158142
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": false
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": false
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "jpadilla__pyjwt-316",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0019096387550234795,
+     "top1": 0.9928571581840515
+    },
+    "drop8": {
+     "kl": 0.00837918184697628,
+     "top1": 0.9714285731315613
+    },
+    "drop64": {
+     "kl": 0.1648351550102234,
+     "top1": 0.8857142925262451
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": false
+    },
+    "drop8": {
+     "name_full": false,
+     "exact_full": false
+    },
+    "drop64": {
+     "name_full": false,
+     "exact_full": false
+    }
+   }
+  },
+  {
+   "instance": "streamich__memfs-1076",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0035525572020560503,
+     "top1": 0.9799999594688416
+    },
+    "drop8": {
+     "kl": 0.0019740303978323936,
+     "top1": 0.9749999642372131
+    },
+    "drop64": {
+     "kl": 0.003380673937499523,
+     "top1": 0.9749999642372131
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": false
+    }
+   }
+  },
+  {
+   "instance": "keithamus__sort-package-json-361",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.007893585599958897,
+     "top1": 0.98499995470047
+    },
+    "drop8": {
+     "kl": 0.009417313151061535,
+     "top1": 0.9749999642372131
+    },
+    "drop64": {
+     "kl": 0.0751723200082779,
+     "top1": 0.9350000023841858
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": false
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": false
+    }
+   }
+  },
+  {
+   "instance": "evertras__bubble-table-166",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0009219071944244206,
+     "top1": 0.9920635223388672
+    },
+    "drop8": {
+     "kl": 0.003652729792520404,
+     "top1": 0.9841270446777344
+    },
+    "drop64": {
+     "kl": 0.009403789415955544,
+     "top1": 0.968254029750824
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": false
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": false
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": false
+    }
+   }
+  },
+  {
+   "instance": "arco-design__arco-design-263",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.000676221854519099,
+     "top1": 0.9899999499320984
+    },
+    "drop8": {
+     "kl": 0.0022098212502896786,
+     "top1": 0.9799999594688416
+    },
+    "drop64": {
+     "kl": 0.007038498762995005,
+     "top1": 0.9699999690055847
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "sermant-io__sermant-1692",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.006612239871174097,
+     "top1": 0.9876543283462524
+    },
+    "drop8": {
+     "kl": 0.0087131317704916,
+     "top1": 0.9876543283462524
+    },
+    "drop64": {
+     "kl": 0.013999475166201591,
+     "top1": 0.9506173133850098
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "gphotosuploader__gphotos-uploader-cli-153",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0031255646608769894,
+     "top1": 0.9847715497016907
+    },
+    "drop8": {
+     "kl": 0.00629405677318573,
+     "top1": 0.9796954393386841
+    },
+    "drop64": {
+     "kl": 0.012711195275187492,
+     "top1": 0.9695430994033813
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": false
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": false
+    }
+   }
+  },
+  {
+   "instance": "auth0__auth0-spa-js-558",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0009989159880205989,
+     "top1": 0.9950000047683716
+    },
+    "drop8": {
+     "kl": 0.0013139229267835617,
+     "top1": 0.98499995470047
+    },
+    "drop64": {
+     "kl": 0.002945112530142069,
+     "top1": 0.98499995470047
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "pycqa__pyflakes-273",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0008053987403400242,
+     "top1": 0.9900990128517151
+    },
+    "drop8": {
+     "kl": 0.0037023790646344423,
+     "top1": 1.0
+    },
+    "drop64": {
+     "kl": 0.014042903669178486,
+     "top1": 0.9801980257034302
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "go-kratos__kratos-1731",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.014953610487282276,
+     "top1": 0.9549999833106995
+    },
+    "drop8": {
+     "kl": 0.018075691536068916,
+     "top1": 0.9399999976158142
+    },
+    "drop64": {
+     "kl": 0.013103829696774483,
+     "top1": 0.949999988079071
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": false
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": false
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": false
+    }
+   }
+  },
+  {
+   "instance": "js-data__js-data-473",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.00031639254302717745,
+     "top1": 0.9899999499320984
+    },
+    "drop8": {
+     "kl": 0.0005031771725043654,
+     "top1": 0.98499995470047
+    },
+    "drop64": {
+     "kl": 0.0009969673119485378,
+     "top1": 0.98499995470047
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "solid__community-server-867",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0013892328133806586,
+     "top1": 0.98499995470047
+    },
+    "drop8": {
+     "kl": 0.004838936030864716,
+     "top1": 0.98499995470047
+    },
+    "drop64": {
+     "kl": 0.003638147609308362,
+     "top1": 0.9799999594688416
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "aaugustin__websockets-629",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0023526595905423164,
+     "top1": 0.9950000047683716
+    },
+    "drop8": {
+     "kl": 0.0038255401886999607,
+     "top1": 0.9899999499320984
+    },
+    "drop64": {
+     "kl": 0.010314448736608028,
+     "top1": 0.9799999594688416
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "vaskoz__dailycodingproblem-go-144",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0124654620885849,
+     "top1": 1.0
+    },
+    "drop8": {
+     "kl": 0.13991399109363556,
+     "top1": 0.9599999785423279
+    },
+    "drop64": {
+     "kl": 0.14157003164291382,
+     "top1": 0.9599999785423279
+    }
+   },
+   "g": {}
+  },
+  {
+   "instance": "nats-io__nsc-610",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.000179180278792046,
+     "top1": 1.0
+    },
+    "drop8": {
+     "kl": 0.002692145761102438,
+     "top1": 0.9950000047683716
+    },
+    "drop64": {
+     "kl": 0.01692081056535244,
+     "top1": 0.98499995470047
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "deislabs__ratify-815",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0003659352660179138,
+     "top1": 1.0
+    },
+    "drop8": {
+     "kl": 0.0007393004489131272,
+     "top1": 0.9904762506484985
+    },
+    "drop64": {
+     "kl": 0.014640904031693935,
+     "top1": 0.9619048237800598
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": false
+    }
+   }
+  },
+  {
+   "instance": "ota-meshi__eslint-plugin-regexp-646",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.000630272610578686,
+     "top1": 1.0
+    },
+    "drop8": {
+     "kl": 0.0022119658533483744,
+     "top1": 0.9950000047683716
+    },
+    "drop64": {
+     "kl": 0.052931927144527435,
+     "top1": 0.9449999928474426
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "rust-lang__rustfmt-5669",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.005984597839415073,
+     "top1": 0.9699999690055847
+    },
+    "drop8": {
+     "kl": 0.025669196620583534,
+     "top1": 0.9699999690055847
+    },
+    "drop64": {
+     "kl": 0.08554653078317642,
+     "top1": 0.85999995470047
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "amacneil__dbmate-145",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0012418907135725021,
+     "top1": 0.98499995470047
+    },
+    "drop8": {
+     "kl": 0.0031288075260818005,
+     "top1": 0.98499995470047
+    },
+    "drop64": {
+     "kl": 0.003019823459908366,
+     "top1": 0.9799999594688416
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  },
+  {
+   "instance": "warpnet__salt-lint-214",
+   "nP": 3000,
+   "m": {
+    "pre_nl": {
+     "kl": 0.0004965132102370262,
+     "top1": 0.9749999642372131
+    },
+    "drop8": {
+     "kl": 0.002524647628888488,
+     "top1": 0.9749999642372131
+    },
+    "drop64": {
+     "kl": 0.003762509673833847,
+     "top1": 0.9399999976158142
+    }
+   },
+   "g": {
+    "pre_nl": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop8": {
+     "name_full": true,
+     "exact_full": true
+    },
+    "drop64": {
+     "name_full": true,
+     "exact_full": true
+    }
+   }
+  }
+ ]
+}

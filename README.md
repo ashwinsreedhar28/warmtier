@@ -532,6 +532,114 @@ of tasks, chosen by a hash of the task id. Whether KV can be reused for a line
 range seen at another position is the same open question as for whole files.
 Results: `results/blocks_nebius.json`.
 
+## Fourteenth: noise floor for the gate metrics (Nov 10, 2026)
+
+`python -m warmtier.floor`, same 60 samples and seed as the gate runs. Full
+prefill is compared with full prefill after a change that has nothing to do
+with reuse. This says how good a reuse scheme could possibly look.
+
+| change (still full prefill) | 4B KL | 4B same tool | 4B identical call | 8B KL | 8B identical call |
+|---|---|---|---|---|---|
+| one newline token added in front | 0.002 | 98% | 86% [77, 95] | 0.002 | 84% [73, 93] |
+| prefix starts 8 tokens later | 0.005 | 96% | 77% [66, 88] | 0.017 | 80% [71, 89] |
+| prefix starts 64 tokens later | 0.022 | 98% | 79% [68, 89] | 0.031 | 70% [57, 82] |
+
+For comparison on the 4B model: plain reuse KL 0.149 and 23% identical; best
+training-free repair 0.101 and 45%; writer adapter 0.034 and 46%.
+
+Reading:
+- "Identical call" tops out near 80%, not 100%: a one-token shift in the
+  prompt already changes about one generated call in seven.
+- By KL the adapter is close to the floor: 0.034 against 0.022 for dropping
+  64 tokens of a 3,000-token prefix.
+- By generated calls it is not: 46% identical against a floor of 77% to 86%.
+  Plain reuse sits at 23%, so the adapter (like the best repair) recovers
+  about 40% of the distance to the floor on this measure.
+- So the adapter result is: next-token distributions nearly restored, the
+  calls the model actually writes still differ about twice as often as they
+  would from noise alone.
+
+Limits: three perturbations, greedy decoding, 56 calls per cell.
+Results: `results/floor_qwen3_4b.json`, `results/floor_qwen3_8b.json`.
+
+## Audit log (started Nov 10, 2026)
+
+Checks run against the numbers above, and what they changed.
+
+| check | outcome |
+|---|---|
+| SWE-agent headline numbers recomputed from the silver tables with separate SQL | match: 41.9% view share, 15.1% to 18.3% stale share, 47.6% to 55.5% invalidated, median life 2 calls |
+| SWE-agent staleness re-derived from raw trajectories with a second implementation, 400 runs | file level identical (2,519 of 4,480 views); window level 2,119 vs 2,114 |
+| What SWE-agent "file views" consist of, all 80,036 runs | CORRECTION below |
+| Claude Code style stale views checked against raw messages, 1,350 samples | an edit to the shown text in 80%, a shell rewrite of the file in 16%, an edit elsewhere in the file in 3%, none in 1 case |
+| Team overlap, k=2 rows recomputed in DuckDB | match |
+| Mask-based simulation of KV reuse and of splicing against explicit KV tensors (tiny model) | match, in the unit tests |
+| Adapter scoring above full prefill on the real next turn | explained as a calibration effect; "retained" metric withdrawn (Twelfth) |
+| Gate run 2 restated on KL | deviation-based repair is no better than even spacing; earlier claim withdrawn (Seventh) |
+| Noise floor of "identical call" | about 80%, not 100% (Fourteenth) |
+
+CORRECTION, SWE-agent "file views": the 41.9% of prefill counted as file views
+is three different things. Every `edit` command echoes a window of the file,
+and a rejected edit prints the file as it would have looked.
+
+| what the observation is | share of prefill | stale share of prefill (window to file level) |
+|---|---|---|
+| reads (open, goto, scroll) | 20.8% | 5.0% to 7.5% |
+| window echoed after a successful edit | 12.5% | 7.3% to 7.8% |
+| output of a rejected edit | 8.2% | 2.4% to 2.7% |
+| file just created | 0.4% | 0.4% |
+| total as first reported | 41.9% | 15.1% to 18.3% |
+
+So on SWE-agent most stale context is windows echoed by earlier edits, not
+files the agent read, and a rejected edit's output is not file content at all.
+The eviction numbers still describe context that is dead after a later edit,
+but "stale file views" overstated how much of it is reading. Rejected-edit
+output (8.2% of prefill) is a separate eviction target that the replay did
+not count in full. The Claude Code style traces have no echo, so their
+numbers are reads only.
+
+Counts behind the correction: `results/audit_sweagent_view_kinds.json`, made by
+`scripts/audit_views.py`.
+
+Not yet audited: the cost model's assumptions, the eviction replay beyond its
+unit tests, the hybrid memory figures against vLLM's real allocation.
+
+## Fifteenth: pushing the adapter (Nov 11, 2026)
+
+The adapter restores next-token distributions but its generated calls match
+full prefill only 46% of the time against a floor near 80%. Three variants
+tried to close that, each 4,000 steps on Qwen3-4B, all scored on the same 200
+held-out samples (197 with a generated call). "Generated-call loss" distils
+on the call the full-prefill model itself writes after the file, which is
+what the metric scores (`warmtier.writer --gen-mix`).
+
+| adapter | KL from full | same tool | identical call | vs original, paired |
+|---|---|---|---|---|
+| plain reuse, no adapter | 0.161 | 79% | 22% [17, 28] | |
+| original: rank 8, real-turn loss | 0.040 | 92% | 44% [37, 51] | |
+| rank 8, half the steps on generated calls | 0.043 | 91% | 49% [42, 56] | +4.6 pts [-0.5, +10.2] |
+| rank 32, same mix | 0.043 | 92% | 44% [37, 51] | 0.0 pts [-5.6, +5.6] |
+| rank 8, generated calls only | 0.092 | 88% | 41% [34, 48] | -3.6 pts [-8.6, +1.5] |
+
+Reading:
+- None of the three closes the gap. A 4x larger adapter changes nothing, so
+  capacity is not the limit.
+- Mixing in the generated-call loss gives at most a small gain (+4.6 points,
+  interval includes zero). Training on generated calls alone is worse on
+  every measure.
+- The 200-sample rescoring of the original adapter agrees with the 60-sample
+  run (44% and KL 0.040, against 46% and 0.034).
+
+What this suggests, not shown: the adapter only changes how the file is
+written into the cache. Everything that reads it is the unmodified model. If
+part of what full prefill stores in the file's KV is how the file relates to
+the prefix, no writer-side change can put it back. An adapter that is also
+active on the tokens after the file would test this, at the price of changing
+the served model for all later tokens.
+
+Limits: one seed per variant, one model, same dataset family for training and
+scoring. Results: `results/gate4_*.json`, `results/writer_v*_val_kl.txt`.
+
 ## Next
 
 2. Task outcomes: run a harness with and without stale-view eviction and

@@ -78,3 +78,39 @@ def test_training_reduces_kd_loss():
         opt.zero_grad(); loss.backward(); opt.step()
     assert float(kd_loss(m, s)) < 0.5 * first
     assert len(lora_state(m)) == 3 * 4 * 2
+
+
+def test_teacher_gen_matches_gate_generate():
+    from warmtier.writer import teacher_gen
+    m = make()
+    P, F, T = ids(11)
+    Gt, rows, cache = teacher_gen(m, P, F, T, 6, set())
+    assert Gt == G.generate(m, P, F, T, "full", None, 6, set())
+    assert rows.shape[0] == len(Gt) + 1 and cache.get_seq_length() == len(P)
+
+
+def test_gen_kd_rows_are_aligned():
+    """With one prefix token and an untrained adapter the student differs from the teacher only by
+    isolation from that token; shifting the student rows by one must be clearly worse."""
+    from warmtier.writer import student_logp, teacher_gen
+    m = make()
+    _, F, T = ids(12)
+    P = [7]
+    Gt, t, cache = teacher_gen(m, P, F, T, 8, set())
+    s = student_logp(m, P, F, T + Gt, cache)
+    nT, n = len(T), len(Gt)
+    kl = lambda a, b: float((a.exp() * (a - b)).sum(-1).mean())
+    aligned = kl(t[:n], s[nT:nT + n])
+    assert aligned < kl(t[:n - 1], s[nT + 1:nT + n]) and aligned < kl(t[1:n], s[nT:nT + n - 1])
+    assert all(int(s[nT + i].argmax()) == Gt[i] for i in range(n)) or aligned < 0.5
+
+
+def test_gen_kd_loss_trains_the_adapter():
+    from warmtier.writer import gen_kd_loss
+    m = make()
+    P, F, T = ids(13)
+    loss = gen_kd_loss(m, {"P": P, "F": F, "T": T}, 6, set())
+    assert loss is not None and float(loss) >= 0
+    loss.backward()
+    grads = [p.grad for n, p in m.named_parameters() if n.endswith(".B")]
+    assert grads and any(g is not None and float(g.abs().sum()) > 0 for g in grads)
