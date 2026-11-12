@@ -1,0 +1,235 @@
+{
+  "runs": 133376,
+  "append_prefill_chars": 11759440228,
+  "append_context_integral": 577948624640,
+  "views": 1143085,
+  "first_edits_of_viewed_files": 420597,
+  "policies": {
+    "age2": {
+      "dropped_chars": 9547717523,
+      "dropped_stale_pct": 2.9,
+      "dropped_dup_pct": 0.0,
+      "dropped_live_view_pct": 56.8,
+      "dropped_other_output_pct": 40.4,
+      "views_dropped": 1090409,
+      "blind_first_edits": 284715,
+      "blind_first_edits_pct_of_first_edits": 67.7,
+      "prefix": {
+        "prefill_vs_append": 1.9955,
+        "context_vs_append": 0.3193,
+        "evictions_per_run": 22.1
+      },
+      "prefix_lazy": {
+        "prefill_vs_append": 1.4326,
+        "context_vs_append": 0.362,
+        "evictions_per_run": 4.96
+      },
+      "splice": {
+        "prefill_vs_append": 1.0564,
+        "context_vs_append": 0.3193,
+        "evictions_per_run": 22.1
+      }
+    },
+    "age5": {
+      "dropped_chars": 9202790753,
+      "dropped_stale_pct": 5.8,
+      "dropped_dup_pct": 0.0,
+      "dropped_live_view_pct": 55.2,
+      "dropped_other_output_pct": 39.0,
+      "views_dropped": 1057417,
+      "blind_first_edits": 238002,
+      "blind_first_edits_pct_of_first_edits": 56.6,
+      "prefix": {
+        "prefill_vs_append": 3.8509,
+        "context_vs_append": 0.3682,
+        "evictions_per_run": 20.63
+      },
+      "prefix_lazy": {
+        "prefill_vs_append": 1.7402,
+        "context_vs_append": 0.4141,
+        "evictions_per_run": 3.88
+      },
+      "splice": {
+        "prefill_vs_append": 1.053,
+        "context_vs_append": 0.3682,
+        "evictions_per_run": 20.63
+      }
+    },
+    "age10": {
+      "dropped_chars": 8555887629,
+      "dropped_stale_pct": 11.4,
+      "dropped_dup_pct": 0.0,
+      "dropped_live_view_pct": 51.3,
+      "dropped_other_output_pct": 37.3,
+      "views_dropped": 979329,
+      "blind_first_edits": 170548,
+      "blind_first_edits_pct_of_first_edits": 40.5,
+      "prefix": {
+        "prefill_vs_append": 5.9505,
+        "context_vs_append": 0.4457,
+        "evictions_per_run": 18.21
+      },
+      "prefix_lazy": {
+        "prefill_vs_append": 1.9301,
+        "context_vs_append": 0.4951,
+        "evictions_per_run": 2.84
+      },
+      "splice": {
+        "prefill_vs_append": 1.0472,
+        "context_vs_append": 0.4457,
+        "evictions_per_run": 18.21
+      }
+    },
+    "edit": {
+      "dropped_chars": 2369350261,
+      "dropped_stale_pct": 100.0,
+      "dropped_dup_pct": 0.0,
+      "dropped_live_view_pct": 0.0,
+      "dropped_other_output_pct": 0.0,
+      "views_dropped": 338192,
+      "blind_first_edits": 0,
+      "blind_first_edits_pct_of_first_edits": 0.0,
+      "prefix": {
+        "prefill_vs_append": 2.0041,
+        "context_vs_append": 0.8754,
+        "evictions_per_run": 2.31
+      },
+      "prefix_lazy": {
+        "prefill_vs_append": 1.1607,
+        "context_vs_append": 0.93,
+        "evictions_per_run": 0.38
+      },
+      "splice": {
+        "prefill_vs_append": 1.0023,
+        "context_vs_append": 0.8754,
+        "evictions_per_run": 2.31
+      }
+    },
+    "edit_file": {
+      "dropped_chars": 2642800284,
+      "dropped_stale_pct": 100.0,
+      "dropped_dup_pct": 0.0,
+      "dropped_live_view_pct": 0.0,
+      "dropped_other_output_pct": 0.0,
+      "views_dropped": 420197,
+      "blind_first_edits": 0,
+      "blind_first_edits_pct_of_first_edits": 0.0,
+      "prefix": {
+        "prefill_vs_append": 1.9721,
+        "context_vs_append": 0.8576,
+        "evictions_per_run": 2.32
+      },
+      "prefix_lazy": {
+        "prefill_vs_append": 1.1866,
+        "context_vs_append": 0.9126,
+        "evictions_per_run": 0.45
+      },
+      "splice": {
+        "prefill_vs_append": 1.0029,
+        "context_vs_append": 0.8576,
+        "evictions_per_run": 2.32
+      }
+    },
+    "dup": {
+      "dropped_chars": 83639282,
+      "dropped_stale_pct": 92.1,
+      "dropped_dup_pct": 7.9,
+      "dropped_live_view_pct": 0.0,
+      "dropped_other_output_pct": 0.0,
+      "views_dropped": 29293,
+      "blind_first_edits": 0,
+      "blind_first_edits_pct_of_first_edits": 0.0,
+      "prefix": {
+        "prefill_vs_append": 1.1347,
+        "context_vs_append": 0.9966,
+        "evictions_per_run": 0.19
+      },
+      "prefix_lazy": {
+        "prefill_vs_append": 1.0001,
+        "context_vs_append": 1.0,
+        "evictions_per_run": 0.0
+      },
+      "splice": {
+        "prefill_vs_append": 1.0002,
+        "context_vs_append": 0.9966,
+        "evictions_per_run": 0.19
+      }
+    },
+    "composite_file": {
+      "dropped_chars": 2647045330,
+      "dropped_stale_pct": 99.8,
+      "dropped_dup_pct": 0.2,
+      "dropped_live_view_pct": 0.0,
+      "dropped_other_output_pct": 0.0,
+      "views_dropped": 421782,
+      "blind_first_edits": 0,
+      "blind_first_edits_pct_of_first_edits": 0.0,
+      "prefix": {
+        "prefill_vs_append": 1.9827,
+        "context_vs_append": 0.8573,
+        "evictions_per_run": 2.33
+      },
+      "prefix_lazy": {
+        "prefill_vs_append": 1.187,
+        "context_vs_append": 0.9123,
+        "evictions_per_run": 0.45
+      },
+      "splice": {
+        "prefill_vs_append": 1.0029,
+        "context_vs_append": 0.8573,
+        "evictions_per_run": 2.33
+      }
+    },
+    "semantic2": {
+      "dropped_chars": 6502122234,
+      "dropped_stale_pct": 40.6,
+      "dropped_dup_pct": 0.1,
+      "dropped_live_view_pct": 0.0,
+      "dropped_other_output_pct": 59.3,
+      "views_dropped": 421782,
+      "blind_first_edits": 0,
+      "blind_first_edits_pct_of_first_edits": 0.0,
+      "prefix": {
+        "prefill_vs_append": 2.3972,
+        "context_vs_append": 0.6194,
+        "evictions_per_run": 17.31
+      },
+      "prefix_lazy": {
+        "prefill_vs_append": 1.5928,
+        "context_vs_append": 0.7016,
+        "evictions_per_run": 1.82
+      },
+      "splice": {
+        "prefill_vs_append": 1.0407,
+        "context_vs_append": 0.6194,
+        "evictions_per_run": 17.31
+      }
+    },
+    "semantic5": {
+      "dropped_chars": 6233889480,
+      "dropped_stale_pct": 42.4,
+      "dropped_dup_pct": 0.1,
+      "dropped_live_view_pct": 0.0,
+      "dropped_other_output_pct": 57.5,
+      "views_dropped": 421782,
+      "blind_first_edits": 0,
+      "blind_first_edits_pct_of_first_edits": 0.0,
+      "prefix": {
+        "prefill_vs_append": 3.5924,
+        "context_vs_append": 0.6389,
+        "evictions_per_run": 15.92
+      },
+      "prefix_lazy": {
+        "prefill_vs_append": 1.6198,
+        "context_vs_append": 0.7199,
+        "evictions_per_run": 1.56
+      },
+      "splice": {
+        "prefill_vs_append": 1.0378,
+        "context_vs_append": 0.6389,
+        "evictions_per_run": 15.92
+      }
+    }
+  },
+  "files": "57/57"
+}

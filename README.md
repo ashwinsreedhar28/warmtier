@@ -743,6 +743,73 @@ after the file, so it would cost more to deploy than the writer even if it
 had worked. Results: `results/gate4_v4_r8_mix50_reader8.json`,
 `results/writer_v4_r8_mix50_reader8_val_kl.txt`.
 
+## Nineteenth: which signal should decide what leaves the context? (Nov 12, 2026)
+
+Engines can now edit cached KV in place: Leyline (arXiv 2606.01065) replaces a span and corrects
+the keys after it with a RoPE rotation, so the splice of the Eleventh section exists as a kernel.
+What it was evaluated with is an age rule: tool outputs older than two turns become 200-character
+stubs. The open question is the policy. Two measurements, the same policies in both.
+
+Policies: `age2` (any tool output over 400 characters, two calls after it arrived, becomes a
+200-character stub); `edit` (a file view goes when an edit makes it stale); `semantic2` (tool-aware:
+a file view stays until it is stale or a later read covers it; every other tool output ages out
+after two calls).
+
+### Replay, 133,376 Claude Code style runs (`python -m warmtier.policy`)
+
+Relative to never evicting. "Context" is the sum over calls of context length.
+
+| policy | context | prefill, prefix cache | prefill, in-place splice | of what it drops: stale / current file view / other output | first edits to a viewed file made after its view was dropped |
+|---|---|---|---|---|---|
+| age2 | 0.319 | 1.996 | 1.056 | 2.9% / 56.8% / 40.4% | 67.7% |
+| age5 | 0.368 | 3.851 | 1.053 | 5.8% / 55.2% / 39.0% | 56.6% |
+| age10 | 0.446 | 5.950 | 1.047 | 11.4% / 51.3% / 37.3% | 40.5% |
+| edit (file level) | 0.858 | 1.972 | 1.003 | 100% / 0 / 0 | 0 |
+| semantic2 | 0.619 | 2.397 | 1.041 | 40.6% / 0 / 59.3% | 0 |
+
+- The age rule cuts the most context, and most of what it cuts is a file view that is still
+  current. In two thirds of the cases where the recorded agent goes on to edit a file it had read,
+  the rule had already removed that read.
+- Under a prefix cache every policy about doubles prefill; with an in-place splice the cost is
+  0.3% to 5.6%. Dropping superseded reads alone is worth 0.3% of context.
+- The replay cannot say whether an aged-out test run or grep was still needed. The agent's
+  behaviour is fixed, so re-reads a real agent would make are not priced.
+
+### The same policies run live (shwin-harness `SHWIN_COMPACTOR=age:2 | edit | semantic:2`)
+
+Qwen3.5-35B-A3B on vLLM in native tool mode, five multi-part repository tasks, 30 runs per arm
+(`runs/pod-policy-20261112` in shwin-harness). The harness stubs text, so the server re-prefills;
+this measures behaviour, not cost.
+
+| policy | solved | prompt tokens per step | steps per run | prompt tokens per run | runs that never edited a file | identical tool calls repeated |
+|---|---|---|---|---|---|---|
+| none | 12/30 | 14,589 | 47.4 | 691k | 5 | 216 |
+| edit | 14/30 | 13,871 | 48.9 | 678k | 3 | 268 |
+| semantic2 | 3/30 | 13,629 | 65.1 | 887k | 3 | 494 |
+| age2 | 0/30 | 8,581 | 77.1 | 662k | 25 | 1,440 |
+
+Against none, Fisher exact two-sided: edit p = 0.79, semantic2 p = 0.015, age2 p < 0.001.
+
+- The age rule made each call 41% cheaper and solved nothing. The agent re-ran the commands whose
+  output had been stubbed (1,440 repeated calls against 216), 28 of 30 runs ended on the step
+  budget, and 25 never reached an edit. Tokens per run were the same as with no eviction.
+- Ageing out only non-file output, which the replay could not judge, also failed: 3 of 30, more
+  steps, 28% more tokens per run. Test and search output was still in use two calls later.
+- Dropping only what an edit made stale cost nothing measurable: 14 of 30 against 12, with 5%
+  fewer prompt tokens per step. This is the one policy here that is safe, and it is the smallest.
+- Audit of the two failing arms: no server or protocol errors (age2: 0 model errors, 4 repairs in
+  2,313 steps), stubs are ordinary tool results, the failure is the step budget, not a crash.
+
+What this does and does not show. It shows that on this model and these tasks, time-based
+eviction of tool output at two turns destroys task success, and that the replay's "current file
+view dropped" and "edit after its view was dropped" counts point the right way. It does not
+reproduce Leyline's own result, where the same kind of rule raised solve rate on debug-gym with
+another model; tasks, model, harness and stub wording all differ, and only two turns was tried
+here. One model, five tasks, one seed of each arm, 30 runs.
+
+Results: `results/policy_claudecode.json`. SWE-agent traces not yet replayed (silver tables need
+regenerating).
+
 ## Next
 
 2. Task outcomes: run a harness with and without stale-view eviction and
