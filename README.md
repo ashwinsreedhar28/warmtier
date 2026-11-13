@@ -807,6 +807,57 @@ reproduce Leyline's own result, where the same kind of rule raised solve rate on
 another model; tasks, model, harness and stub wording all differ, and only two turns was tried
 here. One model, five tasks, one seed of each arm, 30 runs.
 
+### Event-driven drops, and making eviction reversible (Nov 12, later)
+
+Two attempts to get more than the edit rule's saving without the age rule's damage.
+
+Exact obsolescence signals, replayed over the same 133,376 runs: drop a tool output when the
+identical command is issued again (`rerun`), drop a test or script result once a file has been
+edited and a test is run again (`retest`), and all of these with edit and superseded reads
+(`event`).
+
+| policy | context vs never evicting | prefill, in-place splice |
+|---|---|---|
+| rerun | 1.000 | 1.000 |
+| retest | 0.989 | 1.002 |
+| event | 0.846 | 1.005 |
+| edit (file level), for reference | 0.858 | 1.003 |
+
+Signals that prove text obsolete top out near 15% of context. The age rule's 68% is text that is
+old but not provably obsolete, and no exact signal reaches it.
+
+Reversible eviction, live: the same age and tool-aware policies, with each stub carrying an id and
+a `recall(id)` tool that returns the original text from the harness's store without running
+anything (shwin-harness `SHWIN_COMPACTOR=age:2:recall`, `runs/pod-recall-20261112`). Same model,
+tasks and settings, 30 runs per arm, with a fresh no-eviction arm.
+
+| policy | solved | steps per run | prompt tokens per run | stubs written | recall calls | runs that used recall |
+|---|---|---|---|---|---|---|
+| none (second run) | 13/30 | 53.7 | 794k | 0 | | |
+| semantic2 + recall | 9/30 | 60.5 | 805k | 681 | 2 | 1 |
+| age2 + recall | 0/30 | 79.1 | 755k | 2,120 | 9 | 3 |
+
+- The model does not use the tool: 11 recalls for 2,801 stubs. It re-runs the command instead
+  (1,538 repeated calls under age2 + recall, against 1,440 without). So this run does not test
+  reversible eviction; it shows that offering an undo in a tool description is not enough for
+  this model.
+- The age rule is 0 of 60 across both runs. No eviction is 25 of 60.
+- The tool-aware policy is 3 of 30 and 9 of 30 in its two runs; the difference between them is
+  not significant (p = 0.10) and cannot be credited to a tool that was called twice. Pooled it is
+  12 of 60 against 25 of 60 for no eviction (p = 0.017).
+
+A third run added the instruction itself: a "Context management" section in the system prompt
+that says results age out, that recall returns them, and not to repeat a command to get output
+back (`runs/pod-recallprompt-20261112`, age2 + recall, 30 runs). Recall calls rose from 9 to 33,
+and 14 of 30 runs used it at least once, against 2,115 stubs and 1,499 repeated calls. Solved:
+0 of 30. The age rule is now 0 of 90. Telling this model how to get text back is not enough to
+make it do so.
+
+Where this leaves the question: on this model, anything dropped that is not provably obsolete
+costs task success, the provably obsolete part is about 15% of context, and the agent will not
+fetch dropped text back through a tool it was not trained to use, with or without being told to.
+The remaining lever is training the agent to work with evicted context.
+
 Results: `results/policy_claudecode.json`. SWE-agent traces not yet replayed (silver tables need
 regenerating).
 

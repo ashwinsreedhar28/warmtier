@@ -16,6 +16,12 @@ policies (what is dropped, and when)
               same bytes: the older copy is redundant
   composite_file   edit_file or dup, whichever comes first
   age5, age10 age2 with a longer wait
+  rerun       a tool output, when the identical assistant message (same command) is issued again:
+              the newer output replaces it
+  retest      the output of a test or script run, when a file has been edited since and a test
+              or script is run again: the older result describes code that no longer exists
+  event       edit_file, dup, rerun and retest together: every drop is triggered by an event that
+              makes the text obsolete, none by the passage of time
   semantic2, semantic5   tool-aware: file views leave only when stale or duplicated (composite_file);
               every other tool output (test runs, greps, listings) ages out after 2 or 5 calls
 Views dropped by the tool-aware policies leave an 80-character stub.
@@ -52,7 +58,9 @@ from collections import defaultdict
 
 import pyarrow.parquet as pq
 
-POLICIES = ("age2", "age5", "age10", "edit", "edit_file", "dup", "composite_file", "semantic2", "semantic5")
+POLICIES = ("age2", "age5", "age10", "edit", "edit_file", "dup", "composite_file", "semantic2", "semantic5",
+            "rerun", "retest", "event")
+TEST_CMDS = ("Bash:python", "Bash:python3", "Bash:pytest", "Bash:PYTHONPAT", "Bash:timeout", "Bash:tox", "Bash:make")
 ENGINES = ("prefix", "prefix_lazy", "splice")
 AGE_MIN_CHARS, AGE_STUB, VIEW_STUB = 400, 200, 80
 
@@ -132,10 +140,37 @@ def _min(*xs):
     return min(xs) if xs else None
 
 
+def output_signals(rows: list[tuple]) -> list[dict]:
+    """Per row: the call at which a non-view output is made obsolete by a rerun or a retest (or None).
+    rows: (call, kind, chars, sha, cmd) in prompt order."""
+    out = [{"rerun": None, "retest": None} for _ in rows]
+    last_out_of: dict[str, list[int]] = {}        # assistant sha -> rows of the outputs it produced
+    cur_asst = None
+    open_tests: list[int] = []                     # test outputs not yet superseded
+    edited_since: dict[int, bool] = {}
+    for i, (call, kind, chars, sha, cmd) in enumerate(rows):
+        if kind == "assistant":
+            cur_asst = sha
+            if cmd == "Edit":
+                for j in open_tests:
+                    edited_since[j] = True
+            for j in last_out_of.pop(sha, []):
+                out[j]["rerun"] = call
+        elif kind == "observation":
+            if cur_asst is not None:
+                last_out_of.setdefault(cur_asst, []).append(i)
+            if cmd in TEST_CMDS:
+                for j in [j for j in open_tests if edited_since.get(j)]:
+                    out[j]["retest"] = call
+                open_tests = [j for j in open_tests if not edited_since.get(j)] + [i]
+    return out
+
+
 def plan(rows: list[tuple], sig: dict[tuple, dict], policy: str) -> list[tuple]:
-    """rows: (call, kind, chars, sha) in prompt order -> msgs for simulate()."""
+    """rows: (call, kind, chars, sha[, cmd]) in prompt order -> msgs for simulate()."""
+    osig = output_signals(rows) if policy in ("rerun", "retest", "event") else None
     msgs = []
-    for call, kind, chars, sha in rows:
+    for n, (call, kind, chars, sha, *_) in enumerate(rows):
         s = sig.get((call, sha)) if kind == "observation" else None
         ev, stub = None, VIEW_STUB
         if policy.startswith("age"):
@@ -146,6 +181,12 @@ def plan(rows: list[tuple], sig: dict[tuple, dict], policy: str) -> list[tuple]:
                 ev = _min(s["edit_file"], s["dup"])
             elif kind == "observation" and chars > AGE_MIN_CHARS:
                 ev, stub = call + int(policy[8:]), AGE_STUB
+        elif osig is not None:
+            if policy == "event" and s is not None:
+                ev = _min(s["edit_file"], s["dup"], osig[n]["rerun"])
+            elif kind == "observation":
+                ev = {"rerun": osig[n]["rerun"], "retest": osig[n]["retest"],
+                      "event": _min(osig[n]["rerun"], osig[n]["retest"])}[policy]
         elif s is not None:
             ev = {"edit": s["edit"], "edit_file": s["edit_file"], "dup": s["dup"],
                   "composite_file": _min(s["edit_file"], s["dup"])}[policy]
@@ -158,7 +199,7 @@ def plan(rows: list[tuple], sig: dict[tuple, dict], policy: str) -> list[tuple]:
 def classify(rows, sig, msgs, n_calls) -> dict:
     """What a policy dropped, by what it was when dropped."""
     d = dict(stale=0, dup=0, live=0, live_other=0, blind_first_edits=0, views_dropped=0)
-    for (call, kind, chars, sha), m in zip(rows, msgs):
+    for (call, kind, chars, sha, *_), m in zip(rows, msgs):
         ev = m[3]
         if ev is None or ev >= n_calls:
             continue
@@ -186,9 +227,9 @@ def run_part(chunk_path: str, view_path: str) -> dict:
     for v in vt:
         if not v["scratch"]:
             views[v["run"]].append(v)
-    t = pq.read_table(chunk_path, columns=["run", "idx", "call", "kind", "chars", "sha"]).sort_by(
+    t = pq.read_table(chunk_path, columns=["run", "idx", "call", "kind", "chars", "sha", "cmd"]).sort_by(
         [("run", "ascending"), ("idx", "ascending")])
-    cols = [t.column(c).to_pylist() for c in ("run", "call", "kind", "chars", "sha")]
+    cols = [t.column(c).to_pylist() for c in ("run", "call", "kind", "chars", "sha", "cmd")]
     tot = {"runs": 0, "append": [0, 0], "views": 0, "first_edits_of_viewed_files": 0,
            "sim": {p: {e: [0, 0, 0] for e in ENGINES} for p in POLICIES},
            "dropped": {p: dict(stale=0, dup=0, live=0, live_other=0, blind_first_edits=0, views_dropped=0) for p in POLICIES}}
@@ -201,7 +242,7 @@ def run_part(chunk_path: str, view_path: str) -> dict:
         tot["runs"] += 1
         tot["views"] += len(sig)
         tot["first_edits_of_viewed_files"] += sum(1 for s in sig.values() if s["edit_file"] is not None)
-        a = append_only([(c, ch, k == "assistant") for c, k, ch, _ in rows])
+        a = append_only([(c, ch, k == "assistant") for c, k, ch, *_ in rows])
         tot["append"][0] += a[0]; tot["append"][1] += a[1]
         for p in POLICIES:
             msgs = plan(rows, sig, p)
@@ -213,11 +254,11 @@ def run_part(chunk_path: str, view_path: str) -> dict:
                 tot["dropped"][p][k] += v
 
     cur, rows = None, []
-    for run, call, kind, chars, sha in zip(*cols):
+    for run, call, kind, chars, sha, cmd in zip(*cols):
         if run != cur:
             flush(cur, rows)
             cur, rows = run, []
-        rows.append((call, kind, chars, sha))
+        rows.append((call, kind, chars, sha, cmd))
     flush(cur, rows)
     return tot
 

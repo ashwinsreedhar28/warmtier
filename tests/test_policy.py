@@ -56,3 +56,19 @@ def test_age_policy_drops_live_text_and_counts_blind_first_edits():
     ed = policy.plan(rows, sig, "edit")
     d = policy.classify(rows, sig, ed, 5)
     assert ed[0][3] == 4 and d["stale"] == 3000 - policy.VIEW_STUB and d["blind_first_edits"] == 0
+
+
+def test_rerun_and_retest_signals():
+    rows = [(0, "task", 100, "t", ""),
+            (1, "assistant", 20, "A", "Bash"), (1, "observation", 900, "o1", "Bash:pytest"),
+            (2, "assistant", 20, "B", "Bash"), (2, "observation", 700, "o2", "Bash:grep"),
+            (3, "assistant", 20, "E", "Edit"), (3, "observation", 50, "o3", "Edit"),
+            (4, "assistant", 20, "A", "Bash"), (4, "observation", 900, "o4", "Bash:pytest"),
+            (5, "assistant", 20, "B", "Bash"), (5, "observation", 700, "o5", "Bash:grep")]
+    sig = policy.output_signals(rows)
+    assert sig[2] == {"rerun": 4, "retest": 4}        # same command again, and a retest after an edit
+    assert sig[4] == {"rerun": 5, "retest": None}     # grep rerun; not a test
+    assert sig[8] == {"rerun": None, "retest": None} and sig[10] == {"rerun": None, "retest": None}
+    ev = policy.plan(rows, {}, "event")
+    assert [m[3] for m in ev] == [None, None, 4, None, 5, None, None, None, None, None, None]
+    assert [m[3] for m in policy.plan(rows, {}, "retest")][2] == 4 and policy.plan(rows, {}, "retest")[4][3] is None

@@ -229,6 +229,81 @@
         "context_vs_append": 0.6389,
         "evictions_per_run": 15.92
       }
+    },
+    "rerun": {
+      "dropped_chars": 13779477,
+      "dropped_stale_pct": 57.4,
+      "dropped_dup_pct": 5.5,
+      "dropped_live_view_pct": 2.5,
+      "dropped_other_output_pct": 34.7,
+      "views_dropped": 2192,
+      "blind_first_edits": 17,
+      "blind_first_edits_pct_of_first_edits": 0.0,
+      "prefix": {
+        "prefill_vs_append": 1.0157,
+        "context_vs_append": 0.9995,
+        "evictions_per_run": 0.04
+      },
+      "prefix_lazy": {
+        "prefill_vs_append": 1.0,
+        "context_vs_append": 1.0,
+        "evictions_per_run": 0.0
+      },
+      "splice": {
+        "prefill_vs_append": 1.0,
+        "context_vs_append": 0.9995,
+        "evictions_per_run": 0.04
+      }
+    },
+    "retest": {
+      "dropped_chars": 253642661,
+      "dropped_stale_pct": 0.0,
+      "dropped_dup_pct": 0.0,
+      "dropped_live_view_pct": 0.0,
+      "dropped_other_output_pct": 100.0,
+      "views_dropped": 0,
+      "blind_first_edits": 0,
+      "blind_first_edits_pct_of_first_edits": 0.0,
+      "prefix": {
+        "prefill_vs_append": 1.241,
+        "context_vs_append": 0.9891,
+        "evictions_per_run": 0.8
+      },
+      "prefix_lazy": {
+        "prefill_vs_append": 1.0007,
+        "context_vs_append": 0.9998,
+        "evictions_per_run": 0.0
+      },
+      "splice": {
+        "prefill_vs_append": 1.0022,
+        "context_vs_append": 0.9891,
+        "evictions_per_run": 0.8
+      }
+    },
+    "event": {
+      "dropped_chars": 2905261978,
+      "dropped_stale_pct": 90.9,
+      "dropped_dup_pct": 0.2,
+      "dropped_live_view_pct": 0.0,
+      "dropped_other_output_pct": 8.9,
+      "views_dropped": 421804,
+      "blind_first_edits": 17,
+      "blind_first_edits_pct_of_first_edits": 0.0,
+      "prefix": {
+        "prefill_vs_append": 2.205,
+        "context_vs_append": 0.8462,
+        "evictions_per_run": 3.15
+      },
+      "prefix_lazy": {
+        "prefill_vs_append": 1.206,
+        "context_vs_append": 0.907,
+        "evictions_per_run": 0.48
+      },
+      "splice": {
+        "prefill_vs_append": 1.0051,
+        "context_vs_append": 0.8462,
+        "evictions_per_run": 3.15
+      }
     }
   },
   "files": "57/57"
