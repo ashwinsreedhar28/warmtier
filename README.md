@@ -693,7 +693,9 @@ view. 120 traces per row; different traces qualify at each lag.
 | Qwen3-8B, 5 turns later | 0.014 | 0.006 | 0.004 | 74% / 70% |
 
 Reading:
-- The splice's leftover influence fades. The gap between a splice and an
+- The splice's leftover influence is smaller at later lags. Each lag was measured on a different
+  set of traces, so this is a difference across traces, not a fade followed within one trajectory.
+  The gap between a splice and an
   honest recompute is 0.022 KL at the first call, 0.006 two turns later and
   0.002 five turns later (4B). By five turns the two generate the same call
   as text eviction equally often.
@@ -759,7 +761,7 @@ after two calls).
 
 Relative to never evicting. "Context" is the sum over calls of context length.
 
-| policy | context | prefill, prefix cache | prefill, in-place splice | of what it drops: stale / current file view / other output | first edits to a viewed file made after its view was dropped |
+| policy | context | prefill, prefix cache | prefill, in-place splice | of what it drops: stale / current file view / other output | views of a later-edited file that were dropped before the edit |
 |---|---|---|---|---|---|
 | age2 | 0.319 | 1.996 | 1.056 | 2.9% / 56.8% / 40.4% | 67.7% |
 | age5 | 0.368 | 3.851 | 1.053 | 5.8% / 55.2% / 39.0% | 56.6% |
@@ -768,8 +770,8 @@ Relative to never evicting. "Context" is the sum over calls of context length.
 | semantic2 | 0.619 | 2.397 | 1.041 | 40.6% / 0 / 59.3% | 0 |
 
 - The age rule cuts the most context, and most of what it cuts is a file view that is still
-  current. In two thirds of the cases where the recorded agent goes on to edit a file it had read,
-  the rule had already removed that read.
+  current. Two thirds of the views of files the recorded agent later edited had been removed
+  before the edit (counted per view, not per distinct first edit).
 - Under a prefix cache every policy about doubles prefill; with an in-place splice the cost is
   0.3% to 5.6%. Dropping superseded reads alone is worth 0.3% of context.
 - The replay cannot say whether an aged-out test run or grep was still needed. The agent's
@@ -783,20 +785,28 @@ this measures behaviour, not cost.
 
 | policy | solved | prompt tokens per step | steps per run | prompt tokens per run | runs that never edited a file | identical tool calls repeated |
 |---|---|---|---|---|---|---|
-| none | 12/30 | 14,589 | 47.4 | 691k | 5 | 216 |
+| budget compaction (harness default; `none` in the raw data) | 12/30 | 14,589 | 47.4 | 691k | 5 | 216 |
 | edit | 14/30 | 13,871 | 48.9 | 678k | 3 | 268 |
 | semantic2 | 3/30 | 13,629 | 65.1 | 887k | 3 | 494 |
 | age2 | 0/30 | 8,581 | 77.1 | 662k | 25 | 1,440 |
 
-Against none, Fisher exact two-sided: edit p = 0.79, semantic2 p = 0.015, age2 p < 0.001.
+The baseline arm is not "no eviction": it is the harness's default budget compactor, which wrote
+607 and 712 stubs in its two runs. "Solved" means the agent gave a final answer and the check
+passed; counting checks passed alone, the baseline is 31 of 60 over its two runs against 25 of 60
+solved, and the age arms pass none. Runs used 8 parallel jobs and four baseline runs hit the
+runtime limit.
+
+Against the baseline, Fisher exact two-sided: edit p = 0.79, semantic2 p = 0.015, age2 p < 0.001.
 
 - The age rule made each call 41% cheaper and solved nothing. The agent re-ran the commands whose
   output had been stubbed (1,440 repeated calls against 216), 28 of 30 runs ended on the step
-  budget, and 25 never reached an edit. Tokens per run were the same as with no eviction.
-- Ageing out only non-file output, which the replay could not judge, also failed: 3 of 30, more
+  budget, and 25 never reached an edit. Tokens per run were the same as the baseline's.
+- Ageing out output other than `read_file` results (shell `cat` output still aged out in this
+  run), which the replay could not judge, also failed: 3 of 30, more
   steps, 28% more tokens per run. Test and search output was still in use two calls later.
 - Dropping only what an edit made stale cost nothing measurable: 14 of 30 against 12, with 5%
-  fewer prompt tokens per step. This is the one policy here that is safe, and it is the smallest.
+  fewer prompt tokens per step. No harm is detectable at this sample size (p = 0.79), which is not
+  evidence that it is safe; it is also the smallest saving.
 - Audit of the two failing arms: no server or protocol errors (age2: 0 model errors, 4 repairs in
   2,313 steps), stubs are ordinary tool results, the failure is the step budget, not a crash.
 
@@ -812,7 +822,8 @@ here. One model, five tasks, one seed of each arm, 30 runs.
 Two attempts to get more than the edit rule's saving without the age rule's damage.
 
 Exact obsolescence signals, replayed over the same 133,376 runs: drop a tool output when the
-identical command is issued again (`rerun`), drop a test or script result once a file has been
+identical assistant message is issued again (`rerun`; the detector matches the hash of the whole
+assistant message, not a canonical command), drop a test or script result once a file has been
 edited and a test is run again (`retest`), and all of these with edit and superseded reads
 (`event`).
 
@@ -823,17 +834,18 @@ edited and a test is run again (`retest`), and all of these with edit and supers
 | event | 0.846 | 1.005 |
 | edit (file level), for reference | 0.858 | 1.003 |
 
-Signals that prove text obsolete top out near 15% of context. The age rule's 68% is text that is
-old but not provably obsolete, and no exact signal reaches it.
+The exact signals tried here remove about 15% of context. These detectors are not exhaustive, so
+this is what they found, not a ceiling. The age rule's 68% is text that is old but not shown
+obsolete by any of them.
 
 Reversible eviction, live: the same age and tool-aware policies, with each stub carrying an id and
 a `recall(id)` tool that returns the original text from the harness's store without running
 anything (shwin-harness `SHWIN_COMPACTOR=age:2:recall`, `runs/pod-recall-20261112`). Same model,
-tasks and settings, 30 runs per arm, with a fresh no-eviction arm.
+tasks and settings, 30 runs per arm, with a fresh baseline (budget compaction) arm.
 
 | policy | solved | steps per run | prompt tokens per run | stubs written | recall calls | runs that used recall |
 |---|---|---|---|---|---|---|
-| none (second run) | 13/30 | 53.7 | 794k | 0 | | |
+| budget compaction (second run) | 13/30 | 53.7 | 794k | 0 | | |
 | semantic2 + recall | 9/30 | 60.5 | 805k | 681 | 2 | 1 |
 | age2 + recall | 0/30 | 79.1 | 755k | 2,120 | 9 | 3 |
 
@@ -841,10 +853,11 @@ tasks and settings, 30 runs per arm, with a fresh no-eviction arm.
   (1,538 repeated calls under age2 + recall, against 1,440 without). So this run does not test
   reversible eviction; it shows that offering an undo in a tool description is not enough for
   this model.
-- The age rule is 0 of 60 across both runs. No eviction is 25 of 60.
+- The age rule is 0 of 60 across both runs. The budget-compaction baseline is 25 of 60 solved
+  (31 of 60 checks passed).
 - The tool-aware policy is 3 of 30 and 9 of 30 in its two runs; the difference between them is
   not significant (p = 0.10) and cannot be credited to a tool that was called twice. Pooled it is
-  12 of 60 against 25 of 60 for no eviction (p = 0.017).
+  12 of 60 against 25 of 60 for the baseline (p = 0.017).
 
 A third run added the instruction itself: a "Context management" section in the system prompt
 that says results age out, that recall returns them, and not to repeat a command to get output
@@ -853,13 +866,48 @@ and 14 of 30 runs used it at least once, against 2,115 stubs and 1,499 repeated 
 0 of 30. The age rule is now 0 of 90. Telling this model how to get text back is not enough to
 make it do so.
 
-Where this leaves the question: on this model, anything dropped that is not provably obsolete
-costs task success, the provably obsolete part is about 15% of context, and the agent will not
-fetch dropped text back through a tool it was not trained to use, with or without being told to.
-The remaining lever is training the agent to work with evicted context.
+Where this left the question on Nov 12: on this model, age-based dropping costs task success, the
+exact signals tried cover about 15% of context, and the agent did not fetch dropped text back
+through a tool, with or without being told to. An outside review then found defects in the harness
+and in these labels (corrected above); the controlled rerun is the next section.
 
 Results: `results/policy_claudecode.json`. SWE-agent traces not yet replayed (silver tables need
 regenerating).
+
+## Twentieth: a controlled rerun after review (Nov 12 to 13, 2026)
+
+An outside review of the Nineteenth section found that the harness dropped the assistant's own text
+on tool-call turns, that the "none" arm was the budget compactor, that the token calibration and the
+superseded-read test were wrong, and that the labels above overclaimed. The harness was fixed
+(notes kept, age counted in tool turns, calibration, contiguous-range supersession, shell file views
+protected, a true pass-through mode) and seven arms were rerun: same model and tasks, 20 runs per
+arm, 4 parallel jobs (`runs/pod-ablation-20261112` in shwin-harness).
+
+| arm | solved | checks passed | steps per run | prompt tokens per run | never edited | identical calls repeated |
+|---|---|---|---|---|---|---|
+| no eviction (64k context) | 12/20 | 12 | 42.2 | 862,807 | 0 | 107 |
+| budget compaction | 10/20 | 12 | 57.2 | 865,054 | 1 | 230 |
+| age 5 | 6/20 | 7 | 64.5 | 646,735 | 3 | 331 |
+| age 2, notes kept | 1/20 | 2 | 78.8 | 729,439 | 13 | 914 |
+| age 2, notes dropped | 0/20 | 0 | 79.3 | 698,207 | 15 | 956 |
+| age 2, stub keeps the tail | 0/20 | 2 | 80.0 | 717,838 | 10 | 931 |
+| age 2, 160 steps and 60 minutes | 0/20 | 1 | 151.8 | 1,953,108 | 12 | 2,193 |
+
+- Keeping the assistant's notes moves age 2 from 0 to 1 of 20. The dropped-notes defect was real
+  and was not the cause of the collapse.
+- Age 5 solves 6 against 1 for age 2: how early output is dropped is the main factor. Neither a
+  different stub nor twice the step budget rescues age 2.
+- Budget compaction and no eviction are not distinguishable here (10 and 12 solved, 12 and 12
+  checks passed).
+- Total prompt tokens per run are the same with and without eviction, because the evicting arms
+  take more steps. Per passed check: 1.44M for no eviction and for budget compaction, 1.85M for
+  age 5, at least 7.3M for age 2. These are total prompt tokens, not uncached prefill.
+
+One model, five tasks, 20 runs per arm, one task unsolved in every arm, no run beyond a 64k
+context. On this evidence, dropping tool output by age does not lower cost per passed check for
+this model and these tasks; it raises it. The work after this point moved to the serving side:
+keeping the whole context and avoiding recomputing it (see the vllm-coldstart repository,
+`bench/kv_restore` and `bench/session_gap`).
 
 ## Next
 
